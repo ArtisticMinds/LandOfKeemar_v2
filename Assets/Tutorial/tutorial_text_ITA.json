@@ -1,0 +1,175 @@
+﻿[
+  {
+    "scene_name": "MainMenu",
+    "language": "ITA",
+    "tutorial_list": [
+      {
+        "order_number": 1,
+        "img": "default",
+        "value": "<b>Avventuriero, benvenuto nel <color=red>Keemar</color>!</b>\nIo sono il Viandante e ti condurrò in un mondo tanto fantastico quanto reale: le <color=red>Mar-Kee</color>.\nInsieme esploreremo incredibili luoghi e incontreremo i personaggi del romanzo fantasy Keemar."
+      },
+	  {
+		"order_number": 2,
+        "img": "default",
+		"value": "Attenzione: QUI NEL KEEMAR IL PROTAGONISTA SEI TU! Sarai tu a dover risolvere enigmi e a stringere amicizia con Elfi, Orchi o Nani... e persino con Negromanti.\nCompleta l'intero percorso e sarai incoronato Eroe del Keemar ricevendo un dono assai prezioso."
+	  },
+      {
+        "order_number": 3,
+        "img": "default",
+        "value": "Viandante, sei pronto a diventare un Eroe del Keemar? Mi auguro di sì.\nInsieme incontreremo alcuni dei personaggi del Libro che ti aiuteranno (non sempre, quindi stai in guardia) nella tua avventura."
+      },
+	  {
+		"order_number": 4,
+        "img": "default",
+		"value": "Lo scopo di questa APP è di farti (ri)scoprire un territorio devastato dal terremoto.\nHai due modi:\n- Segui la mappa che troverai qui e spostati da un posto all'altro.\n- Vieni ai nostri eventi dove incontrerai me e i protagonisti di questa storia per indossare i panni dell'eroe e combattere al nostro fianco."
+	  },
+      {
+        "order_number": 5,
+        "img": "btn_site",
+        "value": "Passiamo alle cose pratiche.\nQuesto pulsante ti darà la possibilità di entrare nel sito del Keemar. Qui troverai tutte le informazioni sul mondo, sulla VERA storia di queste terre e dei suoi personaggi. Inoltre, potrai trovare gli appuntamenti in cui ci ritroviamo dal vivo per conoscerci di persona."
+      },
+      {
+        "order_number": 6,
+        "img": "btn_codex",
+        "value": "Ed ecco il mondo da esplorare. Come vedrai, ci sono varie tappe che ti consigliamo di esplorare in sequenza, anche se puoi iniziare da dove vuoi. Cliccando su una delle postazioni potrai ricevere tutte le informazioni di cui hai bisogno per arrivarci, la storia del Keemar e quella “reale”."
+      },
+	  {
+		"order_number": 7,
+		"img": "default",
+		"value": "Un consiglio: SCARICA tutto prima di arrivare sul posto perché potrebbe succedere che non c’è copertura di “magia” (insomma, potrebbe non prendere il cellulare)."
+	  },
+      {
+        "order_number": 8,
+        "img": "btn_qr",
+        "value": "Queste antiche Rune (Codici QR) sono l’unico modo che hai per diventare un vero Eroe. Quindi, dovrai per forza metterti in viaggio se vorrai immergerti nell’avventura. Io sarò lì ad aspettarti e metterò alla prova le tue abilità (piccole missioni da risolvere affinché tu possa procedere)."
+      },
+	  {
+		"order_number": 9,
+		"img": "default",
+		"value": "Oppure, mi vedrai in un video insieme ad alcuni personaggi in cui ti narrerò parte della storia del Keemar."
+	  },
+      {
+        "order_number": 10,
+        "img": "btn_settings",
+        "value": "Con questi pulsanti avrai modo di impostare (quasi) tutto secondo i tuoi gusti e rivedere tutto quello che ti ho appena detto."
+      },
+      {
+        "order_number": 11,
+        "img": "default",
+        "value": "Beh, che aspetti? Forza viandante, il percorso per diventare Eroe del Keemar ti aspetta. Raggiungimi in una delle tappe che trovi sulla mappa, scansiona la Runa e inizia a esplorare questo fantastico mondo da protagonista."
+      }
+    ]
+  },
+  {
+    "scene_name": "Codex",
+    "language": "ITA",
+    "tutorial_list": [
+      {
+        "order_number": 1,
+        "img": "default",
+        "value": "Eccoci, questo è l’intero Keemar, qui troverai tutti i luoghi da scoprire nella tua avventura. Puoi scorrere la mappa usando i tuoi magici pollici."
+      },
+      {
+        "order_number": 2,
+        "img": "btn_main_side_stop",
+        "value": "Prima di avventurarti, premi su uno dei luoghi che ti interessa. Come vedi ci sono due tipologie: le icone quadrate rappresentano i luoghi più importanti del Keemar, dove avviene la vera azione, mentre in quelli tondi troverai me a spiegarti qualche curiosità del posto."
+      },
+      {
+        "order_number": 3,
+        "img": "popup_main_stop",
+        "value": "Se dovessi aver scelto una tappa principale del Keemar, ti do’ la possibilità di scoprire la storia di quel luogo. Però prima di fare qualsiasi cosa, premi il pulsante al centro per richiamare a te una proiezione mistica del luogo. (Insomma, SCARICA tutto)"
+      },
+	  {
+		"order_number": 4,
+		"img": "default",
+		"value": "Ora devi trovare la Runa, cliccando il simbolo in alto."
+	  },
+	  {
+		"order_number": 5,
+		"img": "default",
+		"value": "Ora puoi tornare al lettore di Rune e completare le missioni descritte sul pulsante in basso."
+	  },
+	  {
+		"order_number": 6,
+		"img": "default",
+		"value": "Una volta completate, puoi scoprire le due storie tramite i due pulsanti più grandi al centro."
+	  },
+      {
+        "order_number": 7,
+        "img": "popup_side_stop",
+        "value": "Nel caso te avventuriero abbia scelto un’icona tonda, potrai vedermi in carne ed ossa."
+      },
+	  {
+		"order_number": 8,
+		"img": "default",
+		"value": "Anche in questo caso puoi trovare la Runa corrispondente nel mondo reale tramite il pulsante in alto."
+	  },
+	  {
+		"order_number": 9,
+		"img": "default",
+		"value": "Il pulsante al centro invece ti permette di rivedermi, ma solo se prima hai trovato la Runa."
+	  },
+      {
+        "order_number": 10,
+        "img": "btn_home",
+        "value": "Una volta che avrai completato la ricerca, potrai tranquillamente tornare indietro e cominciare la tua missione in uno dei luoghi suggestivi del Keemar"
+      },
+      {
+        "order_number": 11,
+        "img": "default",
+        "value": "Beh avventuriero, che altro posso dirti? Il Keemar è un luogo affascinante e misterioso e aspetta solo te per essere scoperto!"
+      }
+    ]
+  },
+  {
+    "scene_name": "3DModel",
+    "language": "ITA",
+    "tutorial_list": [
+      {
+        "order_number": 1,
+        "img": "default",
+        "value": "Rieccoci avventuriero. Sono felice tu sia giunto sin qui, vuol dire che hai deciso di scoprire di più sul Keemar. Magari abbiamo davanti la futura eroina o eroe del Keemar. Staremo a vedere…"
+      },
+      {
+        "order_number": 2,
+        "img": "hand_1_finger",
+        "value": "Una volta sprigionata la potenza della Runa, dovrai usare le tue armi migliori: le dita magiche. Pensa, con la sola forza del tuo indice potrai far roteare il posto in ogni direzione, su/giù, di qua e di là."
+      },
+      {
+        "order_number": 3,
+        "img": "hand_2_finger",
+        "value": "Se invece all’indice aggiungi il dito medio potrai spostare in su e in giù il posto. Questo ti sarà molto utile nel momento in cui dovrai risolvere le missioni nascoste in ognuna di queste postazioni."
+      },
+      {
+        "order_number": 4,
+        "img": "hand_zoom",
+        "value": "Ora la magia dell’ingrandimento e del rimpicciolimento. Basta usare i due pollici, e muoverli verso l’esterno o verso l’interno. Semplice, no?"
+      },
+      {
+        "order_number": 5,
+        "img": "btn_home",
+        "value": "Invece, spingendo questo pulsante potrai in qualunque momento tornare alla schermata iniziale."
+      },
+      {
+        "order_number": 6,
+        "img": "btn_reset",
+        "value": "La magia può creare confusione, lo so bene visto che più di una volta ne sono rimasto vittima. Per fortuna ho scoperto una contromagia: se schiacci qui torna tutto come prima. Forte, no?"
+      },
+      {
+        "order_number": 7,
+        "img": "btn_main_stop",
+        "value": "Un altro problema tipico degli avventurieri è quello di perdersi lungo la via.\n\nMa siccome non posso permettermi di perdere dei valorosi come te, ti fornisco la mappa e tutte le indicazioni del posto in cui ti trovi. Potrai in qualunque momento consultare la storia del Keemar o quella “reale”, oltre a scoprire quali missioni ti attendono e quali hai completato."
+      },
+      {
+        "order_number": 8,
+        "img": "cardboard",
+        "value": "Alcune Rune, invece, possono proiettarti in una dimensione così reale che… potrai quasi toccarmi. Infatti, mentre io ti parlerò dei segreti del Keemar insieme ad alcuni dei suoi protagonisti, tu potrai esplorare il mondo intorno!\n\nSi, ti basta appoggiare un dito sullo schermo e girare in tutte le direzioni che vuoi. Ti sembrerà di essere dentro alla storia stessa. Incredibile, no? Questa magia ha un nome complicato riassunto in una sigla: VR. Si dice che possedendo degli appositi occhiali sia ancora più bello. Ci si potrebbe quasi abbracciare."
+      },
+      {
+        "order_number": 9,
+        "img": "default",
+        "value": "Avventuriero, ora hai tutto ciò che ti serve per affrontare questo viaggio. Ora è tutto nelle tue mani. Potrai trovare tutto ciò che ti sembra di supporto come il libro Keemar o la guida, puoi fermarti nei vari luoghi per gustarti ciò che il territorio ha da offrirti. Ma non deviare mai dalla tua missione: il Keemar ha bisogno del suo Eroi e conta su di te."
+      }
+    ]
+  }
+]

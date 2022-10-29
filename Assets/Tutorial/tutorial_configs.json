@@ -1,0 +1,34 @@
+﻿[
+  {
+    "scene_name": "MainMenu",
+    "lst": [
+      {
+        "order_number": {
+          "value": 4
+        },
+        "position": {
+          "x": 9999,
+          "y": 9999,
+          "z": 9999
+        },
+        "rotation": {
+          "x": 9999,
+          "y": 9999,
+          "z": 9999
+        }
+      }
+    ]
+  },
+  {
+    "scene_name": "Codex",
+    "lst": []
+  },
+  {
+    "scene_name": "3DModel",
+    "lst": []
+  },
+  {
+    "scene_name": "QrReader",
+    "lst": []
+  }
+]

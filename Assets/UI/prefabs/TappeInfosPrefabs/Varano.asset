@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
+  m_Name: Varano
+  m_EditorClassIdentifier: 
+  tappaName: ROCCA VARANO
+  InfoTappa_Real_Name: Varano_Real
+  InfoTappa_Keemar_Name: Varano_Keemar
+  InfoTappa_Real: {fileID: 0}
+  InfoTappa_Keemar: {fileID: 0}
+  googleMapLink: https://goo.gl/maps/TModoCiv81m9V78w6
+  videoLink: https://youtu.be/VbxKoIzmcIw
+  tappaComplete: 0
+  tappaScene: Varano
+  missions:
+  - missionName: Onore Nanico
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: Posso Entrare?
+    missionDescriprion: 
+    missionCompleteMessage: Hai dato rifugio al viandante
+    missionComplete: 1
+  - missionName: Un Orco di Troppo
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: Attenzione al Parapetto
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: Un'arma non da Nani
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0

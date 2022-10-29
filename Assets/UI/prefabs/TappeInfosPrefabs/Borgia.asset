@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
+  m_Name: Borgia
+  m_EditorClassIdentifier: 
+  tappaName: 'ROCCA
+
+    BORGESCA'
+  InfoTappa_Real_Name: Borgia_Real
+  InfoTappa_Keemar_Name: Borgia_Keemar
+  InfoTappa_Real: {fileID: 0}
+  InfoTappa_Keemar: {fileID: 0}
+  googleMapLink: https://goo.gl/maps/pUr1A4ykPaeCQfbUA
+  videoLink: 
+  tappaComplete: 0
+  tappaScene: 
+  missions:
+  - missionName: Porte Aperte
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: Al fuoco
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: Fiato alle trombe
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: La spada degli antenati
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
+  - missionName: In alto la bandiera
+    missionDescriprion: 
+    missionCompleteMessage: 
+    missionComplete: 0
