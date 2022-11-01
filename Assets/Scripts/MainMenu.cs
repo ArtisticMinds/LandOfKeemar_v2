@@ -1,5 +1,6 @@
-
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MainMenu : MonoBehaviour
     public GameObject []panels;
     public static MainMenu instance;
     static GameObject mainPanel;
+    public TMP_Dropdown qualityDropDown;
 
     private void Awake()
     {
@@ -34,8 +36,13 @@ public class MainMenu : MonoBehaviour
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         foreach (GameObject pan in panels)
             pan.SetActive(false);
+        //Add listener for when the state of the Toggle changes, to take action
+        qualityDropDown.onValueChanged.AddListener(delegate {
+            QualityValueChanged(qualityDropDown);
+        });
 
-        
+
+
         LoadOptionsState();
 
         AudioManager.instance.PlayMenuMusic();
@@ -63,6 +70,12 @@ public class MainMenu : MonoBehaviour
             AudioManager.instance.SetMusicVolume(vol);
             AudioManager.instance.MusicSlider.value = vol;
         }
+        if (PlayerPrefs.HasKey("Quality"))
+        {
+            int qualityLevel = PlayerPrefs.GetInt("Quality");
+            QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
+            qualityDropDown.value = qualityLevel;
+        }
     }
 
     public void OpenKeemarUrl()
@@ -85,6 +98,15 @@ public class MainMenu : MonoBehaviour
         mainMenuOpen = false;
 
     }
+
+
+    void QualityValueChanged(TMP_Dropdown change)
+    {
+        Debug.Log("New Value : " + change.value);
+        QualitySettings.SetQualityLevel(change.value);
+        PlayerPrefs.SetInt("Quality", change.value);
+    }
+
 
     void Update()
     {

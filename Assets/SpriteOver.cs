@@ -11,12 +11,15 @@ public class SpriteOver : MonoBehaviour
     [SerializeField]
     Vector2 offset;
 
-    void Start()
-    {
-       // canvasRect = GetComponentInParent<RectTransform>();
-        
-    }
+    public AudioClip _audioClip;
 
+    public void PlayAudioClipFromInspector()
+    {
+        if (_audioClip)
+            AudioManager.instance.soundsSource.PlayOneShot(_audioClip);
+        else
+            Debug.Log("No _audioClip");
+    }
 
     void Update()
     {
@@ -29,7 +32,7 @@ public class SpriteOver : MonoBehaviour
 
         // Calculate *screen* position (note, not a canvas/recttransform position)
         Vector2 canvasPos;
-        Vector2 screenPoint = Camera.main.WorldToScreenPoint(offsetPos);
+        Vector2 screenPoint = InteractionManager.sceneCam.WorldToScreenPoint(offsetPos);
 
         // Convert screen position to Canvas / RectTransform space <- leave camera null if Screen Space Overlay
         RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPoint, null, out canvasPos);

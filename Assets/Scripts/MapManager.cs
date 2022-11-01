@@ -55,7 +55,7 @@ public class MapManager : MonoBehaviour
         zoomInButton.interactable = zoomOutButton.interactable = true;
         mapIndex.SetActive(true);
         tappaTutorial.SetActive(false);
-        TappaInfos.openTappa = null;
+        TappaMapMarker.openTappa = null;
     }
 
     #region Zoom

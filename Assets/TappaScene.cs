@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -13,39 +12,27 @@ public class TappaScene : MonoBehaviour
     public Tappa tappa;
 
     [Space(10)]
-    public GameObject completeMessage;
+    public GameObject missionCompleteMessage;
     public TMP_Text missionCompleteTextMessage;
     public TMP_Text missionCompleteTitle;
- 
-
-    [Serializable]
-    public class SubMissions
-    {
-        public string subMissionName;
-        public bool subMissionComplete;
-
-    }
-
-    void ResetScriptableObject()
-    {
-        foreach (Tappa.Missions mis in TappaInfos.openTappa.missions)
-            mis.missionComplete = false;
-    }
- 
+    [Space(10)]
+    public GameObject tappaCompleteMessage;
+    public TMP_Text tappaCompleteTextMessage;
+    public TMP_Text tappaCompleteTitle;
 
 
     private float rotSpeed = 20;
     private void Awake()
     {
-        TappaInfos.openTappa = tappa;
-        ResetScriptableObject();
+        TappaMapMarker.openTappa = tappa;
+        tappa.ResetScriptableObject();
         LoadTappaState();
-
+        tappaCompleteMessage.SetActive(false);
     }
 
     public void LoadTappaState()
     {
-        foreach (Tappa.Missions mis in TappaInfos.openTappa.missions)
+        foreach (Tappa.Missions mis in TappaMapMarker.openTappa.missions)
         {
             mis.missionComplete =PlayerPrefs.HasKey(mis.missionName);
         }
@@ -63,19 +50,22 @@ public class TappaScene : MonoBehaviour
     void Start()
     {
         if (AudioManager.instance)
-            AudioManager.instance.PlayMusicClip(bkMusic);
-
-        if (TappaInfos.openTappa)
         {
-            foreach (Tappa.Missions mis in TappaInfos.openTappa.missions)
+            AudioManager.instance.PlayMusicClip(bkMusic);
+            AudioManager.instance.musicSource.loop = true;
+        }
+
+        if (TappaMapMarker.openTappa)
+        {
+            foreach (Tappa.Missions mis in TappaMapMarker.openTappa.missions)
                 Debug.Log(mis.missionName + " Complete:" + mis.missionComplete);
 
-            missions = TappaInfos.openTappa.missions;
+            missions = TappaMapMarker.openTappa.missions;
         }
 
         tutorialPanel.SetActive(showTutorial);
 
-        CheckTappaComplete();
+        CheckTappaCompleted();
     }
 
     public void ReturnToMenu()
@@ -92,24 +82,44 @@ public class TappaScene : MonoBehaviour
 
    public void MissioneCompletata(int missionID)
     {
-        Tappa.Missions tappa = missions[missionID];
-        tappa.missionComplete = true;
-        completeMessage.SetActive(true);
-        missionCompleteTextMessage.text = tappa.missionCompleteMessage;
-        missionCompleteTitle.text = tappa.missionName;
-        PlayerPrefs.SetInt(tappa.missionName, 1);
-        
+
+        StartCoroutine(_MissioneCompletata(missionID));
+    }
+    System.Collections.IEnumerator _MissioneCompletata(int missionID)
+    {
+        yield return new WaitForSeconds(1);
+        Tappa.Missions mission = missions[missionID];
+        mission.missionComplete = true;
+        missionCompleteMessage.SetActive(true);
+        missionCompleteTextMessage.text = mission.missionCompleteMessage;
+        missionCompleteTitle.text = mission.missionName;
+        PlayerPrefs.SetInt(mission.missionName, 1);
+
+        if (CheckTappaCompleted())
+        {
+            StartCoroutine(ShowCompletedTappa());
+        }
+    }
+    System.Collections.IEnumerator ShowCompletedTappa()
+    {
+        yield return new WaitForSeconds(2);
+        tappaCompleteMessage.SetActive(true);
+        tappaCompleteTitle.text = tappa.tappaName;
     }
 
-    public void CheckTappaComplete()
+    public bool CheckTappaCompleted()
     {
-         for (int i = 0; i< missions.Length; i++)
+        tappa.tappaComplete = true;
+
+        for (int i = 0; i< missions.Length; i++)
         {
             if (!missions[i].missionComplete)
             {
                 tappa.tappaComplete = false;
+
             }
         }
+        return tappa.tappaComplete;
     }
 }
 

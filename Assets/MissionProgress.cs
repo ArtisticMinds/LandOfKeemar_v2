@@ -56,8 +56,8 @@ public class MissionProgress : MonoBehaviour
             Destroy(tr.gameObject);
         }
 
-        if(TappaInfos.openTappa)
-        foreach (Tappa.Missions miss in TappaInfos.openTappa.missions)
+        if(TappaMapMarker.openTappa)
+        foreach (Tappa.Missions miss in TappaMapMarker.openTappa.missions)
         {
            GameObject mission= Instantiate(progressPrefab, progressContent);
             mission.GetComponent<TappaProgress>().tappaTitle.text = miss.missionName;

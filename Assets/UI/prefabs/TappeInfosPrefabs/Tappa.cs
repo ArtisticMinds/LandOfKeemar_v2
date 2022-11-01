@@ -19,7 +19,7 @@ public class Tappa : ScriptableObject
     [Header("Tappe links")]
     public string googleMapLink;
     public string videoLink;
-    public static TappaInfos openTappa;
+    public static TappaMapMarker openTappa;
     public bool tappaComplete;
     public string tappaScene;
 
@@ -38,7 +38,17 @@ public class Tappa : ScriptableObject
     }
 
 
-  
+    private void Awake()
+    {
+        ResetScriptableObject();
+
+    }
+    public void ResetScriptableObject()
+    {
+        foreach (Missions mis in missions)
+            mis.missionComplete = false;
+    }
+
 
     public void FindReferences()
     {

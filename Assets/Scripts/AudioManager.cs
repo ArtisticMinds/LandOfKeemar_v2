@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
     public Slider MusicSlider;
     public AudioSource musicSource;
     public AudioSource soundsSource;
+    public static AudioListener audioListener;
 
     public AudioMixer mainMixer; //Il mixer 
     AudioMixerGroup masterGroup; //Gruppo per il suono globale
@@ -41,7 +42,11 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        #endregion
+        if (audioListener == null)
+            audioListener = FindObjectOfType<AudioListener>();
+        
+
+            #endregion
 
 
         //Estrapoliamo i gruppi dal Mixer, senza bisogno di impostarli da inspector

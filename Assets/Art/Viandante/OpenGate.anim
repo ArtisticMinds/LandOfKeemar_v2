@@ -29,7 +29,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.4666667
-        value: {x: -0.94, y: 4.325, z: -2.5}
+        value: {x: -0.94, y: 4.37, z: -2.5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -38,7 +38,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 1.5
-        value: {x: -0.94, y: 4.278, z: -2.5}
+        value: {x: -0.94, y: 4.347, z: -2.5}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -165,7 +165,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.4666667
-        value: 4.325
+        value: 4.37
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -174,7 +174,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1.5
-        value: 4.278
+        value: 4.347
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -247,4 +247,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.6666667
+    functionName: EmitParticlesFromInspector
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.7
+    functionName: PlayClip
+    data: 
+    objectReferenceParameter: {fileID: 8300000, guid: 6e276a5528ecdd74894892b87612edb9, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -5,26 +5,44 @@ using UnityEngine;
 public class MissionObject : MonoBehaviour
 {
     public int missionID;
+    public bool enableTouch = true;
     public Animator []anim;
     public string []animatorTriggerOnTouch;
     public string animatorTriggerToOtheCollisior;
     public UnityEvent onTriggerEnterEvent;
+    public UnityEvent onTouchEvent;
+    public UnityEvent onTouchEventDalyed;
+
 
 
     public void OnTouchActivation()
     {
+        if (!enableTouch) return;
+
         if (anim.Length>0)
         {
             for (int i = 0; i < anim.Length; i++)
             {
-                anim[i].SetTrigger(animatorTriggerOnTouch[i]);
-                Debug.Log(gameObject.name + "OnTouchActivation: " + anim[i] + animatorTriggerOnTouch[i]);
+                if (animatorTriggerOnTouch.Length >0)
+                {
+                    anim[i].SetTrigger(animatorTriggerOnTouch[i]);
+                    Debug.Log(gameObject.name + "OnTouchActivation: " + anim[i] + animatorTriggerOnTouch[i]);
+                }
             }
         }
         else
         {
             Debug.Log(gameObject.name+" NO animator");
         }
+
+        onTouchEvent.Invoke();
+        StartCoroutine(TouchEventDalyed());
+    }
+
+    IEnumerator TouchEventDalyed()
+    {
+        yield return new WaitForSeconds(1);
+        onTouchEventDalyed.Invoke();
     }
 
     public void ToOtherActivation(MissionObject activator)
@@ -57,6 +75,13 @@ public class MissionObject : MonoBehaviour
             onTriggerEnterEvent.Invoke();
 
         }
+    }
+
+
+    public void PlayClip(AudioClip audioClip)
+    {
+        if (AudioManager.instance)
+            AudioManager.instance.soundsSource.PlayOneShot(audioClip);
     }
 
 }

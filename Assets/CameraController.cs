@@ -57,12 +57,16 @@ public class CameraController : MonoBehaviour
     public float maxCameraFieldOfView = 70;
     public float clampHtranslate = 5;
     public float clampVtranslate = 2;
+
     Vector3 dir;
     private void Awake()
     {
-        GetCameraReference();
+
+
+            GetCameraReference();
     }
-    // Start is called before the first frame update
+
+
     void Start()
     {
         distanceBetweenCameraAndTarget = Vector3.Distance(sceneCamera.transform.position, target.position);
@@ -70,8 +74,12 @@ public class CameraController : MonoBehaviour
         sceneCamera.transform.position = target.position + dir; //Initialize camera position
         cameraFOVDamp = sceneCamera.fieldOfView;
         cameraFieldOfView = sceneCamera.fieldOfView;
+
+        if (AudioManager.audioListener != null)
+            Destroy(GetComponent<AudioListener>());
     }
-    // Update is called once per frame
+
+
     void Update()
     {
         if (!canRotate)
@@ -122,8 +130,8 @@ public class CameraController : MonoBehaviour
     {
         rotX = -80;
         rotY = 0;
-        swipeDirection.y = 0;
-        swipeDirection.x = minXRotAngle_mobile;
+        swipeDirection.y = maxXRotAngle_mobile;
+        swipeDirection.x = 0;
     }
     public void LeftView()
     {

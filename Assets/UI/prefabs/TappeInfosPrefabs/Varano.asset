@@ -27,7 +27,7 @@ MonoBehaviour:
     missionCompleteMessage: 
     missionComplete: 0
   - missionName: Posso Entrare?
-    missionDescriprion: 
+    missionDescriprion: Dai rifugio al viandante
     missionCompleteMessage: Hai dato rifugio al viandante
     missionComplete: 1
   - missionName: Un Orco di Troppo
@@ -39,6 +39,6 @@ MonoBehaviour:
     missionCompleteMessage: 
     missionComplete: 0
   - missionName: Un'arma non da Nani
-    missionDescriprion: 
-    missionCompleteMessage: 
-    missionComplete: 0
+    missionDescriprion: "C'\xE8 un arma fuori posto"
+    missionCompleteMessage: Hai trovato un arco elfico
+    missionComplete: 1
