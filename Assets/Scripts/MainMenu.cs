@@ -1,6 +1,11 @@
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using TMPro;
+using System.Linq;
+using System.Collections.Generic;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class MainMenu : MonoBehaviour
 {
@@ -10,6 +15,8 @@ public class MainMenu : MonoBehaviour
     public static MainMenu instance;
     static GameObject mainPanel;
     public TMP_Dropdown qualityDropDown;
+    public MissionProgress missionProgress_inMenu;
+    public static EventSystem eSystem;
 
     private void Awake()
     {
@@ -29,11 +36,17 @@ public class MainMenu : MonoBehaviour
         #endregion
         mainMenuOpen = true;
         mainPanel = transform.GetChild(0).gameObject;
+        eSystem = FindObjectOfType<EventSystem>();
     }
     private void Start()
     {
         // Disable screen dimming
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
+
+
+
+
+
         foreach (GameObject pan in panels)
             pan.SetActive(false);
         //Add listener for when the state of the Toggle changes, to take action
@@ -41,12 +54,30 @@ public class MainMenu : MonoBehaviour
             QualityValueChanged(qualityDropDown);
         });
 
-
-
         LoadOptionsState();
 
         AudioManager.instance.PlayMenuMusic();
     }
+
+#if UNITY_EDITOR
+    [MenuItem("Tools/ResetScriptables")]
+    public static void ResetScriptables()
+    {
+        foreach (Tappa tp in GetAllInstances<Tappa>())
+            tp.ResetScriptableObject();
+    }
+
+    public static List<T> GetAllInstances<T>() where T : ScriptableObject
+    {
+        return AssetDatabase.FindAssets($"t: {typeof(T).Name}").ToList()
+                    .Select(AssetDatabase.GUIDToAssetPath)
+                    .Select(AssetDatabase.LoadAssetAtPath<T>)
+                    .ToList();
+    }
+#endif
+
+
+
 
     public void SaveOptionsState()
     {
@@ -93,10 +124,10 @@ public class MainMenu : MonoBehaviour
 
     public void CloseMainMenu() {
 
-        MissionProgress.instance.CloseMissionProgress();
+        missionProgress_inMenu.CloseMissionProgress();
         mainPanel.SetActive(false);  //Disattivo il menu
         mainMenuOpen = false;
-
+        Debug.Log("CloseMainMenu: " + mainMenuOpen);
     }
 
 

@@ -7,8 +7,6 @@ using TMPro;
 public class TappaMapMarker : MonoBehaviour
 {
 
-
-
     public Tappa tappa;
     public static Tappa openTappa;
     public Image completeMarker;
@@ -95,12 +93,19 @@ public void SetTappa()
 
         if (tappa.tappaScene != string.Empty)
         {
+            MapManager.instance.playButton.interactable = true;
             MapManager.instance.playButton.onClick.AddListener(() =>
             {
-                SceneLoader.instance.LoadScene(tappa.tappaScene);
                 MainMenu.instance.CloseMainMenu();
                 AudioManager.instance.StopMusic();
+                SceneLoader.instance.LoadScene(tappa.tappaScene);
+
+                Debug.Log("SetTappa: " + tappa.tappaScene);
             });
+        }
+        else
+        {
+            MapManager.instance.playButton.interactable = false;
         }
 
         openTappa = tappa;

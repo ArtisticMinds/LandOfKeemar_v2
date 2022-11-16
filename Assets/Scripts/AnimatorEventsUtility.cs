@@ -4,6 +4,7 @@ public class AnimatorEventsUtility : MonoBehaviour
 {
     public ParticleSystem emitParticles;
     public AudioClip _audioClip;
+    public GameObject showAtEnd;
     public void DisableAnimator()
     {
         GetComponent<Animator>().enabled = false;
@@ -19,7 +20,7 @@ public class AnimatorEventsUtility : MonoBehaviour
         if(emitParticles)
         emitParticles.Play();
         else
-            Debug.Log("No emitParticles");
+        Debug.Log("Animation Event have no emitParticles");
     }
     public void PlayAudioClip(AudioClip audioClip)
     {
@@ -32,5 +33,11 @@ public class AnimatorEventsUtility : MonoBehaviour
             AudioManager.instance.soundsSource.PlayOneShot(_audioClip);
         else
             Debug.Log("No _audioClip");
+    }
+
+    public void ShowonAnimationEnd()
+    {
+        if(showAtEnd)
+        showAtEnd.SetActive(true);
     }
 }

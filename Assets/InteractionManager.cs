@@ -1,27 +1,54 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionManager : MonoBehaviour
 {
-
+    public static InteractionManager instance;
     private Vector3 pos;
     public static Camera sceneCam;
+    public static CameraController camController;
+    public static bool oneTouch;
+    public static bool interactionActive = true;
+
 
     private void Awake()
     {
-        if(!sceneCam)
-        sceneCam = FindObjectOfType<CameraController>().GetComponent<Camera>();
+        if(!camController)
+        camController = FindObjectOfType<CameraController>();
+
+        if (!sceneCam)
+        sceneCam = camController.GetComponent<Camera>();
+
+        if (instance == null)
+        {
+            instance = this;
+        }
+
+
     }
+
+    //Chiamata dai pulsanti
+    public void SceneObjectsInteractions(bool activate)
+    {
+        interactionActive = activate;
+    }
+    
 
     private void Update()
     {
 
+        if (!interactionActive) return;
 
-
-
-        if(Input.touchCount>0 && Input.touches[0].phase== TouchPhase.Began)
+        if (Input.touchCount>0)
         {
+            if (Input.touches[0].phase == TouchPhase.Ended) oneTouch = false;
+            if (Input.touches[0].phase == TouchPhase.Moved) oneTouch = true;
+        }
+
+
+        if (Input.touchCount==1 && Input.touches[0].phase== TouchPhase.Began && !oneTouch)
+        {
+            
+
             Ray ray = sceneCam.ScreenPointToRay(Input.touches[0].position);
             RaycastHit hit;
 
@@ -33,6 +60,7 @@ public class InteractionManager : MonoBehaviour
                     {
                         MissionObject obj = hit.collider.gameObject.GetComponent<MissionObject>();
                         obj.OnTouchActivation();
+                        oneTouch = true;
                     }
                 }
             }
@@ -56,10 +84,6 @@ public class InteractionManager : MonoBehaviour
                     obj.OnTouchActivation();
                 }
             }
-
-
-
-
 
         }
         #endif

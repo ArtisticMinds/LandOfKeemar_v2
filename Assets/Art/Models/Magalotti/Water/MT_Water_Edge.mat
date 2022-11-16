@@ -146,7 +146,7 @@ Material:
     - _DstBlend: 0
     - _Edge: 0
     - _EdgeSmooth: 0.1
-    - _EdgeThick: 0.5
+    - _EdgeThick: 0.425
     - _GlossMapScale: 1
     - _GlossMapScale1: 0
     - _GlossMapScale2: 0

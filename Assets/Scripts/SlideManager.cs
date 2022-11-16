@@ -11,8 +11,10 @@ public class SlideManager : MonoBehaviour
     Button forwardButton;
     [SerializeField]
     Button backdButton;
+    [SerializeField]
+    Button endButton;
 
-  
+
 
     [SerializeField]
     List<GameObject> slides = new List<GameObject>();
@@ -25,6 +27,7 @@ public class SlideManager : MonoBehaviour
 
         slides[0].SetActive(true);
         actualSlide = 0;
+        UpdateButtons();
     }
 
 
@@ -46,15 +49,17 @@ public class SlideManager : MonoBehaviour
 
     public void Forward()
     {
-        if (actualSlide < slides.Count-1)
+        if (actualSlide < slides.Count - 1)
         {
             slides[actualSlide].SetActive(false);
             slides[actualSlide + 1].SetActive(true);
             actualSlide++;
         }
         else
+        {
             forwardButton.gameObject.SetActive(false);
-
+          if(endButton) endButton.gameObject.SetActive(true);
+        }
         UpdateButtons();
 
     }
@@ -67,10 +72,16 @@ public class SlideManager : MonoBehaviour
         else
             backdButton.gameObject.SetActive(false);
 
-        if (actualSlide < slides.Count - 1) 
+        if (actualSlide < slides.Count - 1)
+        {
             forwardButton.gameObject.SetActive(true);
+            if (endButton) endButton.gameObject.SetActive(false);
+        }
         else
+        {
             forwardButton.gameObject.SetActive(false);
+            if (endButton) endButton.gameObject.SetActive(true);
+        }
     }
 
 }

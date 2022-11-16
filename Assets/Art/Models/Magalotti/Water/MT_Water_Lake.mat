@@ -82,7 +82,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NM:
         m_Texture: {fileID: 2800000, guid: 0c4f6b829fac2c748adb09bd48392cc5, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Scale: {x: 1.28, y: 0.98}
         m_Offset: {x: 0, y: 0}
     - _NM1:
         m_Texture: {fileID: 2800000, guid: a4664838fc52f8c469d85a8b382c10e1, type: 3}
@@ -106,11 +106,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _TEX1:
         m_Texture: {fileID: 2800000, guid: 2268c76913a3f17428bb56f02d160f7c, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Scale: {x: 0.27, y: 0.79}
         m_Offset: {x: 0, y: 0}
     - _TEX2:
-        m_Texture: {fileID: 2800000, guid: a4664838fc52f8c469d85a8b382c10e1, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Texture: {fileID: 2800000, guid: 2268c76913a3f17428bb56f02d160f7c, type: 3}
+        m_Scale: {x: 0.57, y: 1.58}
         m_Offset: {x: 0, y: 0}
     - _TEX3:
         m_Texture: {fileID: 2800000, guid: 7c789a425c67d9d47af39408c4018111, type: 3}
@@ -156,8 +156,8 @@ Material:
     - _Dist: 0.03
     - _DstBlend: 0
     - _Edge: 0.008
-    - _EdgeSmooth: 0.002
-    - _EdgeThick: 0.008
+    - _EdgeSmooth: 0.203
+    - _EdgeThick: 0.94
     - _GlossMapScale: 1
     - _GlossMapScale1: 0
     - _GlossMapScale2: 0
@@ -169,17 +169,17 @@ Material:
     - _MetallicFactor1: 0
     - _MetallicFactor2: 0
     - _Mode: 0
-    - _NM_speedX: 1
-    - _NM_speedY: 1
+    - _NM_speedX: -0.58
+    - _NM_speedY: 3.39
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _Smoothness: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TEX1_speedX: 0.1
-    - _TEX1_speedY: 0.1
-    - _TEX2_speedX: 0.2
+    - _TEX1_speedX: 1.12
+    - _TEX1_speedY: 2.6
+    - _TEX2_speedX: 0.81
     - _TEX2_speedY: 0.2
     - _TopBottom: 1
     - _UVSec: 0

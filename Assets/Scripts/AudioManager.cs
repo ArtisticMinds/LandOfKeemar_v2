@@ -2,6 +2,8 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 
 public class AudioManager : MonoBehaviour
@@ -54,20 +56,37 @@ public class AudioManager : MonoBehaviour
         musicGroup = mainMixer.FindMatchingGroups(string.Empty)[2];
         soundsGroup = mainMixer.FindMatchingGroups(string.Empty)[1];
 
-        foreach(Button butt in FindObjectsOfType<Button>(true))
+
+        Initialize();
+        
+    }
+
+
+    public void Initialize()
+    {
+        foreach (Button butt in FindObjectsOfType<Button>(true))
         {
-            if(butt.name.Contains("Zoom"))
-            butt.onClick.AddListener((() => { soundsSource.PlayOneShot(sounds[1]); }));
-            else
-            butt.onClick.AddListener((() => { soundsSource.PlayOneShot(sounds[0]); }));
+            EventTrigger triggerDown = GetComponent<EventTrigger>();
+
+        if (!triggerDown)
+            triggerDown = butt.gameObject.AddComponent<EventTrigger>();
+
+        var pointerDown = new EventTrigger.Entry();
+        pointerDown.eventID = EventTriggerType.PointerDown;
+        if (butt.name.Contains("Zoom"))
+            pointerDown.callback.AddListener((e) => soundsSource.PlayOneShot(sounds[1]));
+        else
+            pointerDown.callback.AddListener((e) => soundsSource.PlayOneShot(sounds[0]));
+
+        triggerDown.triggers.Add(pointerDown);
         }
     }
 
-        void Start()
+    void Start()
     {
         //Aggiungiamo i Listener che "intercettino" un cambio di valore dei tre slaiders
-        SoundsSlider.onValueChanged.AddListener(SetSoundsVolume);
-        MusicSlider.onValueChanged.AddListener(SetMusicVolume);
+       if(SoundsSlider) SoundsSlider.onValueChanged.AddListener(SetSoundsVolume);
+        if (MusicSlider) MusicSlider.onValueChanged.AddListener(SetMusicVolume);
 
 
     }
@@ -100,7 +119,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayMusicClip(AudioClip audioClip)
     {
-        musicSource.PlayOneShot(audioClip);
+        musicSource.Stop();
+        musicSource.clip = audioClip;
+        musicSource.Play();
     }
 
     public void StopMusic()

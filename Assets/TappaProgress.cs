@@ -7,13 +7,16 @@ public class TappaProgress : MonoBehaviour
     public TMP_Text tappaTitle;
     public GameObject icon;
     public Color completeColor= new Color(0.5F, 0.7F, 0.1F, 1);
+    public GameObject tappaDescription;
+    public TMP_Text tappaDescriptionText;
 
 
     void Awake()
     {
         SetIncomplete();
-    
-     }
+        tappaDescription.SetActive(false);
+
+    }
 
 
     [ContextMenu("Set Incomplete")]

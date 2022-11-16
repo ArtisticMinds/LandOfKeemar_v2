@@ -5,9 +5,10 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     //the center of the camera rotate sphere
- public Transform target;
- 
+    public Transform target;
+    public Vector2 startRotation=new Vector2(-23,20);
     public Camera sceneCamera;
+    public Transform collectObjectPoint;
     [Range(5f, 15f)]
     [Tooltip("How sensitive the mouse drag to camera rotation")]
     public float mouseRotateSpeed = 5f;
@@ -21,7 +22,7 @@ public class CameraController : MonoBehaviour
     public float editorFOVSensitivity = 5f;
     public float touchFOVSensitivity = 5f;
     //Can we rotate camera, which means we are not blocking the view
-    private bool canRotate = true;
+    public bool canRotate = true;
     private Vector2 swipeDirection; //swipe delta vector2
     private Vector2 touch1OldPos;
     private Vector2 touch2OldPos;
@@ -33,7 +34,7 @@ public class CameraController : MonoBehaviour
     //Mouse rotation related
     private float rotX; // around x
     private float rotY; // around y
-                        //Mouse Scroll
+    //Mouse Scroll
     private float cameraFieldOfView;
     private float cameraFOVDamp; //Damped value
     private float fovChangeVelocity = 0;
@@ -57,13 +58,14 @@ public class CameraController : MonoBehaviour
     public float maxCameraFieldOfView = 70;
     public float clampHtranslate = 5;
     public float clampVtranslate = 2;
+    public float minCameraPosition = -5;
+
 
     Vector3 dir;
     private void Awake()
     {
-
-
-            GetCameraReference();
+ 
+        GetCameraReference();
     }
 
 
@@ -77,8 +79,15 @@ public class CameraController : MonoBehaviour
 
         if (AudioManager.audioListener != null)
             Destroy(GetComponent<AudioListener>());
+
+        StartCoroutine(StartView());
     }
 
+    IEnumerator StartView()
+    {
+        yield return new WaitForSeconds(2F);
+        DefautlView();
+    }
 
     void Update()
     {
@@ -99,7 +108,7 @@ public class CameraController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            FrontView();
+            DefautlView();
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -110,19 +119,25 @@ public class CameraController : MonoBehaviour
             LeftView();
         }
 
-        
+       // DebugConsole.Log("Interaction:" + InteractionManager.interactionActive, true);
     }
     private void LateUpdate()
     {
         TraslateCamera();
         RotateCamera();
         SetCameraFOV();
+
+        if (sceneCamera.transform.position.y < minCameraPosition)
+            sceneCamera.transform.position = new Vector3(sceneCamera.transform.position.x, minCameraPosition, sceneCamera.transform.position.z);
     }
     public void GetCameraReference()
     {
         if (sceneCamera == null)
         {
-            sceneCamera = Camera.main;
+            if (InteractionManager.sceneCam)
+                sceneCamera = InteractionManager.sceneCam;
+            else
+                sceneCamera = Camera.main;
         }
     }
     //May be the problem with Euler angles
@@ -138,10 +153,10 @@ public class CameraController : MonoBehaviour
         rotY = 90;
         rotX = 0;
     }
-    public void FrontView()
+    public void DefautlView()
     {
-        rotX = 0;
-        rotY = 0;
+        rotX = startRotation.x;
+        rotY = startRotation.y;
     }
     private void EditorCameraInput()
     {
@@ -165,6 +180,8 @@ public class CameraController : MonoBehaviour
             cameraFieldOfView += Input.mouseScrollDelta.y * editorFOVSensitivity * -1;//-1 make FOV change natual
         }
     }
+
+
     private void TouchCameraInput()
     {
         if (Input.touchCount > 0)
@@ -174,19 +191,24 @@ public class CameraController : MonoBehaviour
                 touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {
+                    if(InteractionManager.oneTouch)
+                    InteractionManager.instance.SceneObjectsInteractions(false);
                     //Debug.Log("Touch Began");
                 }
                 else if (touch.phase == TouchPhase.Moved)  // the problem lies in we are still rotating object even if we move our finger toward another direction
                 {
                     swipeDirection += -touch.deltaPosition * touchRotateSpeed; //-1 make rotate direction natural
+                    InteractionManager.instance.SceneObjectsInteractions(false);
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
-                    //Debug.Log("Touch Ended");
+                    InteractionManager.instance.SceneObjectsInteractions(true);
                 }
             }
             else if (Input.touchCount == 2)
             {
+                InteractionManager.instance.SceneObjectsInteractions(false);
+               
                 Touch touch1 = Input.GetTouch(0);
                 Touch touch2 = Input.GetTouch(1);
                 if (touch1.phase == TouchPhase.Began && touch2.phase == TouchPhase.Began)
@@ -203,7 +225,9 @@ public class CameraController : MonoBehaviour
                     touch1OldPos = touch1CurrentPos;
                     touch2OldPos = touch2CurrentPos;
                 }
+  
             }
+
         }
 
         if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer)
@@ -229,6 +253,10 @@ public class CameraController : MonoBehaviour
             }
 
         }
+        if (touch.phase == TouchPhase.Ended)
+        {
+            InteractionManager.instance.SceneObjectsInteractions(true);
+        }
     }
     private void RotateCamera()
     {
@@ -246,16 +274,15 @@ public class CameraController : MonoBehaviour
                                                                                                              //Multiplying a quaternion by a Vector3 is essentially to apply the rotation to the Vector3
                                                                                                              //This case it's like rotate a stick the length of the distance between the camera and the target and then look at the target to rotate the camera.
 
-
-
         Vector3 addTranslateMovements = (sceneCamera.transform.right * h_scSpeed + sceneCamera.transform.up * v_scSpeed);
 
         Vector3 lookAt = target.position + addTranslateMovements;
         sceneCamera.transform.position = target.position + currentRot * dir ;
         sceneCamera.transform.position += addTranslateMovements;
 
-
         sceneCamera.transform.LookAt(lookAt);
+
+
     }
     void SetCameraFOV()
     {
@@ -275,13 +302,13 @@ public class CameraController : MonoBehaviour
 
     private void TraslateCamera()
     {
-
         moveOrizontal += h_scroll * Time.deltaTime;
         moveVertical += v_scroll * Time.deltaTime;
         moveOrizontal = Mathf.Clamp(moveOrizontal, -clampHtranslate, clampHtranslate);
         moveVertical = Mathf.Clamp(moveVertical, -clampVtranslate/2, clampVtranslate);
         h_scSpeed = Mathf.Lerp(h_scSpeed, moveOrizontal, Time.deltaTime);
         v_scSpeed = Mathf.Lerp(v_scSpeed, moveVertical, Time.deltaTime);
+
     }
 
 

@@ -23,6 +23,7 @@ public class SpriteOver : MonoBehaviour
 
     void Update()
     {
+        if (!target) return;
         // Offset position above object bbox (in world space)
         float offsetPosY = target.transform.position.y + offset.y;
         float offsetPosX = target.transform.position.x + offset.x;

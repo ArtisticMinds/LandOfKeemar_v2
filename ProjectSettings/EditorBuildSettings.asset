@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Varano.unity
     guid: 04d14f779990a4e49b5fb395dc12c22c
+  - enabled: 1
+    path: Assets/Scenes/Magalotti.unity
+    guid: 85189a2e102bef8469ce9a52d22025b8
   m_configObjects: {}

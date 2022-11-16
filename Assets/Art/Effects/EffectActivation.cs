@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class EffectActivation : StateMachineBehaviour
 {
-    private static readonly int PagliaioExit = Animator.StringToHash("PagliaioExit");
-    [SerializeField] private GameObject instantiateObject;
+    public string _trigger = "PagliaioExit";
+    public string checkColliderName= "Bip001 Pelvis";
+    [SerializeField]  GameObject instantiateObject;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -23,24 +24,8 @@ public class EffectActivation : StateMachineBehaviour
 
         Physics.Linecast(cam.transform.position, animator.transform.GetChild(1).position, out var hitInfo);
         if (!hitInfo.transform.name.Equals(animator.transform.name)) return;
-        animator.SetTrigger(PagliaioExit);
+        animator.SetTrigger(_trigger);
     }
 
-    //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-
-    //}
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
+ 
 }

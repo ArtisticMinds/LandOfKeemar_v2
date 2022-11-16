@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MissionProgress : MonoBehaviour
 {
-    public static MissionProgress instance;
+
     public GameObject[] hideOnOpen;
     public bool progressPanelisOpen;
     public Image progressButton;
@@ -12,11 +12,6 @@ public class MissionProgress : MonoBehaviour
     public Transform progressContent;
     public GameObject progressPrefab;
 
-
-    void Awake()
-    {
-        instance = this;
-    }
 
 
     public void OpenMissionProgress()
@@ -61,8 +56,9 @@ public class MissionProgress : MonoBehaviour
         {
            GameObject mission= Instantiate(progressPrefab, progressContent);
             mission.GetComponent<TappaProgress>().tappaTitle.text = miss.missionName;
+                mission.GetComponent<TappaProgress>().tappaDescriptionText.text = miss.missionDescriprion;
 
-            if(miss.missionComplete)
+                if (miss.missionComplete)
             mission.GetComponent<TappaProgress>().SetComplete(); 
         }
             

@@ -6,11 +6,21 @@ public class MissionObject : MonoBehaviour
 {
     public int missionID;
     public bool enableTouch = true;
-    public Animator []anim;
-    public string []animatorTriggerOnTouch;
+    [Header("Animators coinvolti nelle interazione con questo oggetto")]
+    public Animator[] anim;
+    [Header("Nome trigger su uno degli animator corrispondente per ID")]
+    public string[] animatorTriggerOnTouch;
+
+    [Header("Nome trigger sull'animator dell'oggetto colpito da questo")]
     public string animatorTriggerToOtheCollisior;
+
+    [Header("Evento alla collisione con un altro MissionObject")]
     public UnityEvent onTriggerEnterEvent;
+
+    [Header("Evento istantaneo al touch singlo")]
     public UnityEvent onTouchEvent;
+
+    [Header("Evento ritardato (di 1 secondo) al touch singlo")]
     public UnityEvent onTouchEventDalyed;
 
 
@@ -32,11 +42,18 @@ public class MissionObject : MonoBehaviour
         }
         else
         {
-            Debug.Log(gameObject.name+" NO animator");
+            Debug.Log(gameObject.name+" No animator");
         }
 
         onTouchEvent.Invoke();
         StartCoroutine(TouchEventDalyed());
+    }
+
+
+    public void EnableTouch(bool _enable)
+    {
+        enableTouch = _enable;
+      //  DebugConsole.Log(gameObject.name + " enableTouch: " + enableTouch);
     }
 
     IEnumerator TouchEventDalyed()
@@ -47,13 +64,13 @@ public class MissionObject : MonoBehaviour
 
     public void ToOtherActivation(MissionObject activator)
     {
-
+        if (animatorTriggerToOtheCollisior.Equals(string.Empty)) return;
         if (anim.Length > 0)
         {
             foreach (Animator an in anim)
                 an.SetTrigger(activator.animatorTriggerToOtheCollisior);
 
-            Debug.Log(gameObject.name + "ToOtherActivation by: " + activator.gameObject.name+ "Trigger: "+ activator.animatorTriggerToOtheCollisior);
+            Debug.Log(gameObject.name + " Call ToOtherActivation by: " + activator.gameObject.name+ " - Trigger Name: "+ activator.animatorTriggerToOtheCollisior);
         }
         else
         {
@@ -65,18 +82,17 @@ public class MissionObject : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (animatorTriggerToOtheCollisior.Equals(string.Empty)) return;
-
+        
         if (other.CompareTag("InteractiveObject"))
         {
+            OnTriggerEnterEvent();
             MissionObject obj = other.GetComponent<MissionObject>();
-            obj.ToOtherActivation(this);
-
-            onTriggerEnterEvent.Invoke();
-
+           if(obj)obj.ToOtherActivation(this);
+      
         }
     }
 
+    public void OnTriggerEnterEvent() { Debug.Log(transform.name + "CALL OnTriggerEnterEvent"); onTriggerEnterEvent.Invoke(); }
 
     public void PlayClip(AudioClip audioClip)
     {

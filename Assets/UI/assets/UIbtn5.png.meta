@@ -132,12 +132,12 @@ TextureImporter:
       name: UIbtn5_0
       rect:
         serializedVersion: 2
-        x: 16
-        y: 295
-        width: 180
-        height: 190
+        x: 4
+        y: 298
+        width: 173
+        height: 186
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -145,6 +145,90 @@ TextureImporter:
       bones: []
       spriteID: 005305737e67ea443b36adde22df42fc
       internalID: -1634160182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbtn5_1
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 73
+        width: 169
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17805683996b3ff45ae5c9f0581eb9ce
+      internalID: -813988040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbtn5_2
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 73
+        width: 161
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 162da024458e8be4489c86c6c24bcbf4
+      internalID: 617629121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbtn5_3
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 334
+        width: 180
+        height: 142
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0593a96f563c92a49a59e860101afd04
+      internalID: 1701880313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbtn5_4
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 348
+        width: 132
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc49d782fd79bb94e8d9b34e1e23782d
+      internalID: 1185236955
       vertices: []
       indices: 
       edges: []
@@ -160,6 +244,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      UIbtn5_1: -813988040
+      UIbtn5_2: 617629121
+      UIbtn5_4: 1185236955
+      UIbtn5_3: 1701880313
       UIbtn5_0: -1634160182
   spritePackingTag: 
   pSDRemoveMatte: 0
