@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour
     public Transform target;
     public Vector2 startRotation=new Vector2(-23,20);
     public Camera sceneCamera;
+    public Transform cameraParent;
     public Transform collectObjectPoint;
     [Range(5f, 15f)]
     [Tooltip("How sensitive the mouse drag to camera rotation")]
@@ -16,9 +17,9 @@ public class CameraController : MonoBehaviour
     [Tooltip("How sensitive the touch drag to camera rotation")]
     public float touchRotateSpeed = 1f;
     [Tooltip("Smaller positive value means smoother rotation, 1 means no smooth apply")]
-    public float slerpSmoothValue = 0.3f;
+    public float rotationSmoothValue = 0.1f;
     [Tooltip("How long the smoothDamp of the mouse scroll takes")]
-    public float scrollSmoothTime = 0.12f;
+    public float zoomSmoothTime = 0.3f;
     public float editorFOVSensitivity = 5f;
     public float touchFOVSensitivity = 5f;
     //Can we rotate camera, which means we are not blocking the view
@@ -45,8 +46,6 @@ public class CameraController : MonoBehaviour
     private float v_scroll;
     private float moveOrizontal;
     private float moveVertical;
-    private float h_scSpeed;
-    private float v_scSpeed;
     public float scrollMultiper=0.5F;
 
     //Clamp Value
@@ -56,9 +55,10 @@ public class CameraController : MonoBehaviour
     public float maxXRotAngle_mobile = 80; // max angle around x axis
     public float minCameraFieldOfView = 10;
     public float maxCameraFieldOfView = 70;
-    public float clampHtranslate = 5;
+    public float clampHtranslate = 10;
     public float clampVtranslate = 2;
-    public float minCameraPosition = -5;
+    public float clampZtranslate = 2;
+
 
 
     Vector3 dir;
@@ -127,8 +127,8 @@ public class CameraController : MonoBehaviour
         RotateCamera();
         SetCameraFOV();
 
-        if (sceneCamera.transform.position.y < minCameraPosition)
-            sceneCamera.transform.position = new Vector3(sceneCamera.transform.position.x, minCameraPosition, sceneCamera.transform.position.z);
+        //if (cameraParent.position.y < minCameraPosition)
+        //    cameraParent.position = new Vector3(cameraParent.position.x, minCameraPosition, cameraParent.position.z);
     }
     public void GetCameraReference()
     {
@@ -139,6 +139,7 @@ public class CameraController : MonoBehaviour
             else
                 sceneCamera = Camera.main;
         }
+        cameraParent = transform.parent;
     }
     //May be the problem with Euler angles
     public void TopView()
@@ -270,16 +271,25 @@ public class CameraController : MonoBehaviour
             targetRot = Quaternion.Euler(-swipeDirection.y, swipeDirection.x, 0);
         }
         //Rotate Camera
-        currentRot = Quaternion.Slerp(currentRot, targetRot, Time.smoothDeltaTime * slerpSmoothValue * 50);  //let cameraRot value gradually reach newQ which corresponds to our touch
+        currentRot = Quaternion.Slerp(currentRot, targetRot, Time.smoothDeltaTime * rotationSmoothValue * 50);  //let cameraRot value gradually reach newQ which corresponds to our touch
                                                                                                              //Multiplying a quaternion by a Vector3 is essentially to apply the rotation to the Vector3
                                                                                                              //This case it's like rotate a stick the length of the distance between the camera and the target and then look at the target to rotate the camera.
 
-        Vector3 addTranslateMovements = (sceneCamera.transform.right * h_scSpeed + sceneCamera.transform.up * v_scSpeed);
+        Vector3 addTranslateMovements = (sceneCamera.transform.right * moveOrizontal + sceneCamera.transform.up * moveVertical);
 
-        Vector3 lookAt = target.position + addTranslateMovements;
-        sceneCamera.transform.position = target.position + currentRot * dir ;
-        sceneCamera.transform.position += addTranslateMovements;
+        Vector3 lookAt = cameraParent.position+target.position + addTranslateMovements;
+        sceneCamera.transform.position = cameraParent.position+(target.position + currentRot * dir) ;
+        cameraParent.position += addTranslateMovements;
 
+        float clampedX = cameraParent.position.x;
+        float clampedY = cameraParent.position.y;
+        float clampedZ = cameraParent.position.z;
+
+        clampedX = Mathf.Clamp(clampedX, -clampHtranslate, clampHtranslate);
+        clampedY = Mathf.Clamp(clampedY, -clampVtranslate/2, clampVtranslate);
+        clampedZ = Mathf.Clamp(clampedZ, -clampZtranslate , clampZtranslate);
+
+        cameraParent.position = new Vector3(clampedX, clampedY, clampedZ);
         sceneCamera.transform.LookAt(lookAt);
 
 
@@ -296,18 +306,20 @@ public class CameraController : MonoBehaviour
         {
             cameraFieldOfView = maxCameraFieldOfView;
         }
-        cameraFOVDamp = Mathf.SmoothDamp(cameraFOVDamp, cameraFieldOfView, ref fovChangeVelocity, scrollSmoothTime);
+        cameraFOVDamp = Mathf.SmoothDamp(cameraFOVDamp, cameraFieldOfView, ref fovChangeVelocity, zoomSmoothTime);
         sceneCamera.fieldOfView = cameraFOVDamp;
     }
 
     private void TraslateCamera()
     {
-        moveOrizontal += h_scroll * Time.deltaTime;
-        moveVertical += v_scroll * Time.deltaTime;
-        moveOrizontal = Mathf.Clamp(moveOrizontal, -clampHtranslate, clampHtranslate);
-        moveVertical = Mathf.Clamp(moveVertical, -clampVtranslate/2, clampVtranslate);
-        h_scSpeed = Mathf.Lerp(h_scSpeed, moveOrizontal, Time.deltaTime);
-        v_scSpeed = Mathf.Lerp(v_scSpeed, moveVertical, Time.deltaTime);
+        moveOrizontal += h_scroll * Time.deltaTime*30;
+        moveVertical += v_scroll * Time.deltaTime*30;
+        moveOrizontal = Mathf.Clamp(moveOrizontal, -2, 2);
+        moveVertical = Mathf.Clamp(moveVertical, -2, 2);
+
+        //Rallenta
+        moveVertical = Mathf.Lerp(moveVertical, 0, Time.deltaTime * 2);
+        moveOrizontal = Mathf.Lerp(moveOrizontal, 0, Time.deltaTime * 2);
 
     }
 
@@ -329,10 +341,12 @@ public class CameraController : MonoBehaviour
     public void EndVscroll()
     {
         v_scroll = 0;
+
     }
     public void EndHscroll()
     {
         h_scroll = 0;
+
 
     }
 

@@ -18,8 +18,8 @@ RenderSettings:
   m_FogColor: {r: 0.21542363, g: 0.64051896, b: 0.9716981, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.04
-  m_LinearFogStart: 2
-  m_LinearFogEnd: 50
+  m_LinearFogStart: 5
+  m_LinearFogEnd: 40
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
@@ -46551,6 +46551,38 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &804642548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804642549}
+  m_Layer: 0
+  m_Name: SceneCamera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804642549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804642548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.17, y: 10.04, z: -1.51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1228660364}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &819656287
 GameObject:
   m_ObjectHideFlags: 0
@@ -58116,13 +58148,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228660361}
   m_LocalRotation: {x: 0.115345664, y: 0.88418794, z: -0.30445004, w: 0.3349885}
-  m_LocalPosition: {x: -4.67, y: 10.63, z: -4.77}
-  m_LocalScale: {x: 0.78193, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.78192997, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2022918150}
   - {fileID: 1670682655}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 804642549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -20.596, y: 0, z: 0}
 --- !u!114 &1228660366
@@ -58140,24 +58172,25 @@ MonoBehaviour:
   target: {fileID: 302861134}
   startRotation: {x: -32, y: -24}
   sceneCamera: {fileID: 1228660363}
+  cameraParent: {fileID: 804642549}
   collectObjectPoint: {fileID: 1670682655}
   mouseRotateSpeed: 5
   touchRotateSpeed: 0.5
-  slerpSmoothValue: 0.1
-  scrollSmoothTime: 0.05
+  rotationSmoothValue: 0.1
+  zoomSmoothTime: 0.3
   editorFOVSensitivity: 1
   touchFOVSensitivity: 0.06
   canRotate: 1
-  scrollMultiper: 2
-  minXRotAngle_editor: -80
+  scrollMultiper: 0.05
+  minXRotAngle_editor: -70
   maxXRotAngle_editor: 4
   minXRotAngle_mobile: -4
   maxXRotAngle_mobile: 70
   minCameraFieldOfView: 25
   maxCameraFieldOfView: 70
   clampHtranslate: 4
-  clampVtranslate: 3
-  minCameraPosition: 6
+  clampVtranslate: 2
+  clampZtranslate: 2
 --- !u!1 &1251230346
 GameObject:
   m_ObjectHideFlags: 0
@@ -108247,7 +108280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bkMusic: {fileID: 8300000, guid: 51859fb55406a5b4fa99d7fb8527278a, type: 3}
   missions: []
-  showTutorial: 1
   tappa: {fileID: 11400000, guid: 41eda8a4133f68440befcebd563430d9, type: 2}
 --- !u!23 &2744711459713000915
 MeshRenderer:

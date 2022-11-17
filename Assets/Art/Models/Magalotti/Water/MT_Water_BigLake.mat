@@ -156,8 +156,8 @@ Material:
     - _Dist: 0.2
     - _DstBlend: 0
     - _Edge: 0.008
-    - _EdgeSmooth: 0.459
-    - _EdgeThick: 0.895
+    - _EdgeSmooth: 0.45
+    - _EdgeThick: 0.85
     - _GlossMapScale: 1
     - _GlossMapScale1: 0
     - _GlossMapScale2: 0
@@ -179,7 +179,7 @@ Material:
     - _SrcBlend: 1
     - _TEX1_speedX: -0.05
     - _TEX1_speedY: -0.05
-    - _TEX2_speedX: 0.06
+    - _TEX2_speedX: 0.1
     - _TEX2_speedY: 0.2
     - _TopBottom: 1
     - _UVSec: 0

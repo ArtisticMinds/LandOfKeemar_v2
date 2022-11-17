@@ -98,11 +98,11 @@ public class TappaScene : MonoBehaviour
     void SetQuality()
     {
         if (QualitySettings.GetQualityLevel() == 0)
-            InteractionManager.sceneCam.farClipPlane = 30;
+            InteractionManager.sceneCam.farClipPlane = 25;
         else if (QualitySettings.GetQualityLevel() == 1)
-            InteractionManager.sceneCam.farClipPlane = 35;
+            InteractionManager.sceneCam.farClipPlane = 30;
         else if (QualitySettings.GetQualityLevel() == 2)
-            InteractionManager.sceneCam.farClipPlane = 45;
+            InteractionManager.sceneCam.farClipPlane = 40;
     }
 
 

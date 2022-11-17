@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public static MainMenu instance;
     static GameObject mainPanel;
     public TMP_Dropdown qualityDropDown;
+    public GameObject qualityMessage;
     public MissionProgress missionProgress_inMenu;
     public static EventSystem eSystem;
 
@@ -42,9 +43,6 @@ public class MainMenu : MonoBehaviour
     {
         // Disable screen dimming
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-
-
 
 
         foreach (GameObject pan in panels)
@@ -88,6 +86,9 @@ public class MainMenu : MonoBehaviour
 
     public void LoadOptionsState()
     {
+
+        qualityMessage.SetActive(false);
+
         if (PlayerPrefs.HasKey("SoundsVolume"))
         {
             float vol = PlayerPrefs.GetFloat("SoundsVolume");
@@ -106,7 +107,11 @@ public class MainMenu : MonoBehaviour
             int qualityLevel = PlayerPrefs.GetInt("Quality");
             QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
             qualityDropDown.value = qualityLevel;
+
+            qualityMessage.SetActive(qualityLevel >= 1);
         }
+
+ 
     }
 
     public void OpenKeemarUrl()
@@ -136,7 +141,10 @@ public class MainMenu : MonoBehaviour
         Debug.Log("New Value : " + change.value);
         QualitySettings.SetQualityLevel(change.value);
         PlayerPrefs.SetInt("Quality", change.value);
+
+        qualityMessage.SetActive(change.value >= 1); 
     }
+
 
 
     void Update()

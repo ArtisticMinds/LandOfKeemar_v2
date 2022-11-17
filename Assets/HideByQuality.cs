@@ -14,7 +14,7 @@ public class HideByQuality : MonoBehaviour
 
    public void SetByQuality()
     {
-        if(QualitySettings.GetQualityLevel()< qualityLimit)
+        if(QualitySettings.GetQualityLevel() < qualityLimit)
            Destroy(gameObject);
     }
 }
