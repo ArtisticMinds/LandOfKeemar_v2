@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class InteractionManager : MonoBehaviour
 {
@@ -38,32 +39,17 @@ public class InteractionManager : MonoBehaviour
 
         if (!interactionActive) return;
 
-        if (Input.touchCount>0)
+        //if (Input.touchCount>0)
+        //{
+        //    if (Input.touches[0].phase == TouchPhase.Ended) oneTouch = false;
+        //    if (Input.touches[0].phase == TouchPhase.Moved) oneTouch = true;
+        //}
+
+
+        if (Input.touchCount==1 && Input.touches[0].phase== TouchPhase.Ended )
         {
-            if (Input.touches[0].phase == TouchPhase.Ended) oneTouch = false;
-            if (Input.touches[0].phase == TouchPhase.Moved) oneTouch = true;
-        }
 
-
-        if (Input.touchCount==1 && Input.touches[0].phase== TouchPhase.Began && !oneTouch)
-        {
-            
-
-            Ray ray = sceneCam.ScreenPointToRay(Input.touches[0].position);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                if (hit.collider != null)
-                {
-                    if (hit.collider.tag.Equals("InteractiveObject"))
-                    {
-                        MissionObject obj = hit.collider.gameObject.GetComponent<MissionObject>();
-                        obj.OnTouchActivation();
-                        oneTouch = true;
-                    }
-                }
-            }
+            StartCoroutine(DealyedTouch());
         }
 
 #if UNITY_EDITOR
@@ -89,4 +75,27 @@ public class InteractionManager : MonoBehaviour
         #endif
     }
 
+    IEnumerator DealyedTouch()
+    {
+        yield return new WaitForEndOfFrame();
+
+        if (!interactionActive) yield break;
+
+
+        Ray ray = sceneCam.ScreenPointToRay(Input.touches[0].position);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != null)
+            {
+                if (hit.collider.tag.Equals("InteractiveObject"))
+                {
+                    MissionObject obj = hit.collider.gameObject.GetComponent<MissionObject>();
+                    obj.OnTouchActivation();
+                    oneTouch = true;
+                }
+            }
+        }
+    }
 }

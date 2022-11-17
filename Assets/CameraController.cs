@@ -166,6 +166,7 @@ public class CameraController : MonoBehaviour
         {
             rotX += Input.GetAxis("Mouse Y") * mouseRotateSpeed; // around X
             rotY += Input.GetAxis("Mouse X") * mouseRotateSpeed;
+
             if (rotX < minXRotAngle_editor)
             {
                 rotX = minXRotAngle_editor;

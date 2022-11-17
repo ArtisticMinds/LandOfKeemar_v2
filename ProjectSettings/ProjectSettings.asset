@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.4.4
+  bundleVersion: 1.4.6
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -158,10 +158,10 @@ PlayerSettings:
     Android: com.ArtisticMinds.LandOfKeemarv2
   buildNumber:
     Standalone: 10
-    iPhone: 45
+    iPhone: 47
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
-  AndroidBundleVersionCode: 55
+  AndroidBundleVersionCode: 57
   AndroidMinSdkVersion: 22
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1

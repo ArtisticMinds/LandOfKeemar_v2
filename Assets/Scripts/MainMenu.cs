@@ -108,10 +108,9 @@ public class MainMenu : MonoBehaviour
             QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("Quality"));
             qualityDropDown.value = qualityLevel;
 
-            qualityMessage.SetActive(qualityLevel >= 1);
         }
 
- 
+        qualityMessage.SetActive(qualityDropDown.value >= 1);
     }
 
     public void OpenKeemarUrl()
