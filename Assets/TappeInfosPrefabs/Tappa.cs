@@ -32,6 +32,7 @@ public class Tappa : ScriptableObject
     public class Missions
     {
         public string missionName;
+        [Multiline]
         public string missionDescriprion;
         public string missionCompleteMessage;
         public bool missionComplete;

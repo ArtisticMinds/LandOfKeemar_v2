@@ -5,6 +5,13 @@ public class AnimatorEventsUtility : MonoBehaviour
     public ParticleSystem emitParticles;
     public AudioClip _audioClip;
     public GameObject showAtEnd;
+    public GameObject showObject;
+    public Animator setTrigger;
+    public GameObject[] hideGameObjects;
+
+    public string sendMessage;
+    public GameObject toObject;
+
     public void DisableAnimator()
     {
         GetComponent<Animator>().enabled = false;
@@ -39,5 +46,33 @@ public class AnimatorEventsUtility : MonoBehaviour
     {
         if(showAtEnd)
         showAtEnd.SetActive(true);
+    }
+
+    public void ShowonObject()
+    {
+        if (showObject)
+            showObject.SetActive(true);
+    }
+
+    public void HideGameObject()
+    {
+        if (hideGameObjects.Length>0)
+            foreach(GameObject gobj in hideGameObjects)
+                gobj.SetActive(false);
+    }
+
+    public void SendMessageTo()
+    {
+        toObject.SendMessage(sendMessage);
+    }
+
+    public void SetTriggerTo(string trigger)
+    {
+        setTrigger.SetTrigger(trigger);
+    }
+
+    public void CompleteMission(int idMission)
+    {
+        InGameCanvas.tappaScene.MissioneCompletata(idMission);
     }
 }

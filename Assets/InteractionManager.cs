@@ -7,7 +7,6 @@ public class InteractionManager : MonoBehaviour
     private Vector3 pos;
     public static Camera sceneCam;
     public static CameraController camController;
-    public static bool oneTouch;
     public static bool interactionActive = true;
 
 
@@ -38,12 +37,6 @@ public class InteractionManager : MonoBehaviour
     {
 
         if (!interactionActive) return;
-
-        //if (Input.touchCount>0)
-        //{
-        //    if (Input.touches[0].phase == TouchPhase.Ended) oneTouch = false;
-        //    if (Input.touches[0].phase == TouchPhase.Moved) oneTouch = true;
-        //}
 
 
         if (Input.touchCount==1 && Input.touches[0].phase== TouchPhase.Ended )
@@ -93,7 +86,7 @@ public class InteractionManager : MonoBehaviour
                 {
                     MissionObject obj = hit.collider.gameObject.GetComponent<MissionObject>();
                     obj.OnTouchActivation();
-                    oneTouch = true;
+              
                 }
             }
         }

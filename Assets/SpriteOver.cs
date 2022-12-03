@@ -21,6 +21,8 @@ public class SpriteOver : MonoBehaviour
             Debug.Log("No _audioClip");
     }
 
+
+
     void Update()
     {
         if (!target) return;

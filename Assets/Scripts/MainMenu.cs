@@ -18,7 +18,13 @@ public class MainMenu : MonoBehaviour
     public GameObject qualityMessage;
     public MissionProgress missionProgress_inMenu;
     public static EventSystem eSystem;
-
+    [Space(10)]
+    [Header("Tutti i collezionabili nel gioco (UI prefab dallo stesso nome)")]
+    public List<GameObject> allCollectablesObject= new List<GameObject>();
+    [Header("I nomi dei collezionabili raccolti dal giocatore")]
+    public List<string> oggettiRaccolti = new List<string>();
+    public GameObject messaggioNoObjects;
+    public Transform objectUI_parent;
     private void Awake()
     {
         #region Singleton
@@ -53,6 +59,7 @@ public class MainMenu : MonoBehaviour
         });
 
         LoadOptionsState();
+        LoadOggettiRaccolti();
 
         AudioManager.instance.PlayMenuMusic();
     }
@@ -111,6 +118,40 @@ public class MainMenu : MonoBehaviour
         }
 
         qualityMessage.SetActive(qualityDropDown.value >= 1);
+    }
+
+    public void LoadOggettiRaccolti()
+    {
+        oggettiRaccolti.Clear();
+        foreach (GameObject obj in allCollectablesObject)
+        {
+            if (PlayerPrefs.HasKey(obj.name))
+                oggettiRaccolti.Add(obj.name);
+        }
+
+        SetObjectPanel();
+    }
+
+    public void SetObjectPanel()
+    {
+        if (!objectUI_parent) return;
+
+        messaggioNoObjects.SetActive(oggettiRaccolti.Count.Equals(0));
+
+        foreach (GameObject obj in allCollectablesObject) 
+        {
+            obj.GetComponent<CanvasGroup>().alpha = 0.1F;
+            obj.GetComponent<CanvasGroup>().interactable = false;
+
+            foreach (string str in oggettiRaccolti)
+                if (str.Equals(obj.name))
+                {
+                    obj.GetComponent<CanvasGroup>().alpha = 1F;
+                    obj.GetComponent<CanvasGroup>().interactable = true;
+                }
+                  
+        }
+
     }
 
     public void OpenKeemarUrl()

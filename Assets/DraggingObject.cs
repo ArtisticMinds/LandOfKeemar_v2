@@ -1,18 +1,27 @@
 using UnityEngine.Events;
 using UnityEngine;
 
-public class DraggingObject : MonoBehaviour
+public class DraggingObject : MissionObject
 {
+
     private float dist;
     private bool dragging = false;
     private Transform toDrag;
     private float originalY;
     public bool dragActive;
+    public bool freezeYposition=true;
+    public bool reposeOnEndDrag = false;
+    private Vector3 startPosition;
     public Material selectedMaterial;
     [HideInInspector]
     public Material defaultMaterial;
+    public Renderer renderer;
     public float onDragScale=1.3F;
+    [HideInInspector]
+    public float originalScale;
+    [HideInInspector]
     public float distFormDrag;
+    public float maxDragDistance = 1;
     public Collider dreagArea;
     Vector3 minBounds; 
     Vector3 maxBounds;
@@ -25,23 +34,33 @@ public class DraggingObject : MonoBehaviour
     [Header("Evento a fine Drag sul punto di ancoraggio")]
     public UnityEvent onEndDragInPoint;
 
+
+
+    private void Awake()
+    {
+        if (!renderer)
+            renderer = GetComponent<Renderer>();
+
+        originalScale = transform.localScale.x;
+    }
     void Start()
     {
         originalY = transform.position.y;
-        defaultMaterial = GetComponent<Renderer>().material;
+        defaultMaterial = renderer.material;
+        startPosition = transform.position;
     }
 
 
-    void DragEditor()
+   public void DragEditor()
     {
-
 
         if (Input.GetMouseButtonUp(0))
         {
+            StopDragging();
             dragging = false;
-            GetComponent<Renderer>().material = defaultMaterial;
             return;
         }
+
 
         Vector3 v3;
         Vector3 pos = Input.mousePosition;
@@ -56,13 +75,13 @@ public class DraggingObject : MonoBehaviour
                 
                 if (hit.collider != null)
                 {
-                    if (hit.collider.tag.Equals("InteractiveObject")&& hit.collider.GetComponent<DraggingObject>())
+                    if (hit.collider.transform.Equals(transform) && hit.collider.tag.Equals("DraggableObject"))
                     {
                         Debug.Log("Start Dragging");
+                        InteractionManager.camController.canRotate = false;
 
-                        
                         toDrag = hit.transform;
-                        dist = hit.transform.position.z - InteractionManager.sceneCam.transform.position.z;
+                        dist = Vector3.Distance(hit.transform.position,InteractionManager.sceneCam.transform.position);
                         v3 = new Vector3(1-pos.x, 1-pos.y, dist);
                         v3 = InteractionManager.sceneCam.ScreenToWorldPoint(v3);
                         dragging = true;
@@ -80,18 +99,20 @@ public class DraggingObject : MonoBehaviour
         if (dragging)
         {
 
-            GetComponent<Renderer>().material = selectedMaterial;
+            renderer.material = selectedMaterial;
             toDrag.localScale = Vector3.one * onDragScale;
-           // Debug.Log("Dragging" + toDrag.position.x);
-            //X-0.3
-
-            Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3( Input.mousePosition.x,  Input.mousePosition.y, dist));
-            Debug.DrawRay(r.origin, r.direction * 10, Color.white);
-            toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(originalY), Time.deltaTime*5);
+            // Debug.Log("Dragging" + toDrag.position.x);
 
 
-            minBounds = dreagArea.bounds.min;
-            maxBounds = dreagArea.bounds.max;
+            Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x,  Input.mousePosition.y, dist));
+            Debug.DrawRay(r.origin, r.direction * dist, Color.white);
+            toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime*5);
+
+            if (dreagArea)
+            {
+                minBounds = dreagArea.bounds.min;
+                maxBounds = dreagArea.bounds.max;
+            }
 
             float xPos = Mathf.Clamp(toDrag.position.x, minBounds.x, maxBounds.x);
             float yPos = Mathf.Clamp(toDrag.position.y, minBounds.y, maxBounds.y);
@@ -99,28 +120,23 @@ public class DraggingObject : MonoBehaviour
 
             toDrag.position = new Vector3(xPos, yPos, zPos);
 
-
-            distFormDrag = Vector3.Distance(toDrag.position, dreagArea.transform.position);
-           // Debug.Log(distFormDrag);
-
-            if (distFormDrag > 1F)
+            if (dreagArea)
             {
-                StopDragging();
+                distFormDrag = Vector3.Distance(toDrag.position, dreagArea.transform.position);
+
+
+                if (distFormDrag > maxDragDistance)
+                {
+                    StopDragging();
+                }
             }
         }
 
 
-        if (dragging&&Input.GetMouseButtonUp(0))
-        {
-            StopDragging();
-            return;
-        }
-
-       
 
     }
 
-    void DragMobile()
+    public void DragMobile()
     {
 
         if (!Input.touchSupported) return;
@@ -144,12 +160,13 @@ public class DraggingObject : MonoBehaviour
             {
                 if (hit.collider != null)
                 {
-                    if (hit.collider.tag.Equals("InteractiveObject") && hit.collider.GetComponent<DraggingObject>())
+                    if (hit.collider.transform.Equals(transform) && hit.collider.tag.Equals("DraggableObject") )
                     {
-                      //  DebugConsole.Log("Start Dragging");
+                        DebugConsole.Log("Start Dragging");
+                        InteractionManager.camController.canRotate = false;
 
                         toDrag = hit.transform;
-                        dist = hit.transform.position.z - InteractionManager.sceneCam.transform.position.z;
+                        dist = Vector3.Distance(hit.transform.position, InteractionManager.sceneCam.transform.position);
                         v3 = new Vector3(1 - pos.x, 1 - pos.y, dist);
                         v3 = InteractionManager.sceneCam.ScreenToWorldPoint(v3);
                         GetComponent<Renderer>().material = selectedMaterial;
@@ -174,15 +191,14 @@ public class DraggingObject : MonoBehaviour
 
             Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist));
             Debug.DrawRay(r.origin, r.direction * 10, Color.white);
-            distFormDrag = Vector3.Distance(toDrag.position, r.GetPoint(originalY));
-            toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(originalY), Time.deltaTime * 5);
+            distFormDrag = Vector3.Distance(toDrag.position, r.GetPoint(dist));
+            toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime * 5);
         }
 
-        Debug.Log(distFormDrag);
-        if (distFormDrag > 1F)
+      
+        if (distFormDrag > maxDragDistance)
         {
             StopDragging();
-
         }
 
         if (dragging && (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled))
@@ -191,16 +207,22 @@ public class DraggingObject : MonoBehaviour
         }
     }
 
-    void StopDragging()
+    public void StopDragging()
     {
         if (dragging)
         {
             Debug.Log("Stop Dragging");
-            GetComponent<Renderer>().material = defaultMaterial;
-            toDrag.localScale = Vector3.one;
+            renderer.material = defaultMaterial;
+            toDrag.localScale = Vector3.one*originalScale;
             dragging = false;
             onEndDrag.Invoke();
             distFormDrag = 0;
+            InteractionManager.camController.canRotate = true;
+
+            if (reposeOnEndDrag)
+            {
+                transform.position = startPosition;
+            }
         }
     }
 
@@ -227,9 +249,11 @@ public class DraggingObject : MonoBehaviour
         DragMobile();
 #endif
 
-        InteractionManager.camController.canRotate = !dragging;
 
-        if(dragging)
-        toDrag.position = new Vector3(toDrag.position.x, originalY, toDrag.position.z);
+        if (freezeYposition)
+        {
+            if (dragging)
+                toDrag.position = new Vector3(toDrag.position.x, originalY, toDrag.position.z);
+        }
     }
 }

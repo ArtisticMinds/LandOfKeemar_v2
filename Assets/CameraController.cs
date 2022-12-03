@@ -6,7 +6,7 @@ public class CameraController : MonoBehaviour
 {
     //the center of the camera rotate sphere
     public Transform target;
-    public Vector2 startRotation=new Vector2(-23,20);
+    public Vector2 startRotation = new Vector2(-23, 20);
     public Camera sceneCamera;
     public Transform cameraParent;
     public Transform collectObjectPoint;
@@ -36,17 +36,20 @@ public class CameraController : MonoBehaviour
     private float rotX; // around x
     private float rotY; // around y
     //Mouse Scroll
-    private float cameraFieldOfView;
+    private float targetFOV;
     private float cameraFOVDamp; //Damped value
+    private float fingersDistance;
     private float fovChangeVelocity = 0;
     private float distanceBetweenCameraAndTarget;
+
 
     //Scroll with Buttons
     private float h_scroll;
     private float v_scroll;
     private float moveOrizontal;
-    private float moveVertical;
-    public float scrollMultiper=0.5F;
+    public float moveVertical;
+    public float mouseScrollMultiper = 0.1F;
+    public float mobileScrollMultiper = 0.15F;
 
     //Clamp Value
     public float minXRotAngle_editor = -80; //min angle around x axis
@@ -56,15 +59,16 @@ public class CameraController : MonoBehaviour
     public float minCameraFieldOfView = 10;
     public float maxCameraFieldOfView = 70;
     public float clampHtranslate = 10;
-    public float clampVtranslate = 2;
+    public float clampVtranslateDWN = 2;
+    public float clampVtranslateUP = 2;
     public float clampZtranslate = 2;
 
 
-
+ 
     Vector3 dir;
     private void Awake()
     {
- 
+
         GetCameraReference();
     }
 
@@ -75,11 +79,12 @@ public class CameraController : MonoBehaviour
         dir = new Vector3(0, 0, distanceBetweenCameraAndTarget);//assign value to the distance between the maincamera and the target
         sceneCamera.transform.position = target.position + dir; //Initialize camera position
         cameraFOVDamp = sceneCamera.fieldOfView;
-        cameraFieldOfView = sceneCamera.fieldOfView;
+        targetFOV = sceneCamera.fieldOfView;
 
         if (AudioManager.audioListener != null)
             Destroy(GetComponent<AudioListener>());
 
+        DefautlView();
         StartCoroutine(StartView());
     }
 
@@ -91,6 +96,7 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
+
         if (!canRotate)
         {
             return;
@@ -119,13 +125,19 @@ public class CameraController : MonoBehaviour
             LeftView();
         }
 
-       // DebugConsole.Log("Interaction:" + InteractionManager.interactionActive, true);
+
     }
     private void LateUpdate()
     {
+        if (!canRotate)
+        {
+            return;
+        }
         TraslateCamera();
         RotateCamera();
         SetCameraFOV();
+
+
 
         //if (cameraParent.position.y < minCameraPosition)
         //    cameraParent.position = new Vector3(cameraParent.position.x, minCameraPosition, cameraParent.position.z);
@@ -140,6 +152,8 @@ public class CameraController : MonoBehaviour
                 sceneCamera = Camera.main;
         }
         cameraParent = transform.parent;
+
+
     }
     //May be the problem with Euler angles
     public void TopView()
@@ -148,6 +162,7 @@ public class CameraController : MonoBehaviour
         rotY = 0;
         swipeDirection.y = maxXRotAngle_mobile;
         swipeDirection.x = 0;
+        targetFOV = 70;
     }
     public void LeftView()
     {
@@ -179,7 +194,7 @@ public class CameraController : MonoBehaviour
         //Camera Field Of View
         if (Input.mouseScrollDelta.magnitude > 0)
         {
-            cameraFieldOfView += Input.mouseScrollDelta.y * editorFOVSensitivity * -1;//-1 make FOV change natual
+            targetFOV += Input.mouseScrollDelta.y * editorFOVSensitivity * -1;//-1 make FOV change natual
         }
     }
 
@@ -193,19 +208,20 @@ public class CameraController : MonoBehaviour
                 touch = Input.GetTouch(0);
                 if (touch.phase == TouchPhase.Began)
                 {
-                    if(InteractionManager.oneTouch)
-                    InteractionManager.instance.SceneObjectsInteractions(false);
-                    //Debug.Log("Touch Began");
+                   
+                    Debug.Log("Touch Began");
                 }
                 else if (touch.phase == TouchPhase.Moved)  // the problem lies in we are still rotating object even if we move our finger toward another direction
                 {
                     swipeDirection += -touch.deltaPosition * touchRotateSpeed; //-1 make rotate direction natural
-                    InteractionManager.instance.SceneObjectsInteractions(false);
+
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {
                     InteractionManager.instance.SceneObjectsInteractions(true);
+                   // targetFOV= cameraFOVDamp;
                 }
+
             }
             else if (Input.touchCount == 2)
             {
@@ -222,12 +238,13 @@ public class CameraController : MonoBehaviour
                 {
                     touch1CurrentPos = touch1.position;
                     touch2CurrentPos = touch2.position;
-                    float deltaDistance = Vector2.Distance(touch1CurrentPos, touch2CurrentPos) - Vector2.Distance(touch1OldPos, touch2OldPos);
-                    cameraFieldOfView += deltaDistance * -1 * touchFOVSensitivity; // Make rotate direction natual
+                    fingersDistance = Vector2.Distance(touch1CurrentPos, touch2CurrentPos) - Vector2.Distance(touch1OldPos, touch2OldPos);
+                    targetFOV += fingersDistance * -1 * touchFOVSensitivity; // Make rotate direction natual
                     touch1OldPos = touch1CurrentPos;
                     touch2OldPos = touch2CurrentPos;
                 }
-  
+
+               
             }
 
         }
@@ -262,6 +279,7 @@ public class CameraController : MonoBehaviour
     }
     private void RotateCamera()
     {
+
         if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer)
         {
             Vector3 tempV = new Vector3(rotX, rotY, 0);
@@ -287,7 +305,7 @@ public class CameraController : MonoBehaviour
         float clampedZ = cameraParent.position.z;
 
         clampedX = Mathf.Clamp(clampedX, -clampHtranslate, clampHtranslate);
-        clampedY = Mathf.Clamp(clampedY, -clampVtranslate/2, clampVtranslate);
+        clampedY = Mathf.Clamp(clampedY, -clampVtranslateDWN, clampVtranslateUP);
         clampedZ = Mathf.Clamp(clampedZ, -clampZtranslate , clampZtranslate);
 
         cameraParent.position = new Vector3(clampedX, clampedY, clampedZ);
@@ -299,22 +317,34 @@ public class CameraController : MonoBehaviour
     {
         //Set Camera Field Of View
         //Clamp Camera FOV value
-        if (cameraFieldOfView <= minCameraFieldOfView)
-        {
-            cameraFieldOfView = minCameraFieldOfView;
-        }
-        else if (cameraFieldOfView >= maxCameraFieldOfView)
-        {
-            cameraFieldOfView = maxCameraFieldOfView;
-        }
-        cameraFOVDamp = Mathf.SmoothDamp(cameraFOVDamp, cameraFieldOfView, ref fovChangeVelocity, zoomSmoothTime);
+        //if (cameraFieldOfView <= minCameraFieldOfView)
+        //{
+        //    cameraFieldOfView = minCameraFieldOfView;
+        //}
+        //else if (cameraFieldOfView >= maxCameraFieldOfView)
+        //{
+        //    cameraFieldOfView = maxCameraFieldOfView;
+        //}
+
+
+        // cameraFOVDamp = Mathf.SmoothDamp(cameraFOVDamp, cameraFieldOfView, ref fovChangeVelocity, zoomSmoothTime);
+
+        cameraFOVDamp = Mathf.Lerp(cameraFOVDamp, targetFOV, zoomSmoothTime * Time.deltaTime*10);
+        targetFOV = Mathf.Clamp(targetFOV, minCameraFieldOfView, maxCameraFieldOfView);
+        cameraFOVDamp = Mathf.Clamp(cameraFOVDamp, minCameraFieldOfView, maxCameraFieldOfView);
+
         sceneCamera.fieldOfView = cameraFOVDamp;
     }
 
     private void TraslateCamera()
     {
-        moveOrizontal += h_scroll * Time.deltaTime*30;
-        moveVertical += v_scroll * Time.deltaTime*30;
+        if (!CameraCollision.collision)
+        {
+            moveOrizontal += h_scroll * Time.deltaTime * 30;
+            moveVertical += v_scroll * Time.deltaTime * 30;
+        }
+
+
         moveOrizontal = Mathf.Clamp(moveOrizontal, -2, 2);
         moveVertical = Mathf.Clamp(moveVertical, -2, 2);
 
@@ -328,15 +358,18 @@ public class CameraController : MonoBehaviour
 
     public void HorizontalScroll(float direction)
     {
-
-        h_scroll = direction* scrollMultiper;
-
+        if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+            h_scroll = direction* mouseScrollMultiper;
+        else
+            h_scroll = direction * mobileScrollMultiper;
     }
 
     public void VerticalScroll(float direction)
     {
-
-        v_scroll = direction* scrollMultiper;
+        if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer)
+            v_scroll = direction* mouseScrollMultiper;
+        else
+            v_scroll = direction * mobileScrollMultiper;
 
     }
     public void EndVscroll()

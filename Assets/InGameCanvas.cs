@@ -1,6 +1,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class InGameCanvas : MonoBehaviour
 {
@@ -17,7 +18,10 @@ public class InGameCanvas : MonoBehaviour
     public GameObject allMissionCompleteMessage;
     public static TappaScene tappaScene;
     public static CameraController cameraController;
-    
+    [Space(10)]
+    public GameObject oggettoRaccoltoMessage;
+    public TMP_Text oggettoRaccoltoName;
+
     private void Awake()
     {
         instance = this;
@@ -32,6 +36,7 @@ public class InGameCanvas : MonoBehaviour
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainMenu"));
         MapManager.instance.CloseTappaInfos();
+        MainMenu.instance.SetObjectPanel();
 
     }
 
@@ -52,6 +57,7 @@ public class InGameCanvas : MonoBehaviour
         Debug.Log("SetTappa: " + tappaScene.tappa.tappaScene);
     }
 
+
     public void SetTopView()
     {
         cameraController.TopView();
@@ -61,6 +67,7 @@ public class InGameCanvas : MonoBehaviour
     {
 
         cameraController.HorizontalScroll(direction);
+        InteractionManager.instance.SceneObjectsInteractions(false);
 
     }
 
@@ -68,15 +75,18 @@ public class InGameCanvas : MonoBehaviour
     {
 
         cameraController.VerticalScroll(direction);
+        InteractionManager.instance.SceneObjectsInteractions(false);
 
     }
     public void EndVscroll()
     {
         cameraController.EndVscroll();
+        InteractionManager.instance.SceneObjectsInteractions(true);
     }
     public void EndHscroll()
     {
         cameraController.EndHscroll();
+        InteractionManager.instance.SceneObjectsInteractions(true);
 
     }
 }

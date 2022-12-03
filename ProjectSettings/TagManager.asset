@@ -6,11 +6,12 @@ TagManager:
   tags:
   - InteractiveObject
   - DragAreas
+  - DraggableObject
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - 

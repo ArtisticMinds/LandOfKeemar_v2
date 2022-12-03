@@ -9,10 +9,6 @@ public class DraggableAnchor : MonoBehaviour
     public UnityEvent OnConnect;
 
 
-    private void Start()
-    {
-
-    }
 
     void OnDrawGizmosSelected()
     {
@@ -23,10 +19,9 @@ public class DraggableAnchor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        DraggingObject draggable = other.gameObject.GetComponent<DraggingObject>();
-        if (draggable && other.tag.Equals("InteractiveObject"))
+        if (other.tag.Equals("DraggableObject"))
         {
-            Connect(draggable);
+            Connect(other.gameObject.GetComponent<DraggingObject>());
         }
     }
 
@@ -39,9 +34,9 @@ public class DraggableAnchor : MonoBehaviour
         draggable.GetComponent<Rigidbody>().isKinematic = true;
         draggable.GetComponent<Collider>().isTrigger = true;
         InteractionManager.camController.canRotate = true;
-        draggable.GetComponent<Renderer>().material = draggable.defaultMaterial;
-        draggable.transform.localScale = Vector3.one;
+        draggable.renderer.material = draggable.defaultMaterial;
+        draggable.transform.localScale =Vector3.one* draggable.originalScale;
         draggable.onEndDragInPoint.Invoke();
-        //DebugConsole.Log("Connect Dragging");
+        DebugConsole.Log("Connect Dragging");
     }
 }

@@ -27,7 +27,6 @@ public class TappaScene : MonoBehaviour
 
         if (!InGameCanvas.instance) InGameCanvas.instance = FindObjectOfType<InGameCanvas>();
 
-       
         TappaMapMarker.openTappa = tappa;
         tappa.ResetScriptableObject();
         LoadTappaState();
@@ -37,9 +36,6 @@ public class TappaScene : MonoBehaviour
     }
 
  
-
-
-
     public void LoadTappaState()
     {
         foreach (Tappa.Missions mis in TappaMapMarker.openTappa.missions)
@@ -76,7 +72,6 @@ public class TappaScene : MonoBehaviour
 
         DebugConsole.Log("TappaMapMarker.openTappa:" + TappaMapMarker.openTappa.tappaName);
 
-
         InGameCanvas.instance.allMissionCompleteMessage.SetActive(CheckTappaCompleted());
 
 
@@ -100,13 +95,10 @@ public class TappaScene : MonoBehaviour
         if (QualitySettings.GetQualityLevel() == 0)
             InteractionManager.sceneCam.farClipPlane = 25;
         else if (QualitySettings.GetQualityLevel() == 1)
-            InteractionManager.sceneCam.farClipPlane = 30;
+            InteractionManager.sceneCam.farClipPlane = 35;
         else if (QualitySettings.GetQualityLevel() == 2)
-            InteractionManager.sceneCam.farClipPlane = 40;
+            InteractionManager.sceneCam.farClipPlane = 45;
     }
-
-
- 
 
 
     public void MissioneCompletata(int missionID)
@@ -130,11 +122,12 @@ public class TappaScene : MonoBehaviour
             StartCoroutine(ShowCompletedTappa());
         }
     }
+
     System.Collections.IEnumerator ShowCompletedTappa()
     {
         yield return new WaitForSeconds(3);
         InGameCanvas.instance.tappaCompleteMessage.SetActive(true);
-        InGameCanvas.instance.tappaCompleteTitle.text = tappa.tappaName;
+        InGameCanvas.instance.tappaCompleteTitle.text  = tappa.tappaName.Replace("\n", "").Replace("\r", "");
         //  PlayerPrefs.SetInt(tappa.tappaName, 1); //Salva Tappa completata (per ora non serve, basta CheckTappaCompleted())
     }
 
