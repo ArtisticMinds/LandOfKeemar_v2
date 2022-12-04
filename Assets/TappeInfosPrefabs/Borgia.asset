@@ -27,11 +27,11 @@ MonoBehaviour:
   - missionName: Porte Aperte
     missionDescriprion: Apri le porte della Rocca...
     missionCompleteMessage: Hai aperto le porte della Rocca!
-    missionComplete: 0
-  - missionName: Al fuoco
-    missionDescriprion: 
-    missionCompleteMessage: 
-    missionComplete: 0
+    missionComplete: 1
+  - missionName: Al fuoco!
+    missionDescriprion: Accendi il braciere
+    missionCompleteMessage: Hai acceso il braciere!
+    missionComplete: 1
   - missionName: Fiato alle trombe
     missionDescriprion: 
     missionCompleteMessage: 
