@@ -650,6 +650,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -4162,6 +4163,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -5518,6 +5520,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 15
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -8958,6 +8961,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -10350,6 +10354,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -13862,6 +13867,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -14715,7 +14721,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5565067379745394895}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -2.165, y: 3.8623, z: -6.9068203}
   m_LocalScale: {x: 1.3513703, y: 1.3513703, z: 1.3513703}
   m_ConstrainProportionsScale: 0
@@ -14815,6 +14821,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!135 &4754251573257547161
@@ -14844,10 +14853,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 1, y: 0, z: 2}
   speed: 10
-  active: 0
+  active: 1
   destroyTime: 4
   playOnDestroy: {fileID: 4754251572329950582}
   depth: 0.75
+  minDepth: 1
+  maxDepth: 1.5
+  endScale: 1
 --- !u!1 &6867132945941580268
 GameObject:
   m_ObjectHideFlags: 0

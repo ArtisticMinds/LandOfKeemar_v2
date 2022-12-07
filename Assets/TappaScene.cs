@@ -8,11 +8,20 @@ using UnityEngine.EventSystems;
 public class TappaScene : MonoBehaviour
 {
  
-    public AudioClip bkMusic;
-    public Tappa.Missions[] missions;
 
-    private bool showTutorialAtStart;
     public Tappa tappa;
+    public AudioClip bkMusic;
+    private bool showTutorialAtStart;
+    [Header("Quality Setting")]
+    public float LowFarClipPlane = 30;
+    public float MedFarClipPlane = 40;
+    public float HiFarClipPlane = 45;
+    public float LowDettails = 0.5F;
+    public float MedDettails = 0.7F;
+    public float HiDettails = 1F;
+    public Terrain terrain;
+    [Space(10)]
+    public Tappa.Missions[] missions;
 
     private float rotSpeed = 20;
 
@@ -32,7 +41,10 @@ public class TappaScene : MonoBehaviour
         LoadTappaState();
         InGameCanvas.instance.tappaCompleteMessage.SetActive(false);
         AudioManager.instance.Initialize();
-    
+
+        if (!terrain) terrain = FindObjectOfType<Terrain>();
+
+
     }
 
  
@@ -93,11 +105,20 @@ public class TappaScene : MonoBehaviour
     void SetQuality()
     {
         if (QualitySettings.GetQualityLevel() == 0)
-            InteractionManager.sceneCam.farClipPlane = 25;
+        {
+            InteractionManager.sceneCam.farClipPlane = LowFarClipPlane;
+            terrain.detailObjectDensity = LowDettails;
+        }
         else if (QualitySettings.GetQualityLevel() == 1)
-            InteractionManager.sceneCam.farClipPlane = 35;
+        {
+            InteractionManager.sceneCam.farClipPlane = MedFarClipPlane;
+            terrain.detailObjectDensity = MedDettails;
+        }
         else if (QualitySettings.GetQualityLevel() == 2)
-            InteractionManager.sceneCam.farClipPlane = 45;
+        {
+            InteractionManager.sceneCam.farClipPlane = HiFarClipPlane;
+            terrain.detailObjectDensity = HiDettails;
+        }
     }
 
 

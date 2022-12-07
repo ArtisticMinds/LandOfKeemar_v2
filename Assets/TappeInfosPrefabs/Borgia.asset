@@ -33,14 +33,14 @@ MonoBehaviour:
     missionCompleteMessage: Hai acceso il braciere!
     missionComplete: 1
   - missionName: Fiato alle trombe
-    missionDescriprion: 
-    missionCompleteMessage: 
-    missionComplete: 0
-  - missionName: La spada degli antenati
-    missionDescriprion: 
-    missionCompleteMessage: 
-    missionComplete: 0
+    missionDescriprion: Suona il corno!
+    missionCompleteMessage: Hai sunato il corno.
+    missionComplete: 1
   - missionName: In alto la bandiera
-    missionDescriprion: 
-    missionCompleteMessage: 
+    missionDescriprion: Alza la bandiera!
+    missionCompleteMessage: Hai alzato la bandiera!
+    missionComplete: 1
+  - missionName: La spada degli antenati
+    missionDescriprion: Trova la spada degli antenati
+    missionCompleteMessage: Hai estratto la spada degli antenati!
     missionComplete: 0

@@ -294,6 +294,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 7491584045827484037, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
@@ -361,6 +362,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
 --- !u!4 &31968003 stripped
 Transform:
@@ -372,6 +374,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -435,6 +438,7 @@ PrefabInstance:
       value: SM_tree (10)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &41770165 stripped
 Transform:
@@ -708,6 +712,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!135 &92320340
@@ -728,6 +735,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 7491584045827484037, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
@@ -795,6 +803,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
 --- !u!4 &100489022 stripped
 Transform:
@@ -889,6 +898,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 1300741318956207227, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
@@ -956,6 +966,7 @@ PrefabInstance:
       value: medieval house (13)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
 --- !u!4 &172570578 stripped
 Transform:
@@ -967,6 +978,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 1300741318956207227, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
@@ -1030,12 +1042,14 @@ PrefabInstance:
       value: medieval house (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
 --- !u!1001 &185549983
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: fbb4d92d34ba8354793b1c0dc41accf5, type: 3}
@@ -1099,6 +1113,7 @@ PrefabInstance:
       value: SM_ivy_assembly_very_small
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: fbb4d92d34ba8354793b1c0dc41accf5, type: 3}
 --- !u!4 &196676315 stripped
 Transform:
@@ -1394,6 +1409,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -1457,6 +1473,7 @@ PrefabInstance:
       value: SM_tree (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &262723303 stripped
 Transform:
@@ -2184,6 +2201,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -5696,6 +5714,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -6532,6 +6551,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 7491584045827484037, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
@@ -6595,6 +6615,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
 --- !u!1 &326310730
 GameObject:
@@ -7296,6 +7317,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -10736,6 +10758,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -12092,6 +12115,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -15532,6 +15556,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -16924,6 +16949,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -20436,6 +20462,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -21196,6 +21223,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4c08deaa6e00dc948bc42e610e2be3f1, type: 3}
@@ -21267,12 +21295,14 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08deaa6e00dc948bc42e610e2be3f1, type: 3}
 --- !u!1001 &399478136
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -21336,6 +21366,7 @@ PrefabInstance:
       value: SM_tree (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &399478137 stripped
 Transform:
@@ -22015,6 +22046,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -25408,6 +25440,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -26896,6 +26929,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -30408,6 +30442,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -31168,6 +31203,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -31231,6 +31267,7 @@ PrefabInstance:
       value: SM_tree (9)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &433219578 stripped
 Transform:
@@ -31330,6 +31367,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: 1451405869036743484, guid: 3f2ad6153d186af4e945ec86cdf0f381, type: 3}
@@ -31393,12 +31431,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3f2ad6153d186af4e945ec86cdf0f381, type: 3}
 --- !u!1001 &467476537
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -31462,6 +31502,7 @@ PrefabInstance:
       value: SM_tree (11)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &467476538 stripped
 Transform:
@@ -31767,6 +31808,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -31830,6 +31872,7 @@ PrefabInstance:
       value: SM_tree (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &515546876 stripped
 Transform:
@@ -33020,6 +33063,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -36532,6 +36576,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -37969,6 +38014,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -41481,6 +41527,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -42750,6 +42797,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -46193,6 +46241,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -47040,6 +47089,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -47103,6 +47153,7 @@ PrefabInstance:
       value: SM_tree (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &692861961 stripped
 Transform:
@@ -47325,6 +47376,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: 5096347627847006247, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
@@ -47388,6 +47440,7 @@ PrefabInstance:
       value: SM_tree_c (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
 --- !u!4 &721655706 stripped
 Transform:
@@ -48136,6 +48189,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -51576,6 +51630,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -53656,6 +53711,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -57168,6 +57224,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -58183,6 +58240,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: 5096347627847006247, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
@@ -58246,6 +58304,7 @@ PrefabInstance:
       value: SM_tree_c (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
 --- !u!4 &928847899 stripped
 Transform:
@@ -58363,6 +58422,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -58426,6 +58486,7 @@ PrefabInstance:
       value: SM_tree (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!1 &964244920 stripped
 GameObject:
@@ -58545,6 +58606,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!95 &964244925
@@ -58725,7 +58789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -58850,6 +58913,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!1 &1042459478
@@ -58902,6 +58968,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 7491584045827484037, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
@@ -58965,6 +59032,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ef86610baa5acad4e967c0cffbc6f69a, type: 3}
 --- !u!1 &1104077484
 GameObject:
@@ -59027,6 +59095,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -59683,6 +59752,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -63123,6 +63193,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -63981,6 +64052,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 5109474350588717256, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
@@ -64048,6 +64120,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
 --- !u!4 &1121162065 stripped
 Transform:
@@ -64059,6 +64132,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 1300741318956207227, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
@@ -64126,6 +64200,7 @@ PrefabInstance:
       value: medieval house (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
 --- !u!4 &1156600317 stripped
 Transform:
@@ -65028,6 +65103,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -68540,6 +68616,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -69383,6 +69460,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6cb2b74e444d23843839415de28add9d, type: 3}
@@ -69458,6 +69536,7 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb2b74e444d23843839415de28add9d, type: 3}
 --- !u!1 &1301331195 stripped
 GameObject:
@@ -69570,6 +69649,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 5109474350588717256, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
@@ -69633,6 +69713,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
 --- !u!1 &1344528199
 GameObject:
@@ -70308,6 +70389,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -73701,6 +73783,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -74466,6 +74549,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 5109474350588717256, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
@@ -74533,6 +74617,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
 --- !u!4 &1362585505 stripped
 Transform:
@@ -75176,6 +75261,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -78688,6 +78774,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -79531,6 +79618,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 5109474350588717256, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
@@ -79598,6 +79686,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
 --- !u!4 &1409946243 stripped
 Transform:
@@ -79692,6 +79781,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 1300741318956207227, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
@@ -79755,12 +79845,14 @@ PrefabInstance:
       value: medieval house (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
 --- !u!1001 &1512878178
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: 5096347627847006247, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
@@ -79824,6 +79916,7 @@ PrefabInstance:
       value: SM_tree_c (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
 --- !u!4 &1512878179 stripped
 Transform:
@@ -80733,6 +80826,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -84245,6 +84339,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -85728,6 +85823,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -89240,6 +89336,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -90070,7 +90167,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.9
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -90079,7 +90176,7 @@ Light:
     m_Type: 2
     m_Resolution: 2
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.7
     m_Bias: 0.01
     m_NormalBias: 0.1
     m_NearPlane: 0.2
@@ -90225,6 +90322,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -90354,6 +90452,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 5109474350588717256, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
@@ -90417,6 +90516,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
 --- !u!1 &1662777765
 GameObject:
@@ -90857,6 +90957,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 1300741318956207227, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
@@ -90920,6 +91021,7 @@ PrefabInstance:
       value: medieval house (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
 --- !u!1 &1803288875
 GameObject:
@@ -91558,6 +91660,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -95070,6 +95173,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -95840,6 +95944,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 1300741318956207227, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
@@ -95907,6 +96012,7 @@ PrefabInstance:
       value: medieval house (12)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e14c2ed41e8d9f48a2e55af7af0f024, type: 3}
 --- !u!4 &1864181530 stripped
 Transform:
@@ -96089,6 +96195,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: f616ab2c61a19ad4eb1b03e25214ce93, type: 3}
@@ -96152,6 +96259,7 @@ PrefabInstance:
       value: SM_ivy_single_long
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f616ab2c61a19ad4eb1b03e25214ce93, type: 3}
 --- !u!4 &1908534755 stripped
 Transform:
@@ -96163,6 +96271,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: cf0aac856d96f3e4093986f4609aec8b, type: 3}
@@ -96278,6 +96387,10 @@ PrefabInstance:
       value: InteractiveObject
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: cf0aac856d96f3e4093986f4609aec8b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1980811149}
   m_SourcePrefab: {fileID: 100100000, guid: cf0aac856d96f3e4093986f4609aec8b, type: 3}
 --- !u!1 &1953990604
 GameObject:
@@ -96367,6 +96480,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 1992771833}
     m_Modifications:
     - target: {fileID: 5109474350588717256, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
@@ -96430,6 +96544,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: c4b40b3129ca3894ebd6c585f3627f65, type: 3}
 --- !u!1 &1980811148
 GameObject:
@@ -97070,6 +97185,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -100582,6 +100698,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -102223,6 +102340,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -105723,6 +105841,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -106483,6 +106602,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2143288266}
     m_Modifications:
     - target: {fileID: 9127759732165679382, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
@@ -106546,6 +106666,7 @@ PrefabInstance:
       value: SM_tree (8)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: a921bd76b413147429b0453f76bb20f3, type: 3}
 --- !u!4 &2025813357 stripped
 Transform:
@@ -106685,6 +106806,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 4c08deaa6e00dc948bc42e610e2be3f1, type: 3}
@@ -106752,6 +106874,7 @@ PrefabInstance:
       value: SM_stones_small_low
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c08deaa6e00dc948bc42e610e2be3f1, type: 3}
 --- !u!4 &2092811296 stripped
 Transform:
@@ -107432,6 +107555,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 1000
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -110819,6 +110943,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -112323,6 +112448,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -115763,6 +115889,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -117232,6 +117359,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -120672,6 +120800,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -123035,6 +123164,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1184031532238037786, guid: 7bf3bf671cbdf894db327528ca9c7203, type: 3}
@@ -123542,6 +123672,7 @@ PrefabInstance:
       value: 0.6481295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bf3bf671cbdf894db327528ca9c7203, type: 3}
 --- !u!4 &1202730316754357726
 Transform:
@@ -125712,9 +125843,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab30fb15c26b07e4b9bb9d14816e5059, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bkMusic: {fileID: 8300000, guid: 51859fb55406a5b4fa99d7fb8527278a, type: 3}
-  missions: []
   tappa: {fileID: 11400000, guid: 41eda8a4133f68440befcebd563430d9, type: 2}
+  bkMusic: {fileID: 8300000, guid: 51859fb55406a5b4fa99d7fb8527278a, type: 3}
+  LowFarClipPlane: 30
+  MedFarClipPlane: 40
+  HiFarClipPlane: 45
+  LowDettails: 0.5
+  MedDettails: 0.7
+  HiDettails: 1
+  terrain: {fileID: 0}
+  missions: []
 --- !u!23 &2744711459713000915
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -126763,6 +126901,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 4
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -130275,6 +130414,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -133635,6 +133775,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!4 &3745555944584329268
@@ -135028,6 +135171,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 12
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -138540,6 +138684,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -140304,6 +140449,7 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
+    gravitySource: 0
     maxNumParticles: 100
     customEmitterVelocity: {x: 0, y: 0, z: 0}
     size3D: 0
@@ -143744,6 +143890,7 @@ ParticleSystem:
         m_RotationOrder: 4
     minVertexDistance: 0.2
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     ribbonCount: 1
     shadowBias: 0.5
     worldSpace: 0
@@ -144834,6 +144981,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: 3835272726359646414, guid: 0d3c02b4a25dbe84da9f128b31fca061, type: 3}
@@ -144893,6 +145041,7 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d3c02b4a25dbe84da9f128b31fca061, type: 3}
 --- !u!4 &4695917686449526357
 Transform:
@@ -145027,6 +145176,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 2712255371993786467}
     m_Modifications:
     - target: {fileID: 5096347627847006247, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
@@ -145090,6 +145240,7 @@ PrefabInstance:
       value: SM_tree_c
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: bdbffd3de7a13cd4bad1b5f154f2fff1, type: 3}
 --- !u!1 &4777178601318744382
 GameObject:
@@ -146754,6 +146905,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!136 &5992628335318115071
@@ -147434,6 +147588,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!4 &6536849915249095229
@@ -147888,6 +148045,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!54 &6884914646795044763
@@ -148021,6 +148181,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onTouchEventDalyed:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimationEvent:
     m_PersistentCalls:
       m_Calls: []
   useTouchPause: 0
@@ -149536,6 +149699,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
   dragActive: 1
@@ -149687,6 +149853,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 328456412, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
@@ -149846,6 +150013,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2022918152}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
 --- !u!1 &7871189485240048925
 GameObject:
@@ -150373,6 +150541,9 @@ MonoBehaviour:
   onTouchEventDalyed:
     m_PersistentCalls:
       m_Calls: []
+  onAnimationEvent:
+    m_PersistentCalls:
+      m_Calls: []
   useTouchPause: 0
   pauseTime: 2
 --- !u!114 &8236402616671668289
@@ -150528,6 +150699,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   onTouchEventDalyed:
+    m_PersistentCalls:
+      m_Calls: []
+  onAnimationEvent:
     m_PersistentCalls:
       m_Calls: []
   useTouchPause: 0

@@ -58,9 +58,12 @@ public class MissionObject : MonoBehaviour
             Debug.Log(gameObject.name+" No animator");
         }
 
-        onTouchEvent.Invoke();
-        StartCoroutine(TouchEventDalyed());
-        TouchPause(pauseTime);
+        if (isActiveAndEnabled)
+        {
+            onTouchEvent.Invoke();
+            StartCoroutine(TouchEventDalyed());
+            TouchPause(pauseTime);
+        }
     }
 
 
@@ -71,7 +74,9 @@ public class MissionObject : MonoBehaviour
 
     IEnumerator TouchEventDalyed()
     {
-        yield return new WaitForSeconds(1);
+        if (!isActiveAndEnabled) yield break;
+
+            yield return new WaitForSeconds(1);
         onTouchEventDalyed.Invoke();
     }
 
@@ -105,13 +110,13 @@ public class MissionObject : MonoBehaviour
         }
         else
         {
-            OnDefaultTriggerEnterEvent();
+            OnDefaultTriggerEnterEvent(other);
 
         }
     }
 
     public void OnTriggerEnterEvent() { Debug.Log(transform.name + "CALL OnTriggerEnterEvent"); onTriggerEnterEvent.Invoke(); }
-    public void OnDefaultTriggerEnterEvent() { Debug.Log(transform.name + "CALL OnTriggerEnterEvent"); onDefaultTriggerEnterEvent.Invoke(); }
+    public void OnDefaultTriggerEnterEvent(Collider other) { Debug.Log(transform.name + "CALL OnTriggerEnterEvent: " + other); onDefaultTriggerEnterEvent.Invoke(); }
     public void PlayClip(AudioClip audioClip)
     {
         if (AudioManager.instance)

@@ -13,7 +13,7 @@ EditorBuildSettings:
     guid: 04d14f779990a4e49b5fb395dc12c22c
   - enabled: 1
     path: Assets/Scenes/Magalotti.unity
-    guid: 85189a2e102bef8469ce9a52d22025b8
+    guid: 8182271f9a707664aacf231d939429cf
   - enabled: 1
     path: Assets/Scenes/Borgia.unity
     guid: 168ca3ac8667129438b115025778a865

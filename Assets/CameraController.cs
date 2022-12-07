@@ -214,7 +214,7 @@ public class CameraController : MonoBehaviour
                 else if (touch.phase == TouchPhase.Moved)  // the problem lies in we are still rotating object even if we move our finger toward another direction
                 {
                     swipeDirection += -touch.deltaPosition * touchRotateSpeed; //-1 make rotate direction natural
-
+                    InteractionManager.instance.SceneObjectsInteractions(false);
                 }
                 else if (touch.phase == TouchPhase.Ended)
                 {

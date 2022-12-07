@@ -6,6 +6,7 @@ public class MoveToCamera : MonoBehaviour
 {
     [SerializeField] Vector3 offset;
     [SerializeField] float speed = 3;
+    [SerializeField] float rotationSpeed = 2;
     [SerializeField] bool active;
     [SerializeField] float destroyTime = 5;
     [SerializeField] ParticleSystem playOnDestroy;
@@ -66,7 +67,7 @@ public class MoveToCamera : MonoBehaviour
             depth = Mathf.Clamp(depth, minDepth, maxDepth);
             Vector3 endPOint = new Vector3(offset.x, offset.y, offset.z+ depth); ;
             transform.localPosition = Vector3.Slerp(transform.localPosition, endPOint, Time.deltaTime * speed);
-            transform.Rotate(0, 2, 0, Space.Self);
+            transform.Rotate(0, rotationSpeed, 0, Space.Self);
 
             timer += Time.deltaTime;
             if (timer > destroyTime)

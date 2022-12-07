@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class DraggingObject : MissionObject
 {
-
+    public float dragOffset;
     private float dist;
     private bool dragging = false;
     private Transform toDrag;
@@ -77,7 +77,7 @@ public class DraggingObject : MissionObject
                 {
                     if (hit.collider.transform.Equals(transform) && hit.collider.tag.Equals("DraggableObject"))
                     {
-                        Debug.Log("Start Dragging");
+                        DebugConsole.Log("Start Dragging");
                         InteractionManager.camController.canRotate = false;
 
                         toDrag = hit.transform;
@@ -104,7 +104,7 @@ public class DraggingObject : MissionObject
             // Debug.Log("Dragging" + toDrag.position.x);
 
 
-            Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x,  Input.mousePosition.y, dist));
+            Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x,  Input.mousePosition.y + dragOffset, dist));
             Debug.DrawRay(r.origin, r.direction * dist, Color.white);
             toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime*5);
 
@@ -141,6 +141,10 @@ public class DraggingObject : MissionObject
 
         if (!Input.touchSupported) return;
 
+        if(dragging)
+        DebugConsole.text01.text ="Dragging: "+ dragging+" "+transform.name;
+
+
         if (Input.touchCount != 1)
         {
             StopDragging();
@@ -169,7 +173,7 @@ public class DraggingObject : MissionObject
                         dist = Vector3.Distance(hit.transform.position, InteractionManager.sceneCam.transform.position);
                         v3 = new Vector3(1 - pos.x, 1 - pos.y, dist);
                         v3 = InteractionManager.sceneCam.ScreenToWorldPoint(v3);
-                        GetComponent<Renderer>().material = selectedMaterial;
+                        renderer.material = selectedMaterial;
                         dragging = true;
 
 
@@ -184,14 +188,16 @@ public class DraggingObject : MissionObject
         if (dragging && touch.phase == TouchPhase.Moved)
         {
 
-            GetComponent<Renderer>().material = selectedMaterial;
+            renderer.material = selectedMaterial;
             toDrag.localScale = Vector3.one * onDragScale;
             
 
 
-            Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y, dist));
+            Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x, Input.mousePosition.y+ dragOffset, dist));
             Debug.DrawRay(r.origin, r.direction * 10, Color.white);
             distFormDrag = Vector3.Distance(toDrag.position, r.GetPoint(dist));
+
+       
             toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime * 5);
         }
 
@@ -211,7 +217,7 @@ public class DraggingObject : MissionObject
     {
         if (dragging)
         {
-            Debug.Log("Stop Dragging");
+            DebugConsole.Log("Stop Dragging");
             renderer.material = defaultMaterial;
             toDrag.localScale = Vector3.one*originalScale;
             dragging = false;

@@ -35,7 +35,7 @@ public class InteractionManager : MonoBehaviour
 
     private void Update()
     {
-
+        DebugConsole.text02.text = "InteractionActive: " + interactionActive;
         if (!interactionActive) return;
 
 
