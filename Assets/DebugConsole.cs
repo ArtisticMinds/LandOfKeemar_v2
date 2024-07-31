@@ -26,6 +26,7 @@ public class DebugConsole : MonoBehaviour
 
     public static void Log(string message, bool clear = false)
     {
+        if (!dText) return;
 
     if(clear)
         dText.text = message + "\n";
@@ -34,12 +35,14 @@ public class DebugConsole : MonoBehaviour
     }
     public void Clear()
     {
+        if (!dText) return;
         gameObject.SetActive(active);
         dText.text = "";
     }
 
     public void Log(string message)
     {
+        if (!dText) return;
         gameObject.SetActive(active);
         dText.text = message;
     }
