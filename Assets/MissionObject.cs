@@ -80,6 +80,16 @@ public class MissionObject : MonoBehaviour
         onTouchEventDalyed.Invoke();
     }
 
+    public void DisableDelayed(GameObject obj)
+    {
+        StartCoroutine(DisableRoutine(obj));
+    }
+     IEnumerator DisableRoutine(GameObject obj)
+    {
+        yield return new WaitForSeconds(1.2F);
+        obj.SetActive(false);
+    }
+
     public void ToOtherActivation(MissionObject activator)
     {
         if (animatorTriggerToOtheCollisior.Equals(string.Empty)) return;

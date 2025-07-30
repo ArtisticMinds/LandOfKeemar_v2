@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class TappaScene : MonoBehaviour
 {
- 
+
 
     public Tappa tappa;
     public AudioClip bkMusic;
@@ -22,6 +22,7 @@ public class TappaScene : MonoBehaviour
     public Terrain terrain;
     [Space(10)]
     public Tappa.Missions[] missions;
+
 
     private float rotSpeed = 20;
 
@@ -40,6 +41,7 @@ public class TappaScene : MonoBehaviour
         tappa.ResetScriptableObject();
         LoadTappaState();
         InGameCanvas.instance.tappaCompleteMessage.SetActive(false);
+        InGameCanvas.instance.continueButton.SetActive(false);
         AudioManager.instance.Initialize();
 
         if (!terrain) terrain = FindObjectOfType<Terrain>();
@@ -85,6 +87,7 @@ public class TappaScene : MonoBehaviour
         DebugConsole.Log("TappaMapMarker.openTappa:" + TappaMapMarker.openTappa.tappaName);
 
         InGameCanvas.instance.allMissionCompleteMessage.SetActive(CheckTappaCompleted());
+        InGameCanvas.instance.continueButton.SetActive(InGameCanvas.instance.allMissionCompleteMessage.activeInHierarchy);
 
 
         //Primo avvio
@@ -144,11 +147,14 @@ public class TappaScene : MonoBehaviour
         }
     }
 
+
+    //Al completamento della tappa (tutte le missoini complete)
     System.Collections.IEnumerator ShowCompletedTappa()
     {
         yield return new WaitForSeconds(3);
         InGameCanvas.instance.tappaCompleteMessage.SetActive(true);
         InGameCanvas.instance.tappaCompleteTitle.text  = tappa.tappaName.Replace("\n", "").Replace("\r", "");
+        InGameCanvas.instance.continueButton.SetActive(true);
         //  PlayerPrefs.SetInt(tappa.tappaName, 1); //Salva Tappa completata (per ora non serve, basta CheckTappaCompleted())
     }
 
@@ -181,6 +187,9 @@ public class TappaScene : MonoBehaviour
         }
         return tappa.tappaComplete;
     }
+
+
+
 
     public void PlayAudioClip(AudioClip audioClip)
     {

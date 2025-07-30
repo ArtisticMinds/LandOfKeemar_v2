@@ -8,8 +8,10 @@ public class InteractionManager : MonoBehaviour
     public static Camera sceneCam;
     public static CameraController camController;
     public static bool interactionActive = true;
-
-
+    public CanvasGroup tutorialMessage;
+    public float timer;
+    //Dopo quanta inattività appare il messaggio
+    public float timeToShowMessage = 10;
     private void Awake()
     {
         if(!camController)
@@ -31,11 +33,26 @@ public class InteractionManager : MonoBehaviour
     {
         interactionActive = activate;
     }
-    
+
+    //Apre il fumetto "non sai cosa fare?"
+    public void OpenTutorialMessage()
+    {
+        timer = 0;
+        tutorialMessage.GetComponent<Animator>().SetTrigger("OpenFumetto");
+        timeToShowMessage += 20;
+    }
+
 
     private void Update()
     {
-        if(DebugConsole.text02)DebugConsole.text02.text = "InteractionActive: " + interactionActive;
+        if (tutorialMessage)
+        {
+            timer += Time.deltaTime;
+            if (timer > timeToShowMessage)
+                OpenTutorialMessage();
+        }
+
+        if (DebugConsole.text02)DebugConsole.text02.text = "InteractionActive: " + interactionActive;
         if (!interactionActive) return;
 
 
@@ -86,7 +103,8 @@ public class InteractionManager : MonoBehaviour
                 {
                     MissionObject obj = hit.collider.gameObject.GetComponent<MissionObject>();
                     obj.OnTouchActivation();
-              
+                    timer = 0;
+                    timeToShowMessage += 20;
                 }
             }
         }

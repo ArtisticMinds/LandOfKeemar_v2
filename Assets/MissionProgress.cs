@@ -59,7 +59,9 @@ public class MissionProgress : MonoBehaviour
                 mission.GetComponent<TappaProgress>().tappaDescriptionText.text = miss.missionDescriprion;
 
                 if (miss.missionComplete)
-            mission.GetComponent<TappaProgress>().SetComplete(); 
+            mission.GetComponent<TappaProgress>().SetComplete();
+
+                InteractionManager.instance.timeToShowMessage += 60;
         }
             
     }

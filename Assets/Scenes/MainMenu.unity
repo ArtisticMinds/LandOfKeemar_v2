@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v1.6.6
+  m_text: v1.7.1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
   m_sharedMaterial: {fileID: 976332667020021168, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
@@ -2859,11 +2859,7 @@ MonoBehaviour:
 
     AUDIO
 
-
-    AIUTO
-    CONCEPTS
-
-    AIUTO PROGRAMMAZIONE'
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
   m_sharedMaterial: {fileID: 976332667020021168, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
@@ -25335,7 +25331,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1195767879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28927,8 +28923,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gregorio Antonuzzo\n\nWilliam Giacinti\nWilliam Giacinti\nDiego Donati\n\nNicola
-    Del Giudice\nFrancesco Moschella\n\r"
+  m_text: "Gregorio Antonuzzo\n\nWilliam Giacinti\nWilliam Giacinti\nDiego Donati\n\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
   m_sharedMaterial: {fileID: 976332667020021168, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
@@ -34277,7 +34272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: MAPPA
+  m_text: GIOCA
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e58d7366f4d52574881d6f887628fc75, type: 2}
   m_sharedMaterial: {fileID: 976332667020021168, guid: e58d7366f4d52574881d6f887628fc75, type: 2}

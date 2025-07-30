@@ -149724,69 +149724,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 328456412, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 45.5
+    - target: {fileID: 1880756345, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
+      propertyPath: m_Name
+      value: Continua
       objectReference: {fileID: 0}
-    - target: {fileID: 328456413, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_fontSize
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 328456413, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_margin.w
-      value: 0.63338697
-      objectReference: {fileID: 0}
-    - target: {fileID: 328456413, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539404, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 713.7809
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539404, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 237.9482
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539404, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 2.8847
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539405, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539405, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_Color.b
-      value: 0.44980422
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539405, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_Color.g
-      value: 0.57575905
-      objectReference: {fileID: 0}
-    - target: {fileID: 1619539405, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_Color.r
-      value: 0.7169812
-      objectReference: {fileID: 0}
-    - target: {fileID: 1685532833, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
+    - target: {fileID: 1880756345, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1685532834, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
+    - target: {fileID: 6703312457549912086, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 46
+      objectReference: {fileID: 0}
+    - target: {fileID: 6703312457549912086, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -76.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774822121, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 75.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774822122, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_fontSize
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1774822122, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 15
+      value: 154
       objectReference: {fileID: 0}
     - target: {fileID: 7847319452531035530, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
       propertyPath: m_Pivot.x
@@ -149875,6 +149827,10 @@ PrefabInstance:
     - target: {fileID: 7847319452531035534, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
       propertyPath: m_Name
       value: InGameCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7847319452637476610, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7847319454271654970, guid: 36f7447d6e8e38f4994ed733cfe6036d, type: 3}
       propertyPath: emitParticles

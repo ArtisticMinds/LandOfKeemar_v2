@@ -11,6 +11,7 @@ public class InGameCanvas : MonoBehaviour
     public GameObject missionCompleteMessage;
     public TMP_Text missionCompleteTextMessage;
     public TMP_Text missionCompleteTitle;
+    public GameObject continueButton;
     [Space(10)]
     public GameObject tappaCompleteMessage;
     public TMP_Text tappaCompleteTextMessage;
