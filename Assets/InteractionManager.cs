@@ -15,7 +15,7 @@ public class InteractionManager : MonoBehaviour
     private void Awake()
     {
         if(!camController)
-        camController = FindObjectOfType<CameraController>();
+        camController = FindFirstObjectByType<CameraController>();
 
         if (!sceneCam)
         sceneCam = camController.GetComponent<Camera>();

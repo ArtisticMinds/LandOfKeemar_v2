@@ -26,8 +26,8 @@ public class InGameCanvas : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        tappaScene = FindObjectOfType<TappaScene>();
-        cameraController = FindObjectOfType<CameraController>();
+        tappaScene = FindFirstObjectByType<TappaScene>();
+        cameraController = FindFirstObjectByType<CameraController>();
     }
 
     public void ReturnToMenu()

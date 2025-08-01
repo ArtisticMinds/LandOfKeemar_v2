@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviour
 {
     public static bool mainMenuOpen;
     public GameObject areYouSyrePanel;
+    public GameObject QR_ScanPanel;
     public GameObject []panels;
     public static MainMenu instance;
     static GameObject mainPanel;
@@ -43,13 +44,13 @@ public class MainMenu : MonoBehaviour
         #endregion
         mainMenuOpen = true;
         mainPanel = transform.GetChild(0).gameObject;
-        eSystem = FindObjectOfType<EventSystem>();
+        eSystem = FindFirstObjectByType<EventSystem>();
     }
     private void Start()
     {
         // Disable screen dimming
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
+        MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
 
         foreach (GameObject pan in panels)
             pan.SetActive(false);

@@ -16,7 +16,7 @@ public class DecalEditor : Editor
 
     private void OnEnable()
     {
-        var decals = (Decal[])FindObjectsOfType(typeof(Decal));
+        Decal[] decals = FindObjectsByType<Decal>(FindObjectsSortMode.None);
         materials = new List<Material>();
         foreach (var decal in decals)
             if (decal.material != null && !materials.Contains(decal.material))
@@ -239,7 +239,8 @@ public class DecalEditor : Editor
 
     private static GameObject[] GetAffectedObjects(Bounds bounds, LayerMask affectedLayers)
     {
-        var renderers = FindObjectsOfType<MeshRenderer>();
+  
+        MeshRenderer[] renderers = FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None);
         var objects = new List<GameObject>();
         foreach (Renderer r in renderers)
         {

@@ -34,7 +34,7 @@ public class DraggableAnchor : MonoBehaviour
         draggable.GetComponent<Rigidbody>().isKinematic = true;
         draggable.GetComponent<Collider>().isTrigger = true;
         InteractionManager.camController.canRotate = true;
-        draggable.renderer.material = draggable.defaultMaterial;
+        draggable.rend.material = draggable.defaultMaterial;
         draggable.transform.localScale =Vector3.one* draggable.originalScale;
         draggable.onEndDragInPoint.Invoke();
         DebugConsole.Log("Connect Dragging");

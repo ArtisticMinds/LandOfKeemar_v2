@@ -126,7 +126,10 @@ public class MissionObject : MonoBehaviour
     }
 
     public void OnTriggerEnterEvent() { Debug.Log(transform.name + "CALL OnTriggerEnterEvent"); onTriggerEnterEvent.Invoke(); }
-    public void OnDefaultTriggerEnterEvent(Collider other) { Debug.Log(transform.name + "CALL OnTriggerEnterEvent: " + other); onDefaultTriggerEnterEvent.Invoke(); }
+    public void OnDefaultTriggerEnterEvent(Collider other) { 
+      // Debug.Log(transform.name + "CALL OnTriggerEnterEvent: " + other); 
+        onDefaultTriggerEnterEvent.Invoke(); }
+
     public void PlayClip(AudioClip audioClip)
     {
         if (AudioManager.instance)
@@ -171,7 +174,7 @@ public class MissionObject : MonoBehaviour
                 timer = 0;
             }
         }
-        Debug.Log(touchPause);
+       // Debug.Log(touchPause);
     }
 
 }

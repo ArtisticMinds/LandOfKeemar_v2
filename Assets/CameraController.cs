@@ -39,7 +39,6 @@ public class CameraController : MonoBehaviour
     private float targetFOV;
     private float cameraFOVDamp; //Damped value
     private float fingersDistance;
-    private float fovChangeVelocity = 0;
     private float distanceBetweenCameraAndTarget;
 
 

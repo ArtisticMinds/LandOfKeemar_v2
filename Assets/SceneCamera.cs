@@ -12,7 +12,6 @@ public class SceneCamera : MonoBehaviour
     float clickYPosition;
     float mouseY;
     float mouseX;
-    float zoom=1;
     float deltaDistance;
     float oldTouchDistance;
     float currentTouchDistance;

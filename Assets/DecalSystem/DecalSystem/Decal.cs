@@ -103,7 +103,7 @@ public class Decal : MonoBehaviour
 
     private static GameObject[] GetAffectedObjects(Bounds bounds, LayerMask affectedLayers)
     {
-        var renderers = FindObjectsOfType<MeshRenderer>();
+        MeshRenderer[] renderers = FindObjectsByType<MeshRenderer>(FindObjectsSortMode.None);
         var objects = new List<GameObject>();
         foreach (Renderer r in renderers)
         {

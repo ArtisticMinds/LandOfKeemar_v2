@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
         }
 
         if (audioListener == null)
-            audioListener = FindObjectOfType<AudioListener>();
+            audioListener = FindFirstObjectByType<AudioListener>();
         
 
             #endregion
@@ -64,7 +64,8 @@ public class AudioManager : MonoBehaviour
 
     public void Initialize()
     {
-        foreach (Button butt in FindObjectsOfType<Button>(true))
+        Button[] butts = FindObjectsByType<Button>(FindObjectsSortMode.None);
+        foreach (Button butt in butts)
         {
             EventTrigger triggerDown = GetComponent<EventTrigger>();
 

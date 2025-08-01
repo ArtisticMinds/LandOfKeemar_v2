@@ -15,7 +15,7 @@ public class DraggingObject : MissionObject
     public Material selectedMaterial;
     [HideInInspector]
     public Material defaultMaterial;
-    public Renderer renderer;
+    public Renderer rend;
     public float onDragScale=1.3F;
     [HideInInspector]
     public float originalScale;
@@ -38,15 +38,15 @@ public class DraggingObject : MissionObject
 
     private void Awake()
     {
-        if (!renderer)
-            renderer = GetComponent<Renderer>();
+        if (!rend)
+            rend = GetComponent<Renderer>();
 
         originalScale = transform.localScale.x;
     }
     void Start()
     {
         originalY = transform.position.y;
-        defaultMaterial = renderer.material;
+        defaultMaterial = rend.material;
         startPosition = transform.position;
     }
 
@@ -99,7 +99,7 @@ public class DraggingObject : MissionObject
         if (dragging)
         {
 
-            renderer.material = selectedMaterial;
+            rend.material = selectedMaterial;
             toDrag.localScale = Vector3.one * onDragScale;
             // Debug.Log("Dragging" + toDrag.position.x);
 
@@ -173,7 +173,7 @@ public class DraggingObject : MissionObject
                         dist = Vector3.Distance(hit.transform.position, InteractionManager.sceneCam.transform.position);
                         v3 = new Vector3(1 - pos.x, 1 - pos.y, dist);
                         v3 = InteractionManager.sceneCam.ScreenToWorldPoint(v3);
-                        renderer.material = selectedMaterial;
+                        rend.material = selectedMaterial;
                         dragging = true;
 
 
@@ -188,7 +188,7 @@ public class DraggingObject : MissionObject
         if (dragging && touch.phase == TouchPhase.Moved)
         {
 
-            renderer.material = selectedMaterial;
+            rend.material = selectedMaterial;
             toDrag.localScale = Vector3.one * onDragScale;
             
 
@@ -218,7 +218,7 @@ public class DraggingObject : MissionObject
         if (dragging)
         {
             DebugConsole.Log("Stop Dragging");
-            renderer.material = defaultMaterial;
+            rend.material = defaultMaterial;
             toDrag.localScale = Vector3.one*originalScale;
             dragging = false;
             onEndDrag.Invoke();

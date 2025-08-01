@@ -30,12 +30,13 @@ public class TappaScene : MonoBehaviour
     {
         if (MainMenu.eSystem)
         {
-            foreach (EventSystem es in FindObjectsOfType<EventSystem>())
+            EventSystem[] evSystems = FindObjectsByType<EventSystem>(FindObjectsSortMode.None);
+            foreach (EventSystem es in evSystems)
                 if(es!= MainMenu.eSystem)
                 Destroy(es.gameObject);
         }
 
-        if (!InGameCanvas.instance) InGameCanvas.instance = FindObjectOfType<InGameCanvas>();
+        if (!InGameCanvas.instance) InGameCanvas.instance = FindFirstObjectByType<InGameCanvas>();
 
         TappaMapMarker.openTappa = tappa;
         tappa.ResetScriptableObject();
@@ -44,7 +45,7 @@ public class TappaScene : MonoBehaviour
         InGameCanvas.instance.continueButton.SetActive(false);
         AudioManager.instance.Initialize();
 
-        if (!terrain) terrain = FindObjectOfType<Terrain>();
+        if (!terrain) terrain = FindFirstObjectByType<Terrain>();
 
 
     }
@@ -140,7 +141,7 @@ public class TappaScene : MonoBehaviour
         InGameCanvas.instance.missionCompleteTextMessage.text = mission.missionCompleteMessage;
         InGameCanvas.instance.missionCompleteTitle.text = mission.missionName;
         PlayerPrefs.SetInt(mission.missionName, 1); //Salva missione completata
-        FindObjectOfType<MissionProgress>().CloseMissionProgress();
+        FindFirstObjectByType<MissionProgress>().CloseMissionProgress();
         if (CheckTappaCompleted())
         {
             StartCoroutine(ShowCompletedTappa());
