@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
     public static bool mainMenuOpen;
     public GameObject areYouSyrePanel;
     public GameObject QR_ScanPanel;
+    public GameObject mapPanel;
     public GameObject []panels;
     public static MainMenu instance;
     static GameObject mainPanel;

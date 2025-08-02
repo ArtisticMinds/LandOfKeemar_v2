@@ -117,4 +117,6 @@ public void SetTappa()
     {
         Application.OpenURL(tappa.googleMapLink);
     }
+
+
 }

@@ -24,10 +24,11 @@ public class QR_ScanCode : MonoBehaviour {
     public AudioClip RegOk;
     public Button Scannerizza;
     public Button Stop;
-
     public RectTransform foregr;
+    [Space(10)]
     public string[] CorrectCodes;
-
+    public TappaMapMarker[] tappaMaker;
+    public static string lastBarCodeValue;
 
     // Disable Screen Rotation on that screen
     void Awake()
@@ -50,7 +51,7 @@ public class QR_ScanCode : MonoBehaviour {
 	void Start () {
 
 
-
+        lastBarCodeValue = "";
 
        // StartCoroutine(CheckConnection());
 
@@ -230,6 +231,35 @@ public class QR_ScanCode : MonoBehaviour {
     public void OpenInfos(string barCodeValue)
     {
         MainMenu.instance.QR_ScanPanel.GetComponent<Animator>().SetTrigger("OpenLocationInfos");
+
+        lastBarCodeValue = barCodeValue;
+    }
+
+
+    public void OpenMapFromQR() 
+    {
+
+
+        if (lastBarCodeValue.Equals("ROCCA VARANO"))
+            tappaMaker[0].SetTappa();
+        if (lastBarCodeValue.Equals("MAGALOTTI"))
+            tappaMaker[1].SetTappa();
+        if (lastBarCodeValue.Equals("BORGIA"))
+            tappaMaker[0].SetTappa();
+
+        Stop.gameObject.SetActive(false);
+        Scannerizza.interactable = true;
+        TextHeader.text = "PREMI \"START\"";
+
+
+        MainMenu.instance.mapPanel.gameObject.SetActive(true);
+        StartCoroutine(OpenMapInfo());
+    }
+
+    IEnumerator OpenMapInfo()
+    {
+        yield return new WaitForSeconds(0.5F);
+        MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
     }
 
     public void CloseQRPanel()

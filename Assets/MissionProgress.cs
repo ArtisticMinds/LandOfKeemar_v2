@@ -61,6 +61,7 @@ public class MissionProgress : MonoBehaviour
                 if (miss.missionComplete)
             mission.GetComponent<TappaProgress>().SetComplete();
 
+                if(InteractionManager.instance)
                 InteractionManager.instance.timeToShowMessage += 60;
         }
             
