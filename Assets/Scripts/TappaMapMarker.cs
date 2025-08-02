@@ -77,6 +77,11 @@ public class TappaMapMarker : MonoBehaviour
 
 public void SetTappa()
     {
+        if (!MapManager.instance)
+            MapManager.instance = FindFirstObjectByType<MapManager>();
+
+
+        print(MapManager.instance.name);
 
         MapManager.instance.trueStoryButton.onClick.RemoveAllListeners();
         MapManager.instance.keemarStoryButton.onClick.RemoveAllListeners();

@@ -34,6 +34,7 @@ public class MapManager : MonoBehaviour
         instance = this;
     }
 
+
     void Start()
     {
         CloseTappaInfos();

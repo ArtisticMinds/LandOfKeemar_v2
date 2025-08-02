@@ -238,7 +238,21 @@ public class QR_ScanCode : MonoBehaviour {
 
     public void OpenMapFromQR() 
     {
+        MainMenu.instance.mapPanel.gameObject.SetActive(true);
 
+
+
+        Stop.gameObject.SetActive(false);
+        Scannerizza.interactable = true;
+        TextHeader.text = "PREMI \"START\"";
+
+        
+        StartCoroutine(OpenMapInfo());
+    }
+
+    IEnumerator OpenMapInfo()
+    {
+        yield return new WaitForSeconds(0.1F);
 
         if (lastBarCodeValue.Equals("ROCCA VARANO"))
             tappaMaker[0].SetTappa();
@@ -247,17 +261,6 @@ public class QR_ScanCode : MonoBehaviour {
         if (lastBarCodeValue.Equals("BORGIA"))
             tappaMaker[0].SetTappa();
 
-        Stop.gameObject.SetActive(false);
-        Scannerizza.interactable = true;
-        TextHeader.text = "PREMI \"START\"";
-
-
-        MainMenu.instance.mapPanel.gameObject.SetActive(true);
-        StartCoroutine(OpenMapInfo());
-    }
-
-    IEnumerator OpenMapInfo()
-    {
         yield return new WaitForSeconds(0.5F);
         MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
     }
