@@ -37,6 +37,6 @@ public class DraggableAnchor : MonoBehaviour
         draggable.rend.material = draggable.defaultMaterial;
         draggable.transform.localScale =Vector3.one* draggable.originalScale;
         draggable.onEndDragInPoint.Invoke();
-        DebugConsole.Log("Connect Dragging");
+    //    DebugConsole.Log("Connect Dragging");
     }
 }

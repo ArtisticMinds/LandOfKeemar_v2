@@ -47,12 +47,14 @@ public class InteractionManager : MonoBehaviour
     {
         if (tutorialMessage)
         {
+            if(!InGameCanvas.instance.tutorialPanel.activeInHierarchy) //Tutorial iniziale aperto
             timer += Time.deltaTime;
+
             if (timer > timeToShowMessage)
                 OpenTutorialMessage();
         }
 
-        if (DebugConsole.text02)DebugConsole.text02.text = "InteractionActive: " + interactionActive;
+    //    if (DebugConsole.text02)DebugConsole.text02.text = "InteractionActive: " + interactionActive;
         if (!interactionActive) return;
 
 

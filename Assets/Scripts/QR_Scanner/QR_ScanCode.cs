@@ -240,8 +240,6 @@ public class QR_ScanCode : MonoBehaviour {
     {
         MainMenu.instance.mapPanel.gameObject.SetActive(true);
 
-
-
         Stop.gameObject.SetActive(false);
         Scannerizza.interactable = true;
         TextHeader.text = "PREMI \"START\"";
@@ -252,6 +250,7 @@ public class QR_ScanCode : MonoBehaviour {
 
     IEnumerator OpenMapInfo()
     {
+        MainMenu.instance.QR_ScanPanel.GetComponent<Animator>().enabled = false;
         yield return new WaitForSeconds(0.1F);
 
         if (lastBarCodeValue.Equals("ROCCA VARANO"))
@@ -262,12 +261,16 @@ public class QR_ScanCode : MonoBehaviour {
             tappaMaker[0].SetTappa();
 
         yield return new WaitForSeconds(0.5F);
-        MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
+        CloseQRPanel();
+        MainMenu.instance.QR_ScanPanel.GetComponent<Animator>().enabled = true;
     }
 
     public void CloseQRPanel()
     {
         MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
+        lastBarCodeValue = "";
+        // Stop Scanning
+        BarcodeScanner.Stop();
     }
 
     //public static bool connectionON;

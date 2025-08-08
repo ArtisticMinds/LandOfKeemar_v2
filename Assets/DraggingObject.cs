@@ -77,7 +77,7 @@ public class DraggingObject : MissionObject
                 {
                     if (hit.collider.transform.Equals(transform) && hit.collider.tag.Equals("DraggableObject"))
                     {
-                        DebugConsole.Log("Start Dragging");
+                      //  DebugConsole.Log("Start Dragging");
                         InteractionManager.camController.canRotate = false;
 
                         toDrag = hit.transform;
@@ -141,8 +141,8 @@ public class DraggingObject : MissionObject
 
         if (!Input.touchSupported) return;
 
-        if(dragging)
-        DebugConsole.text01.text ="Dragging: "+ dragging+" "+transform.name;
+     //-   if(dragging)
+      //  DebugConsole.text01.text ="Dragging: "+ dragging+" "+transform.name;
 
 
         if (Input.touchCount != 1)
@@ -166,7 +166,7 @@ public class DraggingObject : MissionObject
                 {
                     if (hit.collider.transform.Equals(transform) && hit.collider.tag.Equals("DraggableObject") )
                     {
-                        DebugConsole.Log("Start Dragging");
+                //        DebugConsole.Log("Start Dragging");
                         InteractionManager.camController.canRotate = false;
 
                         toDrag = hit.transform;
@@ -217,7 +217,7 @@ public class DraggingObject : MissionObject
     {
         if (dragging)
         {
-            DebugConsole.Log("Stop Dragging");
+         //   DebugConsole.Log("Stop Dragging");
             rend.material = defaultMaterial;
             toDrag.localScale = Vector3.one*originalScale;
             dragging = false;

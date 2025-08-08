@@ -71,7 +71,7 @@ public class TappaScene : MonoBehaviour
 
     void Start()
     {
-        DebugConsole.Log("Start");
+    //    DebugConsole.Log("Start");
         if (AudioManager.instance)
         {
             AudioManager.instance.PlayMusicClip(bkMusic);
@@ -80,12 +80,12 @@ public class TappaScene : MonoBehaviour
         if (TappaMapMarker.openTappa)
         {
             foreach (Tappa.Missions mis in TappaMapMarker.openTappa.missions)
-                DebugConsole.Log(mis.missionName + " Complete:" + mis.missionComplete);
+                //DebugConsole.Log(mis.missionName + " Complete:" + mis.missionComplete);
 
             missions = TappaMapMarker.openTappa.missions;
         }
 
-        DebugConsole.Log("TappaMapMarker.openTappa:" + TappaMapMarker.openTappa.tappaName);
+        //DebugConsole.Log("TappaMapMarker.openTappa:" + TappaMapMarker.openTappa.tappaName);
 
         InGameCanvas.instance.allMissionCompleteMessage.SetActive(CheckTappaCompleted());
         InGameCanvas.instance.continueButton.SetActive(InGameCanvas.instance.allMissionCompleteMessage.activeInHierarchy);
@@ -128,13 +128,13 @@ public class TappaScene : MonoBehaviour
 
     public void MissioneCompletata(int missionID)
     {
-        DebugConsole.Log("MissioneCompletata");
+      //  DebugConsole.Log("MissioneCompletata");
         StartCoroutine(_MissioneCompletata(missionID));
     }
     System.Collections.IEnumerator _MissioneCompletata(int missionID)
     {
         yield return new WaitForSeconds(1);
-        DebugConsole.Log("InGameCanvas.instance:"+ InGameCanvas.instance.name);
+        //DebugConsole.Log("InGameCanvas.instance:"+ InGameCanvas.instance.name);
         Tappa.Missions mission = missions[missionID];
         mission.missionComplete = true;
         InGameCanvas.instance.missionCompleteMessage.SetActive(true);

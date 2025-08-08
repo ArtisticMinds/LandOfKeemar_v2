@@ -109,7 +109,7 @@ public class RotableObject : MissionObject
                 {
                     if (hit.collider.transform.Equals(transform) && hit.collider.tag.Equals("InteractiveObject"))
                     {
-                        DebugConsole.Log("Start Rotation");
+            //            DebugConsole.Log("Start Rotation");
                         InteractionManager.camController.canRotate = false;
                         Yrotation = InteractionManager.sceneCam.transform.rotation.eulerAngles.y - 180;
                         onStarRotation.Invoke();
