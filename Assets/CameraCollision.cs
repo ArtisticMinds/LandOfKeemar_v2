@@ -60,6 +60,7 @@ public class CameraCollision : MonoBehaviour
               collision = false;
         }
 
+        Debug.Log("Collision: " + collision);
 
     }
 }

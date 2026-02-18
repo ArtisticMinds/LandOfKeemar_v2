@@ -15,23 +15,30 @@ public class InteractionManager : MonoBehaviour
     private void Awake()
     {
         if(!camController)
-        camController = FindFirstObjectByType<CameraController>();
+            camController = FindFirstObjectByType<CameraController>();
 
-        if (!sceneCam)
-        sceneCam = camController.GetComponent<Camera>();
+        if (!sceneCam && camController)
+            sceneCam = camController.GetComponent<Camera>();
 
         if (instance == null)
         {
             instance = this;
         }
-
-
     }
 
     //Chiamata dai pulsanti
     public void SceneObjectsInteractions(bool activate)
     {
         interactionActive = activate;
+
+        // Assicura che la camera non ruoti quando disabilitiamo le interazioni UI (es. translate)
+        if (camController == null)
+            camController = FindFirstObjectByType<CameraController>();
+
+        if (camController != null)
+            camController.canRotate = activate;
+
+        Debug.Log("SceneObjectsInteractions - canRotate:" + activate);
     }
 
     //Apre il fumetto "non sai cosa fare?"
@@ -48,7 +55,7 @@ public class InteractionManager : MonoBehaviour
         if (tutorialMessage)
         {
             if(!InGameCanvas.instance.tutorialPanel.activeInHierarchy) //Tutorial iniziale aperto
-            timer += Time.deltaTime;
+                timer += Time.deltaTime;
 
             if (timer > timeToShowMessage)
                 OpenTutorialMessage();
