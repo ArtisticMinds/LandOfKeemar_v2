@@ -282,8 +282,8 @@ public class CameraController : MonoBehaviour
             moveVertical += v_scroll * Time.deltaTime * 20;
         }
 
-        moveOrizontal = Mathf.Clamp(moveOrizontal, -.15F, .15F);
-        moveVertical = Mathf.Clamp(moveVertical, -.15F, .15F);
+        moveOrizontal = Mathf.Clamp(moveOrizontal, -.1F, .1F);
+        moveVertical = Mathf.Clamp(moveVertical, -.1F, .1F);
     }
 
     private void StopTranslation()

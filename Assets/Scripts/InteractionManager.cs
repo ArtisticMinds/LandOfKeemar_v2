@@ -8,6 +8,7 @@ public class InteractionManager : MonoBehaviour
     public static Camera sceneCam;
     public static CameraController camController;
     public static bool interactionActive = true;
+    public CanvasGroup zoomMessage;
     public CanvasGroup tutorialMessage;
     public float timer;
     //Dopo quanta inattività appare il messaggio
@@ -23,6 +24,20 @@ public class InteractionManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+        }
+        zoomMessage.gameObject.SetActive(false);
+
+
+        
+    }
+
+    private void Start()
+    {
+        Debug.Log("SCENE:" + InGameCanvas.tappaScene.name);
+
+        if (InGameCanvas.tappaScene.name.Equals("RoccaVarano"))
+        {
+            Invoke("ShowZoomMessage", 10);
         }
     }
 
@@ -117,5 +132,10 @@ public class InteractionManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    void ShowZoomMessage()
+    {
+        zoomMessage.gameObject.SetActive(true);
     }
 }
