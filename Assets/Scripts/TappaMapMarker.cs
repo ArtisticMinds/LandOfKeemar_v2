@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +8,16 @@ public class TappaMapMarker : MonoBehaviour
     public Tappa tappa;
     public static Tappa openTappa;
     public Image completeMarker;
+    private Button butt;
+    public AudioClip onClickClip;
 
     private void Awake()
     {
+        butt=GetComponent<Button>();
         tappa.FindReferences();
         tappa.ResetScriptableObject();
         LoadTappaMissionsProgress();
+        butt.onClick.AddListener(OnButtonClick);
     }
 
     void Start()
@@ -29,7 +34,11 @@ public class TappaMapMarker : MonoBehaviour
         GetTappaState();
     }
 
-
+    public void OnButtonClick()
+    {
+        if (onClickClip)
+            AudioManager.instance.PlayAudioClip(onClickClip);
+    }
 
 
     void LoadTappaMissionsProgress() //Carica lo stato delle missioni di questa tappa
@@ -89,7 +98,7 @@ public void SetTappa()
 
         Debug.Log("SetTappa: " + tappa.tappaName);
         MapManager.instance.TMP_title.text = tappa.tappaName;
-        MapManager.instance.OpenTappaInfos();
+      //  MapManager.instance.OpenTappaInfos(); //V3. Tolto (ora apre il video)
         MapManager.instance.trueStoryButton.onClick.AddListener(() => { tappa.InfoTappa_Real.SetActive(true); });
         MapManager.instance.keemarStoryButton.onClick.AddListener(() => { tappa.InfoTappa_Keemar.SetActive(true); });
 
@@ -111,17 +120,16 @@ public void SetTappa()
         }
 
         openTappa = tappa;
+
+        //Ver.3
+        MainMenu.instance.OpenVideoPanel();
     }
 
-    public void GotVideoURL()
-    {
-        Application.OpenURL(tappa.videoLink);
-    }
 
-    public void GotMapURL()
-    {
-        Application.OpenURL(tappa.googleMapLink);
-    }
+
+
+
+
 
 
 }

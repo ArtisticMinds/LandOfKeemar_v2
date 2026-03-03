@@ -3,6 +3,7 @@ using UnityEngine.Audio;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
 
 
 
@@ -113,8 +114,53 @@ public class AudioManager : MonoBehaviour
         musicValue =value ;
     }
 
+
+
+    #region FadeIN/OUT Musica durante la lettura del testo
+    public void FadeOutMusic () //All'apertura del pannello di lettura del testo, faccio partire la Coroutine per diminuire il volume della musica
+    {
+        StartCoroutine(FadeOutMusicCoroutine());
+    }
+
+    IEnumerator FadeOutMusicCoroutine()
+    {
+        float startVolume = musicSource.volume;
+        float endVolume = startVolume * 0.3F;
+        while (musicSource.volume > endVolume)
+        {
+            musicSource.volume -= startVolume * Time.deltaTime * 0.4F;
+            yield return null;
+        }
+
+   
+    }
+
+    public void FadeInMusic() //alla chiusura del pannello di lettura del testo, faccio partire la Coroutine per aumentare il volume della musica
+    {
+        StartCoroutine(FadeInMusicCoroutine());
+    }
+    IEnumerator FadeInMusicCoroutine()
+    {
+        float startVolume = musicSource.volume;
+        while (musicSource.volume < musicValue)
+        {
+            musicSource.volume += startVolume * Time.deltaTime * 0.4F;
+            yield return null;
+        }
+        
+    }
+
+    #endregion
+
+
+
+
+
+
+    //Metodo per far partire un suono, dato un AudioClip
     public void PlayAudioClip(AudioClip audioClip)
     {
+        soundsSource.Stop();
         soundsSource.PlayOneShot(audioClip);
     }
 
@@ -130,4 +176,25 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
     }
 
+
+
+
+    //Metodo per stoppare audio con fade (utilie per il parlato delle descrizioni)
+    public void StopAudioClipWithFade()
+    {
+        StartCoroutine(FadeOutAudioClipCoroutine());
+        
+    }
+    IEnumerator FadeOutAudioClipCoroutine()
+    {
+        float startVolume = soundsSource.volume;
+        while (soundsSource.volume > 0.2F)
+        {
+            soundsSource.volume -= startVolume * Time.deltaTime * 0.4F;
+            yield return null;
+        }
+
+        soundsSource.Stop();
+        soundsSource.volume = startVolume;
+    }
 }

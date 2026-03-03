@@ -37,27 +37,27 @@ public class MapManager : MonoBehaviour
 
     void Start()
     {
-        CloseTappaInfos();
+      //  CloseTappaInfos();
         zState = 0;
     }
 
-    public void OpenTappaInfos()
-    {
-         anim.SetBool("OpenTappaInfos", true);
+    //public void OpenTappaInfos()
+    //{
+    //     anim.SetBool("OpenTappaInfos", true);
 
-         zoomInButton.interactable = zoomOutButton.interactable = false;
-         mapIndex.SetActive(false);
-         tappaTutorial.SetActive(true);
-    }
+    //     zoomInButton.interactable = zoomOutButton.interactable = false;
+    //     mapIndex.SetActive(false);
+    //     tappaTutorial.SetActive(true);
+    //}
 
-    public void CloseTappaInfos()
-    {
-        anim.SetBool("OpenTappaInfos", false);
-        zoomInButton.interactable = zoomOutButton.interactable = true;
-        mapIndex.SetActive(true);
-        tappaTutorial.SetActive(false);
-        TappaMapMarker.openTappa = null;
-    }
+    //public void CloseTappaInfos()
+    //{
+    //    anim.SetBool("OpenTappaInfos", false);
+    //    zoomInButton.interactable = zoomOutButton.interactable = true;
+    //    mapIndex.SetActive(true);
+    //    tappaTutorial.SetActive(false);
+    //    TappaMapMarker.openTappa = null;
+    //}
 
     #region Zoom
     public void ZoomIn()

@@ -25,6 +25,7 @@ public class InteractionManager : MonoBehaviour
         {
             instance = this;
         }
+
         zoomMessage.gameObject.SetActive(false);
 
 
@@ -33,7 +34,7 @@ public class InteractionManager : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("SCENE:" + InGameCanvas.tappaScene.name);
+      //  Debug.Log("SCENE:" + InGameCanvas.tappaScene.name);
 
         if (InGameCanvas.tappaScene.name.Equals("RoccaVarano"))
         {

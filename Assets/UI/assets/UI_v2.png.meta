@@ -346,7 +346,7 @@ TextureImporter:
         width: 219
         height: 50
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -355,6 +355,94 @@ TextureImporter:
       bones: []
       spriteID: 7630a1f481ecb31419898179857d6308
       internalID: 10290694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_v2_9
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 623
+        width: 298
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f3fb9beeae8d0745acf448d99cd925c
+      internalID: -1334959802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_v2_10
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 675
+        width: 146
+        height: 149
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2dba3981db7e4143940675f08290b85
+      internalID: -412762158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_v2_11
+      rect:
+        serializedVersion: 2
+        x: 1339
+        y: 0
+        width: 709
+        height: 678
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e83260610640b54ab5ccd0812611d78
+      internalID: 16462154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UI_v2_12
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 251
+        width: 346
+        height: 331
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7082aa7b41f31f428400138b3d14ca9
+      internalID: -1988785879
       vertices: []
       indices: 
       edges: []
@@ -375,6 +463,9 @@ TextureImporter:
     nameFileIdTable:
       UI_v2_0: 1035492045
       UI_v2_1: -2050027562
+      UI_v2_10: -412762158
+      UI_v2_11: 16462154
+      UI_v2_12: -1988785879
       UI_v2_2: 528748494
       UI_v2_3: 1196749918
       UI_v2_4: 275770148
@@ -382,6 +473,7 @@ TextureImporter:
       UI_v2_6: 1849174112
       UI_v2_7: -694931149
       UI_v2_8: 10290694
+      UI_v2_9: -1334959802
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

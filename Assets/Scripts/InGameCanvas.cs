@@ -36,7 +36,7 @@ public class InGameCanvas : MonoBehaviour
         AudioManager.instance.PlayMenuMusic();
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
         SceneManager.SetActiveScene(SceneManager.GetSceneByName("MainMenu"));
-        MapManager.instance.CloseTappaInfos();
+     //   MapManager.instance.CloseTappaInfos();
         MainMenu.instance.SetObjectPanel();
 
     }

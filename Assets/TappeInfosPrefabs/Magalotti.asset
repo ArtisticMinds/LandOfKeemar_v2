@@ -15,25 +15,32 @@ MonoBehaviour:
   tappaName: "CASTELLO \nMAGALOTTI"
   InfoTappa_Real_Name: Magalotti_Real
   InfoTappa_Keemar_Name: Magalotti_Keemar
+  nomeReale: CASTELLO MAGALOTTI
+  nomeNeiRomanzi: 
+  storiaReale: 
+  storiaRomanzi: 
+  descrizioneAudioReal: {fileID: 0}
+  descrizioneAudioRomanzi: {fileID: 0}
+  slideSpriteCollection: {fileID: 11400000, guid: 43c7f11a5ff58fa40bee0f6c455a3a43, type: 2}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}
   googleMapLink: https://goo.gl/maps/uDSWQJoHYQo8CRdU6
   videoLink: 
-  tappaComplete: 1
+  tappaComplete: 0
   tappaScene: Magalotti
   missions:
   - missionName: "Gi\xF9 la Scala"
     missionDescriprion: Qualcuno vuole entrare...
     missionCompleteMessage: Hai tolto la scala all'orco!
-    missionComplete: 1
+    missionComplete: 0
   - missionName: Breccia nelle Mura
     missionDescriprion: Aiuta gli orchi a fare breccia...
     missionCompleteMessage: Hai abbattuto un muro!
-    missionComplete: 1
+    missionComplete: 0
   - missionName: Alle barricate!
     missionDescriprion: Costrisci delle barricate.
     missionCompleteMessage: Hai costruito delle barricate!
-    missionComplete: 1
+    missionComplete: 0
   - missionName: In disparte
     missionDescriprion: 'Trova il viandante.
 
@@ -44,4 +51,4 @@ MonoBehaviour:
   - missionName: "L\u2019ultima Ballista"
     missionDescriprion: Difendi le mura dalla torre d'assedio.
     missionCompleteMessage: Hai distrutto la torre d'assedio!
-    missionComplete: 1
+    missionComplete: 0

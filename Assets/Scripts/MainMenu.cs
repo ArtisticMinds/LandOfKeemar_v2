@@ -3,6 +3,12 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections;
+using UnityEngine.Video;
+using UnityEngine.UI;
+
+
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -13,6 +19,19 @@ public class MainMenu : MonoBehaviour
     public GameObject areYouSyrePanel;
     public GameObject QR_ScanPanel;
     public GameObject mapPanel;
+    [Header("Parametri video")]
+    public GameObject videoPanel;
+    public VideoPlayer videoPlayer;
+    public GameObject backButtonFromVideo;
+    public GameObject fadeVideo;
+    public GameObject bookSensitiveAreas;
+    public Button bookLeft;
+    public Button bookRight;
+    public GameObject bookNamesContainer;
+    public TMP_Text nomeReale;
+    public TMP_Text nomeStoria;
+    public SchedaTappa schedaTappa;
+    [Space(5)] 
     public GameObject []panels;
     public static MainMenu instance;
     static GameObject mainPanel;
@@ -46,22 +65,35 @@ public class MainMenu : MonoBehaviour
         mainMenuOpen = true;
         mainPanel = transform.GetChild(0).gameObject;
         eSystem = FindFirstObjectByType<EventSystem>();
+        nomeReale.text = "";
+        nomeStoria.text = "";
+
+        // prepare asynchronously
+        videoPlayer.Prepare();
+
     }
     private void Start()
     {
         // Disable screen dimming
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
+        QR_ScanPanel.gameObject.SetActive(false);
+        fadeVideo.SetActive(false);
+        bookNamesContainer.SetActive(false);
 
-        foreach (GameObject pan in panels)
-            pan.SetActive(false);
+        CloseAllPanels();
+
         //Add listener for when the state of the Toggle changes, to take action
         qualityDropDown.onValueChanged.AddListener(delegate {
             QualityValueChanged(qualityDropDown);
         });
 
+        bookLeft.GetComponent<Button>().onClick.AddListener(() => { ClickOnLeftBook(); });
+        bookRight.GetComponent<Button>().onClick.AddListener(() => { ClickOnRighttBook(); });
         LoadOptionsState();
         LoadOggettiRaccolti();
+
+
+        
 
         AudioManager.instance.PlayMenuMusic();
     }
@@ -83,7 +115,90 @@ public class MainMenu : MonoBehaviour
     }
 #endif
 
+    public void CloseAllPanels()
+    {
+        foreach (GameObject pan in panels)
+            pan.SetActive(false);
+    }
 
+    public void OpenVideoPanel()
+    {    
+        // prepare asynchronously
+        if (!videoPlayer.isPrepared)
+            videoPlayer.Prepare();
+
+        schedaTappa.gameObject.SetActive(false);
+        bookSensitiveAreas.SetActive(false);
+        videoPlayer.gameObject.SetActive(false);
+        videoPanel.gameObject.SetActive(true);
+        fadeVideo.SetActive(true);
+        videoPlayer.GetComponentInChildren<RawImage>().color = Color.black * 0;
+        backButtonFromVideo.SetActive(false);
+        StartCoroutine(OpenVideoRoutine());
+        
+    }
+
+  
+
+    IEnumerator OpenVideoRoutine()
+    {
+        Debug.Log("Start OpenVideoRoutine");
+        videoPlayer.frame = 1;
+        yield return new WaitForSeconds(1);
+        videoPlayer.gameObject.SetActive(true);
+        nomeReale.text = TappaMapMarker.openTappa.nomeReale;
+        nomeStoria.text = TappaMapMarker.openTappa.nomeNeiRomanzi;
+        yield return new WaitForSeconds(1);
+        videoPlayer.GetComponentInChildren<RawImage>().color = Color.white;
+
+
+        fadeVideo.GetComponent<Animator>().SetTrigger("FadeOut");
+        VideoDebug();
+        yield return new WaitForSeconds(2);
+        if (!videoPlayer.isPlaying) videoPlayer.Play();
+        Debug.Log("Start WaitForSeconds(2)");
+        yield return new WaitForSeconds(2);
+        if (!videoPlayer.isPlaying) videoPlayer.Play();
+        bookNamesContainer.SetActive(true);
+        bookSensitiveAreas.SetActive(true);
+        Debug.Log("End OpenVideoRoutine");
+        yield return new WaitForSeconds(2);
+        backButtonFromVideo.SetActive(true);
+        fadeVideo.SetActive(false);
+    }
+
+    public void CloseBookPanel()
+    {
+        bookNamesContainer.SetActive(false);
+        videoPlayer.frame = 1;
+        videoPlayer.GetComponentInChildren<RawImage>().color = Color.black * 0;
+        videoPanel.gameObject.SetActive(false);
+        Debug.Log("CloseBookPanel");
+
+
+    }
+    void VideoDebug()
+    {
+        videoPlayer.errorReceived += (s, msg) => Debug.LogError("[VP] error: " + msg);
+        videoPlayer.prepareCompleted += (s) => Debug.Log("[VP] prepared");
+        videoPlayer.started += (s) => Debug.Log("[VP] started");
+        videoPlayer.frameReady += (s, frame) => Debug.Log("[VP] frameReady " + frame);
+    }
+
+    public void ClickOnLeftBook()
+    {
+        schedaTappa.gameObject.SetActive(true);
+        schedaTappa.SetReal();
+        bookSensitiveAreas.SetActive(false);
+        Debug.Log("Left Book Clicked (real)");
+    }
+    public void ClickOnRighttBook()
+    {
+        schedaTappa.gameObject.SetActive(true);
+        schedaTappa.SetRomanzi();
+        bookSensitiveAreas.SetActive(false);
+        Debug.Log("Right Book Clicked (books)");
+    }
 
 
     public void SaveOptionsState()

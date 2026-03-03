@@ -235,7 +235,7 @@ public class QR_ScanCode : MonoBehaviour {
         lastBarCodeValue = barCodeValue;
     }
 
-
+    
     public void OpenMapFromQR() 
     {
         MainMenu.instance.mapPanel.gameObject.SetActive(true);
@@ -247,6 +247,8 @@ public class QR_ScanCode : MonoBehaviour {
         
         StartCoroutine(OpenMapInfo());
     }
+
+
 
     IEnumerator OpenMapInfo()
     {
