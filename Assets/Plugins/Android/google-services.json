@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "60851602884",
+    "project_id": "land-of-keemar-1a05a",
+    "storage_bucket": "land-of-keemar-1a05a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60851602884:android:eeecc11b3439a45c1e1091",
+        "android_client_info": {
+          "package_name": "com.ArtisticMinds.LandOfKeemar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLY9NdeOIBLUXxVwHH8LfE5kZPk001DlI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

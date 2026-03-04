@@ -68,9 +68,6 @@ public class MainMenu : MonoBehaviour
         nomeReale.text = "";
         nomeStoria.text = "";
 
-        // prepare asynchronously
-        videoPlayer.Prepare();
-
     }
     private void Start()
     {
@@ -123,9 +120,6 @@ public class MainMenu : MonoBehaviour
 
     public void OpenVideoPanel()
     {    
-        // prepare asynchronously
-        if (!videoPlayer.isPrepared)
-            videoPlayer.Prepare();
 
         schedaTappa.gameObject.SetActive(false);
         bookSensitiveAreas.SetActive(false);
@@ -146,6 +140,10 @@ public class MainMenu : MonoBehaviour
         videoPlayer.frame = 1;
         yield return new WaitForSeconds(1);
         videoPlayer.gameObject.SetActive(true);
+        // prepare asynchronously
+        if (!videoPlayer.isPrepared)
+            videoPlayer.Prepare();
+        yield return new WaitForSeconds(1);
         nomeReale.text = TappaMapMarker.openTappa.nomeReale;
         nomeStoria.text = TappaMapMarker.openTappa.nomeNeiRomanzi;
         yield return new WaitForSeconds(1);
@@ -156,7 +154,7 @@ public class MainMenu : MonoBehaviour
         VideoDebug();
         yield return new WaitForSeconds(2);
         if (!videoPlayer.isPlaying) videoPlayer.Play();
-        Debug.Log("Start WaitForSeconds(2)");
+
         yield return new WaitForSeconds(2);
         if (!videoPlayer.isPlaying) videoPlayer.Play();
         bookNamesContainer.SetActive(true);
