@@ -6,29 +6,26 @@ using System.Threading.Tasks; // Aggiungi questo per Task
 public class FirebaseMessagingManager : MonoBehaviour
 {
     private const string TAG = "FirebaseFCM"; // Tag per i log
+    private const string PENDING_URL_KEY = "pending_notification_url";
 
     void Awake()
     {
-      //  Debug.Log($"[{TAG}] Awake: Checking and fixing Firebase dependencies...");
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
             var dependencyStatus = task.Result;
             if (dependencyStatus == DependencyStatus.Available)
             {
-              //  Debug.Log($"[{TAG}] Firebase è stato inizializzato con successo.");
                 InitializeFirebaseMessaging();
             }
             else
             {
                 Debug.LogError(
                     $"[{TAG}] Could not resolve all Firebase dependencies: {dependencyStatus}");
-                // Firebase non è disponibile per l'uso.
             }
         });
     }
 
     void InitializeFirebaseMessaging()
     {
-       // Debug.Log($"[{TAG}] Initializing Firebase Messaging.");
         FirebaseMessaging.TokenReceived += OnTokenReceived;
         FirebaseMessaging.MessageReceived += OnMessageReceived;
 
@@ -38,56 +35,70 @@ public class FirebaseMessagingManager : MonoBehaviour
 
     async void GetFCMToken()
     {
-       // Debug.Log($"[{TAG}] Getting FCM registration token...");
         Task<string> tokenTask = FirebaseMessaging.GetTokenAsync();
         await tokenTask;
 
         if (tokenTask.IsCompleted)
         {
             string token = tokenTask.Result;
-            Debug.LogFormat($"[{TAG}] FCM registration token: {0}", token);
-            // Questo token è unico per ogni installazione della app su un dispositivo.
-            // È FONDAMENTALE che questo token venga generato .
-
+            Debug.LogFormat("[{0}] FCM registration token: {1}", TAG, token);
         }
         else if (tokenTask.IsFaulted)
         {
-            Debug.LogErrorFormat($"[{TAG}] Failed to get FCM registration token: {0}", tokenTask.Exception);
+            Debug.LogErrorFormat("[{0}] Failed to get FCM registration token: {1}", TAG, tokenTask.Exception);
         }
     }
 
     public void OnTokenReceived(object sender, TokenReceivedEventArgs tokenInfo)
     {
-      //  Debug.LogFormat($"[{TAG}] Received Registration Token via event: {0}", tokenInfo.Token);
+        // tokenInfo.Token disponibile qui se vuoi inviarlo al server
     }
 
     public void OnMessageReceived(object sender, MessageReceivedEventArgs e)
     {
         Debug.Log($"[{TAG}] Received a new message!");
-        if (e.Message.From != null && e.Message.From.Length > 0)
-            Debug.Log($"[{TAG}] From: {e.Message.From}");
+        // leggi data payload
         if (e.Message.Data != null && e.Message.Data.Count > 0)
         {
-         //   Debug.Log($"[{TAG}] Data:");
             foreach (System.Collections.Generic.KeyValuePair<string, string> iter in e.Message.Data)
             {
                 Debug.Log($"[{TAG}]   {iter.Key}: {iter.Value}");
             }
+
+            // se c'è l'url nella data payload, gestiscila
+            string url = null;
+            if (e.Message.Data.ContainsKey("url"))
+                url = e.Message.Data["url"];
+            else if (e.Message.Data.ContainsKey("link"))
+                url = e.Message.Data["link"];
+
+            if (!string.IsNullOrEmpty(url))
+            {
+                Debug.Log($"[{TAG}] Received URL: {url}");
+                if (Application.isFocused)
+                {
+                    // apri subito se siamo in foreground
+                    Application.OpenURL(url);
+                }
+                else
+                {
+                    // salva per il prossimo avvio o per essere gestito quando l'utente apre l'app
+                    PlayerPrefs.SetString(PENDING_URL_KEY, url);
+                    PlayerPrefs.Save();
+                    Debug.Log($"[{TAG}] URL salvato in PlayerPrefs per l'apertura successiva");
+                }
+            }
         }
+
         if (e.Message.Notification != null)
         {
             Debug.Log($"[{TAG}] Notification Title: {e.Message.Notification.Title}");
             Debug.Log($"[{TAG}] Notification Body: {e.Message.Notification.Body}");
         }
-        // Qui puoi aggiungere la logica per mostrare la notifica o elaborare i dati
-        // Ad esempio, mostrare un messaggio in UI:
-        // YourNotificationDisplayManager.DisplayNotification(e.Message.Notification.Title, e.Message.Notification.Body);
     }
 
     void OnDestroy()
     {
-        // Rimuovi gli handler quando l'oggetto viene distrutto per evitare memory leaks
-        // La verifica di null non è necessaria per la rimozione di handler da eventi.
         FirebaseMessaging.TokenReceived -= OnTokenReceived;
         FirebaseMessaging.MessageReceived -= OnMessageReceived;
     }
