@@ -26,7 +26,7 @@ public class InGameCanvas : MonoBehaviour
     private void Awake()
     {
         instance = this;
-        tappaScene = FindFirstObjectByType<TappaScene>();
+        tappaScene = FindFirstObjectByType<TappaScene>(); //TappaScene sta sulla scena 3D del gioco ed è statica, impostata al momento del caricamento della scena di gioco
         cameraController = FindFirstObjectByType<CameraController>();
     }
 

@@ -14,7 +14,7 @@ public class MapManager : MonoBehaviour
     public Button zoomOutButton;
     public GameObject tappaMainPanel;
     public GameObject mapIndex;
-    public GameObject tappaTutorial;
+
 
     [SerializeField]
     static float zoomValue = 1;
@@ -22,12 +22,7 @@ public class MapManager : MonoBehaviour
     static int zState = 0;
 
     public TMP_Text TMP_title;
-    public Button infosButton;
-    public Button playButton;
-    public Button trueStoryButton;
-    public Button keemarStoryButton;
-    public Button googleMapButton;
-    public Button videoButton;
+
 
     private void Awake()
     {

@@ -7,15 +7,23 @@ using UnityEngine.UI;
 
 public class SchedaTappa : MonoBehaviour
 {
+    public static SchedaTappa instance;
     public TMP_Text titoloUI;
     public TMP_Text descrizioneUI;
-    Animator anim;
+    [Header("Pulsanti")]
+    public Button playButton;
+    public Button playButtonChiusa;
+    public Button infosButton;
+    public Button googleMapButton;
+    public Button videoButton;
+    public GameObject tappaChiusaMessage;
 
     // valore di riferimento: 120s corrisponde a anim.speed == 1
     private const float referenceDuration = 120f;
     private const float minAnimSpeed = 0.1f;
     private const float maxAnimSpeed = 10f;
     private float originalAnimSpeed = 1f;
+    private Animator anim;
 
     private void Awake()
     {
@@ -25,6 +33,11 @@ public class SchedaTappa : MonoBehaviour
         }
         if (anim != null)
             originalAnimSpeed = anim.speed;
+
+        playButton.onClick.AddListener(CLickOnPlayeGame);
+        playButtonChiusa.onClick.AddListener(ShowTappaChiusaMessage); 
+
+        tappaChiusaMessage.SetActive(false);
     }
 
     public void SetReal()
@@ -85,6 +98,18 @@ public class SchedaTappa : MonoBehaviour
     public void GotMapURL()
     {
         Application.OpenURL(TappaMapMarker.openTappa.googleMapLink);
+    }
+
+    public void ShowTappaChiusaMessage()
+    {
+        tappaChiusaMessage.SetActive(true);
+    }
+
+    public void CLickOnPlayeGame()
+    {
+        MainMenu.instance.CloseMainMenu();
+        SceneLoader.instance.LoadTappaScene(TappaMapMarker.openTappa);
+        Debug.Log("PLAY TAPPA: "+TappaMapMarker.openTappa.tappaName);
     }
 
     private void OnDisable()

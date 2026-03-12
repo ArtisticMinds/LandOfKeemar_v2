@@ -6,6 +6,14 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using System.ComponentModel;
+using Unity.Collections;
+using Unity.VisualScripting.Antlr3.Runtime;
+using Unity.VisualScripting;
+
+
+
+
 
 
 
@@ -27,6 +35,7 @@ public class MainMenu : MonoBehaviour
     public GameObject bookSensitiveAreas;
     public Button bookLeft;
     public Button bookRight;
+    public Button startVideoAreaTouch;
     public GameObject bookNamesContainer;
     public TMP_Text nomeReale;
     public TMP_Text nomeStoria;
@@ -46,6 +55,15 @@ public class MainMenu : MonoBehaviour
     public List<string> oggettiRaccolti = new List<string>();
     public GameObject messaggioNoObjects;
     public Transform objectUI_parent;
+    [Space(10)]
+    [Header("(Tappe)")]
+    public List<Tappa> tutteLeTappe = new List<Tappa>();
+
+    //Lette e impostate da PlayerPrefs, divise in base allo stato (aperte o chiuse)
+    public List<Tappa> tappeChiuse = new List<Tappa>();
+    public List<Tappa> tappeAperte = new List<Tappa>();
+
+
     private void Awake()
     {
         #region Singleton
@@ -65,6 +83,8 @@ public class MainMenu : MonoBehaviour
         mainMenuOpen = true;
         mainPanel = transform.GetChild(0).gameObject;
         eSystem = FindFirstObjectByType<EventSystem>();
+        SchedaTappa.instance = schedaTappa;
+        MapManager.instance = mapPanel.GetComponent<MapManager>();
         nomeReale.text = "";
         nomeStoria.text = "";
 
@@ -77,6 +97,7 @@ public class MainMenu : MonoBehaviour
         fadeVideo.SetActive(false);
         bookNamesContainer.SetActive(false);
 
+
         CloseAllPanels();
 
         //Add listener for when the state of the Toggle changes, to take action
@@ -86,14 +107,60 @@ public class MainMenu : MonoBehaviour
 
         bookLeft.GetComponent<Button>().onClick.AddListener(() => { ClickOnLeftBook(); });
         bookRight.GetComponent<Button>().onClick.AddListener(() => { ClickOnRighttBook(); });
+        startVideoAreaTouch.GetComponent<Button>().onClick.AddListener(() => { ClickOnClosedBook(); });
         LoadOptionsState();
         LoadOggettiRaccolti();
-
+        LoadTappeState();
 
         
+        
+
+
 
         AudioManager.instance.PlayMenuMusic();
     }
+
+    //Carica lo stato di tutte le tappe (aperte o chiuse) e le divide in due liste (disponibili o bloccate) per gestirle più facilmente, inoltre setta lo stato di ogni tappa (isOpen) in base a quello salvato
+    public void LoadTappeState() {
+
+        tappeAperte.Clear();
+        tappeChiuse.Clear();
+
+        foreach (Tappa tp in tutteLeTappe)
+        {
+            if (PlayerPrefs.HasKey(tp.tappaName + "_IsOpen"))
+            {
+                if (PlayerPrefs.GetString(tp.tappaName + "_IsOpen") == "true")
+                {
+                    tappeAperte.Add(tp);
+                    tp.isOpen = true;
+                }
+                else
+                {
+                    tappeChiuse.Add(tp);
+                    tp.isOpen = false;
+                }
+            }
+            else
+            {
+                tappeChiuse.Add(tp);
+                tp.isOpen = false;
+            }
+
+
+            //Setto la tappa aperta di default, senza che sia presente nei PlayerPrefs, per permettere di testare la scena senza dover scansionare il QR
+            if (tp.tappaName.Equals("ROCCA VARANO"))
+            {
+                OpenTappa(tp);
+            }
+        }
+    }
+
+    public void OpenTappa(Tappa tappa)
+    {
+        tappa.OpenTappa();
+    }
+
 
 #if UNITY_EDITOR
     [MenuItem("Tools/ResetScriptables")]
@@ -137,13 +204,18 @@ public class MainMenu : MonoBehaviour
     IEnumerator OpenVideoRoutine()
     {
         Debug.Log("Start OpenVideoRoutine");
-        videoPlayer.frame = 1;
         yield return new WaitForSeconds(1);
+        startVideoAreaTouch.gameObject.SetActive(true);
         videoPlayer.gameObject.SetActive(true);
+        videoPlayer.Prepare();
         // prepare asynchronously
-        if (!videoPlayer.isPrepared)
-            videoPlayer.Prepare();
-        yield return new WaitForSeconds(1);
+        while (videoPlayer.isPrepared)
+        {
+            yield return null;
+        }
+
+        Debug.Log("videoPlayer Is Prepared");
+
         nomeReale.text = TappaMapMarker.openTappa.nomeReale;
         nomeStoria.text = TappaMapMarker.openTappa.nomeNeiRomanzi;
         yield return new WaitForSeconds(1);
@@ -155,7 +227,7 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(2);
         if (!videoPlayer.isPlaying) videoPlayer.Play();
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3F);
         if (!videoPlayer.isPlaying) videoPlayer.Play();
         bookNamesContainer.SetActive(true);
         bookSensitiveAreas.SetActive(true);
@@ -167,10 +239,12 @@ public class MainMenu : MonoBehaviour
 
     public void CloseBookPanel()
     {
+        schedaTappa.gameObject.SetActive(false);
         bookNamesContainer.SetActive(false);
         videoPlayer.frame = 1;
         videoPlayer.GetComponentInChildren<RawImage>().color = Color.black * 0;
         videoPanel.gameObject.SetActive(false);
+        startVideoAreaTouch.gameObject.SetActive(false);
         Debug.Log("CloseBookPanel");
 
 
@@ -198,6 +272,25 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Right Book Clicked (books)");
     }
 
+
+    //Questo forza il play del video, anche se il video è già aperto, per evitare che si blocchi il libro chiuso
+    public void ClickOnClosedBook()
+    {
+        videoPlayer.Stop();
+        StartCoroutine(ClickOnClosedBookRoutine());
+        Debug.Log("1.Closed Book Clicked (start video)");
+        Debug.Log("2.VideoPlayer isPlaying:" + videoPlayer.isPlaying);
+    }
+    IEnumerator ClickOnClosedBookRoutine() {
+        yield return new WaitForSeconds(0.5F);
+        
+        videoPlayer.Play();
+        Debug.Log("3.Routine (start video)");
+        Debug.Log("4.VideoPlayer isPlaying:" + videoPlayer.isPlaying);
+        if (videoPlayer.isPlaying)
+            startVideoAreaTouch.gameObject.SetActive(false);
+
+    }
 
     public void SaveOptionsState()
     {
@@ -283,7 +376,7 @@ public class MainMenu : MonoBehaviour
     public void OpenMainMenu() { mainPanel.SetActive(true); mainMenuOpen = true; }
 
     public void CloseMainMenu() {
-
+        CloseBookPanel();
         missionProgress_inMenu.CloseMissionProgress();
         mainPanel.SetActive(false);  //Disattivo il menu
         mainMenuOpen = false;
@@ -300,6 +393,27 @@ public class MainMenu : MonoBehaviour
         qualityMessage.SetActive(change.value >= 1); 
     }
 
+
+    public void Debug_ClearSaveGames() {
+
+        tappeChiuse.Clear();
+        tappeAperte.Clear();
+        foreach (Tappa tp in tutteLeTappe)
+        {
+            tp.isOpen = false;
+
+            PlayerPrefs.DeleteKey(tp.tappaName + "_IsOpen");
+
+            foreach (Tappa.Missions mission in tp.missions)
+            {
+                mission.missionComplete = false;
+                PlayerPrefs.DeleteKey(mission.missionName);
+            }
+        }
+
+
+        LoadTappeState();
+    }
 
 
     void Update()

@@ -8,6 +8,7 @@ public class TappaMapMarker : MonoBehaviour
     public Tappa tappa;
     public static Tappa openTappa;
     public Image completeMarker;
+    public GameObject qrImage;
     private Button butt;
     public AudioClip onClickClip;
 
@@ -18,6 +19,7 @@ public class TappaMapMarker : MonoBehaviour
         tappa.ResetScriptableObject();
         LoadTappaMissionsProgress();
         butt.onClick.AddListener(OnButtonClick);
+        qrImage.SetActive(false);
     }
 
     void Start()
@@ -68,6 +70,8 @@ public class TappaMapMarker : MonoBehaviour
 
     public void GetTappaState()
     {
+        qrImage.SetActive(!tappa.isOpen);
+
         tappa.tappaComplete = true;
         foreach (Tappa.Missions miss in tappa.missions)
         {
@@ -82,47 +86,58 @@ public class TappaMapMarker : MonoBehaviour
         {
             GetComponent<Image>().sprite = completeMarker.sprite;
         }
+
+        
     }
 
-public void SetTappa()
+
+    //Imposta la tappa da visualizzare nei dettagli, con i relativi bottoni da visualizzare o nascondere
+    public void SetTappa()
     {
-        if (!MapManager.instance)
-            MapManager.instance = FindFirstObjectByType<MapManager>();
 
 
-        print(MapManager.instance.name);
-
-        MapManager.instance.trueStoryButton.onClick.RemoveAllListeners();
-        MapManager.instance.keemarStoryButton.onClick.RemoveAllListeners();
-        MapManager.instance.playButton.onClick.RemoveAllListeners();
+     //   MapManager.instance.trueStoryButton.onClick.RemoveAllListeners();
+     //   MapManager.instance.keemarStoryButton.onClick.RemoveAllListeners();
+      //  MapManager.instance.playButton.onClick.RemoveAllListeners();
 
         Debug.Log("SetTappa: " + tappa.tappaName);
         MapManager.instance.TMP_title.text = tappa.tappaName;
-      //  MapManager.instance.OpenTappaInfos(); //V3. Tolto (ora apre il video)
-        MapManager.instance.trueStoryButton.onClick.AddListener(() => { tappa.InfoTappa_Real.SetActive(true); });
-        MapManager.instance.keemarStoryButton.onClick.AddListener(() => { tappa.InfoTappa_Keemar.SetActive(true); });
+        //  MapManager.instance.OpenTappaInfos(); //V3. Tolto (ora apre il video)
+        //MapManager.instance.trueStoryButton.onClick.AddListener(() => { tappa.InfoTappa_Real.SetActive(true); });
+        //MapManager.instance.keemarStoryButton.onClick.AddListener(() => { tappa.InfoTappa_Keemar.SetActive(true); });
+
+        //if (tappa.tappaScene != string.Empty)
+        //{
+        //    MapManager.instance.playButton.interactable = true;
+        //    MapManager.instance.playButton.onClick.AddListener(() =>
+        //    {
+        //        MainMenu.instance.CloseMainMenu();
+        //        AudioManager.instance.StopMusic();
+        //        SceneLoader.instance.LoadScene(tappa.tappaScene);
+
+        //        Debug.Log("SetTappa: " + tappa.tappaScene);
+        //    });
+        //}
+        //else
+        //{
+        //    MapManager.instance.playButton.interactable = false;
+        //}
 
         if (tappa.tappaScene != string.Empty)
-        {
-            MapManager.instance.playButton.interactable = true;
-            MapManager.instance.playButton.onClick.AddListener(() =>
-            {
-                MainMenu.instance.CloseMainMenu();
-                AudioManager.instance.StopMusic();
-                SceneLoader.instance.LoadScene(tappa.tappaScene);
-
-                Debug.Log("SetTappa: " + tappa.tappaScene);
-            });
+        {   
+            openTappa = tappa;
+            SchedaTappa.instance.playButton.gameObject.SetActive(tappa.isOpen);
+            SchedaTappa.instance.playButtonChiusa.gameObject.SetActive(!tappa.isOpen);
+            MainMenu.instance.OpenVideoPanel();
         }
-        else
-        {
-            MapManager.instance.playButton.interactable = false;
+        else 
+        { 
+            Debug.LogWarning("Tappa " + tappa.tappaName + " non ha una scena associata!");
+            openTappa = null;
         }
 
-        openTappa = tappa;
 
-        //Ver.3
-        MainMenu.instance.OpenVideoPanel();
+       
     }
 
 

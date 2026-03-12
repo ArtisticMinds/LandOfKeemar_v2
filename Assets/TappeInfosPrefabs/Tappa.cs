@@ -1,13 +1,14 @@
 using System;
-using UnityEngine.SceneManagement;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName= "tappa", menuName="")]
 public class Tappa : ScriptableObject
 {
-
+    public bool isOpen;
     [Multiline]
     public string tappaName;
     public string InfoTappa_Real_Name;
@@ -31,6 +32,7 @@ public class Tappa : ScriptableObject
     public static TappaMapMarker openTappa;
     public bool tappaComplete;
     public string tappaScene;
+
 
 
 
@@ -87,5 +89,18 @@ public class Tappa : ScriptableObject
         return null;
     }
 
+
+
+    //Apre la tappa, rendendola giocabile (isOpen=true) e salva lo stato 
+    //IsOpen si salva dopo aver scansionato il QR (o altri modi volendo), quindi è giocabile, altrimenti è bloccata (non si può accedere alla scena) ed è attivo il QR per sbloccarla
+    public void OpenTappa()
+    {  
+        PlayerPrefs.SetString(tappaName+"_IsOpen", "true");
+        MainMenu.instance.tappeChiuse.Remove(this);
+        MainMenu.instance.tappeAperte.Add(this);
+        isOpen = true;
+       
+
+    }
 
 }

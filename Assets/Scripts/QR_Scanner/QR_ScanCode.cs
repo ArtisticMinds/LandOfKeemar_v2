@@ -2,14 +2,17 @@
 using BarcodeScanner.Scanner;
 using System;
 using System.Collections;
+using System.IO;
+using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
+using UnityEngine.Android;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Wizcorp.Utils.Logger;
-using TMPro;
-using UnityEngine.Android;
-using System.IO;
+using ZXing.PDF417.Internal;
 
+//Sript che si trova su MenuCamera
 public class QR_ScanCode : MonoBehaviour {
 
 	private IScanner BarcodeScanner;
@@ -19,16 +22,22 @@ public class QR_ScanCode : MonoBehaviour {
     public RawImage CameraImage;
 	public AudioSource Audio;
     public AudioClip ScanOk;
-    public AudioClip InvioOk;
+
     public AudioClip Error;
-    public AudioClip RegOk;
     public Button Scannerizza;
     public Button Stop;
     public RectTransform foregr;
     [Space(10)]
     public string[] CorrectCodes;
+    //Array che contiene i riferimenti a tutti i TappaMapMarker presenti nella scena
+    //La posizione nella lista corrisponde al sui QR Code (e.s. ID0 --> Tappa1, ID1-->Tappa2, etc)
     public TappaMapMarker[] tappaMaker;
+    public static TappaMapMarker lastTappaMapMarker;
     public static string lastBarCodeValue;
+    public TMP_Text loacationText;
+    public GameObject fadeToBlack;
+
+    private Animator anim;
 
     // Disable Screen Rotation on that screen
     void Awake()
@@ -41,8 +50,8 @@ public class QR_ScanCode : MonoBehaviour {
         deviceID = deviceID.Substring(0, 16);
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
         camGroup = CameraImage.GetComponent<CanvasGroup>();
-
-        
+        fadeToBlack.SetActive(false);
+        loacationText.text = "";
         camGroup.alpha = 0;
     }
 
@@ -52,15 +61,16 @@ public class QR_ScanCode : MonoBehaviour {
 
 
         lastBarCodeValue = "";
+        lastTappaMapMarker=null;
+        anim = MainMenu.instance.QR_ScanPanel.GetComponent<Animator>(); //L'animator si trova sul pannello mentre questo script sulla camera
 
-       // StartCoroutine(CheckConnection());
 
         if (!Permission.HasUserAuthorizedPermission(Permission.Camera))
         {
             Permission.RequestUserPermission(Permission.Camera);
         }
 
-       // StartCoroutine(GetCorrectCode());
+
         StartCoroutine(InitializeCamera());
 
 	}
@@ -122,44 +132,11 @@ public class QR_ScanCode : MonoBehaviour {
         };
     }
 
+    public void OpenInstructions()
+    {
+       anim.SetTrigger("OpenInstructions");
+    }
 
-
- 
-
-
-    //Texture2D texture1;
-    //IEnumerator TakePhoto()  // Start this Coroutine on some button click
-    //{
-
-    //    texture1= ScreenCapture.CaptureScreenshotAsTexture();
-    //    //So that the screenshot is taken
-    //    yield return new WaitForEndOfFrame();
-    //    yield return new WaitForSecondsRealtime(1.5f);
-    //    SaveTextureAsPNG(texture1, Application.persistentDataPath+"\\shot.PNG");
-    //}
-
-    //public static void SaveTextureAsPNG(Texture2D _texture, string _fullPath)
-    //{//first Make sure you're using RGB24 as your texture format
-    //    Texture2D texture = new Texture2D(1024, 1024, TextureFormat.RGB24, false);
-
-    //    //then Save To Disk as PNG
-    //    byte[] bytes = texture.EncodeToPNG();
-
-    //    if (!Directory.Exists(_fullPath))
-    //    {
-    //        Directory.CreateDirectory(_fullPath);
-    //    }
-    //    File.WriteAllBytes(_fullPath, bytes);
-
-    //    //File.WriteAllBytes(dirPath + "Image" + ".png", bytes);
-    //    //byte[] _bytes = _texture.EncodeToPNG();
-    //    //System.IO.File.WriteAllBytes(_fullPath, _bytes);
-    //    //Debug.Log(_bytes.Length / 1024 + "Kb was saved as: " + _fullPath);
-    //}
-
-    /// <summary>
-    /// The Update method from unity need to be propagated to the scanner
-    /// </summary>
     void Update()
 	{
 
@@ -191,9 +168,10 @@ public class QR_ScanCode : MonoBehaviour {
 
 	public void ClickStart()
 	{
+
 		if (BarcodeScanner == null)
         {
-            TextHeader.text = "<color=#FAAA55>CAMERA NON AVVIATA</color>\nPROVA A RIAVVIARE L'APPLICAZIONE";
+            TextHeader.text = "<color=#FF0000>CAMERA NON AVVIATA</color>\nPROVA A RIAVVIARE L'APPLICAZIONE";
             Log.Warning("No valid camera - Click Start");
             foregr.gameObject.SetActive(false);
             return; 
@@ -206,20 +184,31 @@ public class QR_ScanCode : MonoBehaviour {
             if (CheckCodes(barCodeValue))
             {
                 StopCamera(null);
-                OpenInfos(barCodeValue);
-                TextHeader.text = "<color=#FF3333>CODICE ACQUISITO!</color>"; //"Found: " + barCodeType + " / " + barCodeValue;
+                CodiceAcquisito(barCodeValue);
+                TextHeader.text = "<color=#FFFFAA>CODICE ACQUISITO!</color>"; //"Found: " + barCodeType + " / " + barCodeValue;
                 Stop.gameObject.SetActive(false);
 
                 foregr.gameObject.SetActive(false);
                 Scannerizza.interactable = false;
+               
                 // Feedback
-                Audio.PlayOneShot(ScanOk);
+                if(ScanOk)
+                AudioManager.instance.PlayAudioClip(ScanOk);
+
+                Debug.Log("Codice: " + barCodeValue );
+                Debug.Log("BarCodeType: " + barCodeType);
             }
-            else {
+            else 
+            {
                 Stop.gameObject.SetActive(false);
                 Scannerizza.interactable = true;
-                TextHeader.text = "<color=#FAAA55>CODICE NON VALIDO</color> \nRIPROVA"; //"Found: " + barCodeType + " / " + barCodeValue;
-                Audio.PlayOneShot(Error);
+                TextHeader.text = "<color=#FF0000>CODICE NON VALIDO</color> \nRIPROVA"; //"Found: " + barCodeType + " / " + barCodeValue;
+
+                Debug.Log("Codice: " + barCodeValue);
+                Debug.Log("BarCodeType: " + barCodeType);
+
+                if (Error)
+                AudioManager.instance.PlayAudioClip(Error);
             }
 
 #if UNITY_ANDROID || UNITY_IOS
@@ -228,162 +217,99 @@ public class QR_ScanCode : MonoBehaviour {
 		});
 	}
 
-    public void OpenInfos(string barCodeValue)
-    {
-        MainMenu.instance.QR_ScanPanel.GetComponent<Animator>().SetTrigger("OpenLocationInfos");
 
+
+
+    //Eseguito dopo aver scanzionato correttamente un QR
+    //Apre il pannello con le info sulla tappa e salva il codice acquisito in una variabile statica (lastBarCodeValue) per poterlo usare dopo quando si apre la mappa
+    public void CodiceAcquisito(string barCodeValue)
+    {
+        Debug.Log("CodiceAcquisito");
+        //Apre il pannello con le info sulla tappa
+        anim.SetTrigger("OpenLocationInfos");
+        //Salva il codice acquisito in una variabile statica per poterlo usare dopo quando si apre la mappa
         lastBarCodeValue = barCodeValue;
+
+        GetMarkerByLastBarCodeValue();
+
+        //Imposta la tappa come giocabile(isOpen = true) e salva lo stato su PlayerPrefs (va eseguito dopo GetMarkerByLastBarCodeValue)
+        lastTappaMapMarker.tappa.OpenTappa();
+
     }
 
-    
+
+
+    //Trova il marker corrispondente al codice acquisito (lastBarCodeValue) e salva il riferimento in una variabile statica (lastTappaMapMarker) per poterlo usare dopo quando si apre la mappa
+    public void GetMarkerByLastBarCodeValue()
+    {
+        int markerID = -1;
+        markerID=(lastBarCodeValue.Substring(lastBarCodeValue.Length - 1, 1)[0] - '0')-1; //Prende l'ultimo carattere del codice acquisito e lo converte in numero -1 (es. "Tappa1" -> 0 "Tappa2" -> 1)
+        Debug.Log("markerID: "+ markerID);
+
+        lastTappaMapMarker = tappaMaker[markerID];
+        loacationText.text = lastTappaMapMarker.tappa.tappaName;
+    }
+
+
+    //Da pulsante "PROSEGUI" dopo aver scanzionato correttamente un QR (salvato su lastBarCodeValue)
     public void OpenMapFromQR() 
     {
-        MainMenu.instance.mapPanel.gameObject.SetActive(true);
+        Debug.Log("OpenMapFromQR");
 
         Stop.gameObject.SetActive(false);
-        Scannerizza.interactable = true;
-        TextHeader.text = "PREMI \"START\"";
-
-        
-        StartCoroutine(OpenMapInfo());
+        Scannerizza.interactable = true; //Torna ad essere attivo per una eventuale prossima scansione
+        TextHeader.text = "PREMI \"START\""; //Torna al testo iniziale per una eventuale prossima scansione
+        fadeToBlack.SetActive(true);
+        StartCoroutine(OpenMapInfoCoroutine());
     }
 
 
 
-    IEnumerator OpenMapInfo()
+
+    IEnumerator OpenMapInfoCoroutine()
     {
-        MainMenu.instance.QR_ScanPanel.GetComponent<Animator>().enabled = false;
-        yield return new WaitForSeconds(0.1F);
+        Debug.Log("OpenMapInfoCoroutine");
 
-        if (lastBarCodeValue.Equals("ROCCA VARANO"))
-            tappaMaker[0].SetTappa();
-        if (lastBarCodeValue.Equals("MAGALOTTI"))
-            tappaMaker[1].SetTappa();
-        if (lastBarCodeValue.Equals("BORGIA"))
-            tappaMaker[0].SetTappa();
+        anim.enabled = false;
+        yield return new WaitForSeconds(0.6F);
+      
 
-        yield return new WaitForSeconds(0.5F);
+        //Imposta la mappa e apre il libro
+        lastTappaMapMarker.SetTappa();
+      
+
+        yield return new WaitForSeconds(0.8F);
         CloseQRPanel();
-        MainMenu.instance.QR_ScanPanel.GetComponent<Animator>().enabled = true;
+        anim.enabled = true;
+    }
+
+    [ContextMenu("Debug Test Scan")]
+    public void DebugTestScan()
+    {
+ 
+        StopCamera(null);
+        CodiceAcquisito("Tappa1");
+        TextHeader.text = "<color=#FF3333>CODICE ACQUISITO!</color>"; //"Found: " + barCodeType + " / " + barCodeValue;
+        Stop.gameObject.SetActive(false);
+
+        foregr.gameObject.SetActive(false);
+        Scannerizza.interactable = false;
+        // Feedback
+        Audio.PlayOneShot(ScanOk);
     }
 
     public void CloseQRPanel()
     {
         MainMenu.instance.QR_ScanPanel.gameObject.SetActive(false);
-        lastBarCodeValue = "";
         // Stop Scanning
         BarcodeScanner.Stop();
+        lastBarCodeValue = "";
+        loacationText.text = "";
+        lastTappaMapMarker = null;
+        fadeToBlack.SetActive(false);
     }
 
-    //public static bool connectionON;
-    //public IEnumerator CheckConnection()
-    //{
-    //    //Spedisci dati al database
-    //    WWWForm form = new WWWForm();
 
-
-    //    using (UnityWebRequest www = UnityWebRequest.Get("http://wilez.it/timbratureEskigel/scrivi_timbratura.php"))
-    //    {
-    //        yield return www.SendWebRequest();
-    //        Debug.Log("output:  " + www.downloadHandler.text);
-
-    //        if (www.isNetworkError || www.isHttpError)
-    //        {
-    //            TextHeader.text = "E' AVVENUTO UN ERRORE\nControlla la tua connessione.";
-    //            Audio.PlayOneShot(Error);
-    //            connectionON = false;
-    //            yield break;
-    //        }
-    //    }
-    //    connectionON = true;
-
-    //}
-
-    //public void ClickSendAndClose() {
-
-    //    StartCoroutine(Send());
-
-    //}
-
-    //IEnumerator GetCorrectCode()
-    //{
-    //    if (!connectionON) yield break;
-
-    //    //Spedisci dati al database
-    //    WWWForm form = new WWWForm();
-    //    using (UnityWebRequest www = UnityWebRequest.Get("http://wilez.it/timbratureEskigel/getCorrectCode.php"))
-    //    {
-    //        yield return www.SendWebRequest();
-
-    //        if (www.isNetworkError || www.isHttpError)
-    //        {
-    //            Debug.Log(www.error);
-    //            TextHeader.text = "E' AVVENUTO UN ERRORE:\n " + www.error;
-    //            Audio.PlayOneShot(Error);
-    //        }
-    //        else
-    //        {
-    //            if (www.downloadHandler.text.Contains("Error"))
-    //            {
-    //                TextHeader.text = "E' AVVENUTO UN ERRORE.";
-    //                Audio.PlayOneShot(Error);
-    //                yield break;
-    //            }
-
-    //            //Prendo il codice corretto (stringa) dalla rete
-    //            CorrectCode = www.downloadHandler.text;
-    //        }
-    //    }
-
-    //    }
-
-
-
-
-    //    IEnumerator Send()
-    //{
-    //    if (!connectionON) yield break;
-
-    //    //Spedisci dati al database
-    //    WWWForm form = new WWWForm();
-
-    //    using (UnityWebRequest www = UnityWebRequest.Get("http://wilez.it/timbratureEskigel/scrivi_timbratura.php?nome="+nameID+"&deviceID="+ deviceID))
-    //    {
-    //        yield return www.SendWebRequest();
-    //        Debug.Log("output " + www.downloadHandler.text);
-
-
-            
-    //        if (www.isNetworkError || www.isHttpError)
-    //        {
-    //            Debug.Log(www.error);
-    //            TextHeader.text = "E' AVVENUTO UN ERRORE\nControlla la tua connessione.";
-    //            Audio.PlayOneShot(Error);
-    //        }
-    //        else
-    //        {
-    //            if (www.downloadHandler.text.Contains("Error"))
-    //            {
-    //                TextHeader.text = "E' AVVENUTO UN ERRORE\nNon puoi tibrare due volte.";
-    //                Audio.PlayOneShot(Error);
-    //                connectionON=false;
-    //                yield break;
-    //            }
-    //            Audio.PlayOneShot(InvioOk);
-
-    //            TextHeader.text = "TIMBRATURA EFFETTUATA!";
-    //            yield return new WaitForSeconds(2);
-    //            TextHeader.text = "CHIUSURA APPLICAZIONE....";
-    //            yield return new WaitForSeconds(1);
-    //            Application.Quit();
-    //            Debug.Log("QUIT");
-    //        }
-            
-    //    }
-
-
-
-    //}
 
 	public void ClickStop()
 	{

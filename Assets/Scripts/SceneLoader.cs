@@ -42,4 +42,12 @@ public class SceneLoader : MonoBehaviour
         canvasGroup.alpha = targetValue;
 
     }
+
+
+    public  void LoadTappaScene(Tappa tappa)
+    {
+        AudioManager.instance.StopMusic();
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
+        LoadScene(tappa.tappaScene);
+    }
 }
