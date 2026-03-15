@@ -288,7 +288,7 @@ public class QR_ScanCode : MonoBehaviour {
     {
  
         StopCamera(null);
-        CodiceAcquisito("Tappa1");
+        CodiceAcquisito("Tappa2");
         TextHeader.text = "<color=#FF3333>CODICE ACQUISITO!</color>"; //"Found: " + barCodeType + " / " + barCodeValue;
         Stop.gameObject.SetActive(false);
 

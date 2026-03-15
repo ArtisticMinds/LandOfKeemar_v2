@@ -276,11 +276,17 @@ public class MainMenu : MonoBehaviour
     //Questo forza il play del video, anche se il video è già aperto, per evitare che si blocchi il libro chiuso
     public void ClickOnClosedBook()
     {
-        videoPlayer.Stop();
-        StartCoroutine(ClickOnClosedBookRoutine());
-        Debug.Log("1.Closed Book Clicked (start video)");
-        Debug.Log("2.VideoPlayer isPlaying:" + videoPlayer.isPlaying);
+        if (videoPlayer.frame < 5)
+        {
+            videoPlayer.Stop();
+            StartCoroutine(ClickOnClosedBookRoutine());
+            Debug.Log("1.Closed Book Clicked (start video)");
+            Debug.Log("2.VideoPlayer isPlaying:" + videoPlayer.isPlaying);
+        }
+        else if (videoPlayer.isPlaying)
+            startVideoAreaTouch.gameObject.SetActive(false);
     }
+
     IEnumerator ClickOnClosedBookRoutine() {
         yield return new WaitForSeconds(0.5F);
         
