@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0552c59dc6a5a5144b78e1c42a94d3be
+guid: 674a73e379be64c418023afee0baf8a5
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: lambert1
-    second: {fileID: 2100000, guid: b0c82b08ff4171f49b104dbfe735fca9, type: 2}
+      name: TEGOLE
+    second: {fileID: 2100000, guid: 0cd44e885e282f94690bc3283621c4a4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
