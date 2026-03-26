@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aa562c99c9ea0e940989eaec475e36bb
+guid: 8e074799f552a4a4eb91b9df9703d78e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,18 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: INTONAC
-    second: {fileID: 2100000, guid: c193590c7bc7fbd4caf2e46f92f00d67, type: 2}
+      name: lambert2
+    second: {fileID: 2100000, guid: b0c82b08ff4171f49b104dbfe735fca9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: INTONAC1
-    second: {fileID: 2100000, guid: c193590c7bc7fbd4caf2e46f92f00d67, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert3
-    second: {fileID: 2100000, guid: c193590c7bc7fbd4caf2e46f92f00d67, type: 2}
+      name: trim1
+    second: {fileID: 2100000, guid: b0c82b08ff4171f49b104dbfe735fca9, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
