@@ -30,26 +30,23 @@ MonoBehaviour:
   tappaComplete: 0
   tappaScene: Sarano
   missions:
-  - missionName: "Gi\xF9 la Scala"
-    missionDescriprion: Qualcuno vuole entrare...
-    missionCompleteMessage: Hai tolto la scala all'orco!
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
-  - missionName: Breccia nelle Mura
-    missionDescriprion: Aiuta gli orchi a fare breccia...
-    missionCompleteMessage: Hai abbattuto un muro!
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
-  - missionName: Alle barricate!
-    missionDescriprion: Costrisci delle barricate.
-    missionCompleteMessage: Hai costruito delle barricate!
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
-  - missionName: In disparte
-    missionDescriprion: 'Trova il viandante.
-
-      Attenzione ha l''abitudine di
-      spostarsi!'
-    missionCompleteMessage: Hai trovato il viandante!
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
-  - missionName: "L\u2019ultima Ballista"
-    missionDescriprion: Difendi le mura dalla torre d'assedio.
-    missionCompleteMessage: Hai distrutto la torre d'assedio!
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
