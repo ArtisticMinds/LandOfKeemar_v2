@@ -40,7 +40,8 @@ public class AudioManager : MonoBehaviour
             DontDestroyOnLoad(transform.root.gameObject); //Con questa istruzione rendo "permanente" questo GameObject
         }
         else
-        {if (instance != this)
+        {
+            if (instance != this)
             {
                 Destroy(transform.root.gameObject);
                 return;

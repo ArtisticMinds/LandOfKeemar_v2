@@ -85,6 +85,7 @@ public class SeguiciPanel : MonoBehaviour
         nessunaConnessioneMessage.SetActive(false);
         problemaFirewallMessage.SetActive(false);
         emailIscrizioneEffettuataMessage.SetActive(false);
+        giaIscrittoMessage.SetActive(false);
 
         string email = emailInputField.text?.Trim() ?? "";
         string citt‡ = citt‡InputField.text?.Trim() ?? "";
@@ -93,6 +94,10 @@ public class SeguiciPanel : MonoBehaviour
         if (string.IsNullOrEmpty(email) || !email.Contains("@"))
         {
             emailNonValidaMessage.SetActive(true);
+            nessunaConnessioneMessage.SetActive(false);
+            problemaFirewallMessage.SetActive(false);
+            emailIscrizioneEffettuataMessage.SetActive(false);
+            giaIscrittoMessage.SetActive(false);
             Debug.LogError("Email non valida");
             return;
         }
@@ -210,8 +215,11 @@ public class SeguiciPanel : MonoBehaviour
         PlayerPrefs.SetString("IscrizioneNewsletter", encodedEmail); //Salva l'email codificata come prova di iscrizione
         iscritto = true;
         emailIscrizioneEffettuataMessage.SetActive(true);
+        nessunaConnessioneMessage.SetActive(false);
+        problemaFirewallMessage.SetActive(false);
+        giaIscrittoMessage.SetActive(false);
 
-       CheckIscrizione(false,false);
+        CheckIscrizione(false,false);
     }
     public void ProblemaFirewallMessage()
     {
