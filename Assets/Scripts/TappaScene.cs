@@ -37,6 +37,7 @@ public class TappaScene : MonoBehaviour
         }
 
         if (!InGameCanvas.instance) InGameCanvas.instance = FindFirstObjectByType<InGameCanvas>();
+        if(!AudioManager.instance) AudioManager.instance = FindFirstObjectByType<AudioManager>();
 
         TappaMapMarker.openTappa = tappa;
         tappa.ResetScriptableObject();
