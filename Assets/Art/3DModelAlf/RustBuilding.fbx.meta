@@ -12,12 +12,22 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: INTONAC1
+    second: {fileID: 2100000, guid: c193590c7bc7fbd4caf2e46f92f00d67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: INTONAC3
     second: {fileID: 2100000, guid: c193590c7bc7fbd4caf2e46f92f00d67, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Old_Bricks
+    second: {fileID: 2100000, guid: b0c82b08ff4171f49b104dbfe735fca9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Old_Bricks1
     second: {fileID: 2100000, guid: b0c82b08ff4171f49b104dbfe735fca9, type: 2}
   - first:
       type: UnityEngine:Material
@@ -32,12 +42,22 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: TEGOLE1
+    second: {fileID: 2100000, guid: 0cd44e885e282f94690bc3283621c4a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: TEGOLE2
     second: {fileID: 2100000, guid: 0cd44e885e282f94690bc3283621c4a4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Trim_MultyMaterial
+    second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trim_MultyMaterial1
     second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
   - first:
       type: UnityEngine:Material
