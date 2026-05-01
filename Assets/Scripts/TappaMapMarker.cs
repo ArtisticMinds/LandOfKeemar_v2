@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TappaMapMarker : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class TappaMapMarker : MonoBehaviour
     public GameObject qrImage;
     private Button butt;
     public AudioClip onClickClip;
+    public TMP_Text titoloUI;
 
     private void Awake()
     {
@@ -71,6 +73,7 @@ public class TappaMapMarker : MonoBehaviour
     public void GetTappaState()
     {
         qrImage.SetActive(!tappa.isOpen);
+        titoloUI.text = tappa.tappaName;
 
         tappa.tappaComplete = true;
         foreach (Tappa.Missions miss in tappa.missions)

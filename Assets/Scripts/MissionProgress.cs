@@ -21,8 +21,8 @@ public class MissionProgress : MonoBehaviour
             CloseMissionProgress();
             return;
         }
-
-       transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(0).gameObject.SetActive(true);
+       // if(transform.GetChild(1))transform.GetChild(1).gameObject.SetActive(true);
         foreach (GameObject obj in hideOnOpen)
             obj.SetActive(false);
 
@@ -35,6 +35,7 @@ public class MissionProgress : MonoBehaviour
     public void CloseMissionProgress()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+      //  if(transform.GetChild(1)) transform.GetChild(1).gameObject.SetActive(false);
         foreach (GameObject obj in hideOnOpen)
             obj.SetActive(true);
 
@@ -47,7 +48,9 @@ public class MissionProgress : MonoBehaviour
     {
         foreach (Transform tr in progressContent)
         {
-            if(tr!= progressContent.GetChild(0))
+          //  if(tr!= progressContent.GetChild(0) || tr != progressContent.GetChild(1)) //Lascia il titolo e l'icona Tips
+
+            if(tr.GetComponent<TappaProgress>())
             Destroy(tr.gameObject);
         }
 

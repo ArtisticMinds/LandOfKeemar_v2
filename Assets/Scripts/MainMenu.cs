@@ -383,7 +383,7 @@ public class MainMenu : MonoBehaviour
 
     public void CloseMainMenu() {
         CloseBookPanel();
-        missionProgress_inMenu.CloseMissionProgress();
+      //  missionProgress_inMenu.CloseMissionProgress();
         mainPanel.SetActive(false);  //Disattivo il menu
         mainMenuOpen = false;
         Debug.Log("CloseMainMenu: " + mainMenuOpen);

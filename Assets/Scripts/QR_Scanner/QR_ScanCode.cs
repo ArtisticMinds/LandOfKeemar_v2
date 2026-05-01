@@ -12,7 +12,7 @@ using UnityEngine.UI;
 using Wizcorp.Utils.Logger;
 using ZXing.PDF417.Internal;
 
-//Sript che si trova su MenuCamera
+//Sript che si trova su QRCamera
 public class QR_ScanCode : MonoBehaviour {
 
 	private IScanner BarcodeScanner;
@@ -29,7 +29,7 @@ public class QR_ScanCode : MonoBehaviour {
     public RectTransform foregr;
     [Space(10)]
     public string[] CorrectCodes;
-    //Array che contiene i riferimenti a tutti i TappaMapMarker presenti nella scena
+    //Array che contiene i riferimenti a tutti i TappaMapMarker presenti nella scena si trova su QRCamera
     //La posizione nella lista corrisponde al sui QR Code (e.s. ID0 --> Tappa1, ID1-->Tappa2, etc)
     public TappaMapMarker[] tappaMaker;
     public static TappaMapMarker lastTappaMapMarker;
@@ -248,6 +248,8 @@ public class QR_ScanCode : MonoBehaviour {
 
         lastTappaMapMarker = tappaMaker[markerID];
         loacationText.text = lastTappaMapMarker.tappa.tappaName;
+
+        //NOTA il riferimento tra QR e tappa va in base alla sua posizione in TappaMaker, su QRCamera
     }
 
 
