@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: Magalotti
   m_EditorClassIdentifier: 
+  isOpen: 1
   tappaName: "CASTELLO \nMAGALOTTI"
   InfoTappa_Real_Name: Magalotti_Real
   InfoTappa_Keemar_Name: Magalotti_Keemar
@@ -47,7 +48,7 @@ MonoBehaviour:
       Attenzione ha l''abitudine di
       spostarsi!'
     missionCompleteMessage: Hai trovato il viandante!
-    missionComplete: 1
+    missionComplete: 0
   - missionName: "L\u2019ultima Ballista"
     missionDescriprion: Difendi le mura dalla torre d'assedio.
     missionCompleteMessage: Hai distrutto la torre d'assedio!
