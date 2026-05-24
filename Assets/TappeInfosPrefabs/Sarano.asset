@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: Sarano
   m_EditorClassIdentifier: 
-  isOpen: 1
+  isOpen: 0
   tappaName: SARANO
   InfoTappa_Real_Name: 
   InfoTappa_Keemar_Name: 

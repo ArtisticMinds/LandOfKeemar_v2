@@ -106,30 +106,32 @@ public class DraggingObject : MissionObject
 
             Ray r = InteractionManager.sceneCam.ScreenPointToRay(new Vector3(Input.mousePosition.x,  Input.mousePosition.y + dragOffset, dist));
             Debug.DrawRay(r.origin, r.direction * dist, Color.white);
-            toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime*5);
+
+            // target position before constraint
+            Vector3 targetPos = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime*5);
 
             if (dreagArea)
             {
-                minBounds = dreagArea.bounds.min;
-                maxBounds = dreagArea.bounds.max;
-            }
+                // constrain using Collider.ClosestPoint (works for Box/Sphere/Mesh)
+                Vector3 constrained = dreagArea.ClosestPoint(targetPos);
 
-            float xPos = Mathf.Clamp(toDrag.position.x, minBounds.x, maxBounds.x);
-            float yPos = Mathf.Clamp(toDrag.position.y, minBounds.y, maxBounds.y);
-            float zPos = Mathf.Clamp(toDrag.position.z, minBounds.z, maxBounds.z);
+                // preserve Y if needed
+                if (freezeYposition)
+                    constrained.y = originalY;
 
-            toDrag.position = new Vector3(xPos, yPos, zPos);
+                toDrag.position = constrained;
 
-            if (dreagArea)
-            {
+                // update distance from center (optional)
                 distFormDrag = Vector3.Distance(toDrag.position, dreagArea.transform.position);
-
-
-                if (distFormDrag > maxDragDistance)
-                {
-                    StopDragging();
-                }
             }
+            else
+            {
+                if (freezeYposition)
+                    targetPos.y = originalY;
+
+                toDrag.position = targetPos;
+            }
+
         }
 
 
@@ -197,11 +199,24 @@ public class DraggingObject : MissionObject
             Debug.DrawRay(r.origin, r.direction * 10, Color.white);
             distFormDrag = Vector3.Distance(toDrag.position, r.GetPoint(dist));
 
-       
-            toDrag.position = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime * 5);
+            Vector3 targetPos = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime * 5);
+
+            if (dreagArea)
+            {
+                Vector3 constrained = dreagArea.ClosestPoint(targetPos);
+                if (freezeYposition)
+                    constrained.y = originalY;
+                toDrag.position = constrained;
+            }
+            else
+            {
+                if (freezeYposition)
+                    targetPos.y = originalY;
+                toDrag.position = targetPos;
+            }
         }
 
-      
+
         if (distFormDrag > maxDragDistance)
         {
             StopDragging();

@@ -12,17 +12,15 @@ using Unity.VisualScripting.Antlr3.Runtime;
 using Unity.VisualScripting;
 
 
-
-
-
-
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 public class MainMenu : MonoBehaviour
 {
+    public bool inDebugTesting=false;
+    public GameObject inGameTestingText;
+
     public static bool mainMenuOpen;
     public GameObject areYouSyrePanel;
     public GameObject QR_ScanPanel;
@@ -87,6 +85,7 @@ public class MainMenu : MonoBehaviour
         MapManager.instance = mapPanel.GetComponent<MapManager>();
         nomeReale.text = "";
         nomeStoria.text = "";
+        
 
     }
     private void Start()
@@ -96,7 +95,7 @@ public class MainMenu : MonoBehaviour
         QR_ScanPanel.gameObject.SetActive(false);
         fadeVideo.SetActive(false);
         bookNamesContainer.SetActive(false);
-
+        inGameTestingText.SetActive(inDebugTesting);
 
         CloseAllPanels();
 
@@ -111,10 +110,6 @@ public class MainMenu : MonoBehaviour
         LoadOptionsState();
         LoadOggettiRaccolti();
         LoadTappeState();
-
-        
-        
-
 
 
         AudioManager.instance.PlayMenuMusic();
@@ -153,9 +148,19 @@ public class MainMenu : MonoBehaviour
             {
                 OpenTappa(tp);
             }
+
+            //Per debug, forza l'apertura di tutte le tappe, rendendole giocabili ma non salvando lo stato (utile per testare tutte le scene senza dover scansionare tutti i QR)
+            if (inDebugTesting)
+            {
+                tp.OpenTappa(false); //Direttamente sulla tp 
+            }
         }
     }
 
+
+
+
+    //Apre e salva lo stato di una tappa, rendendola giocabile (isOpen=true) e salva lo stato aperta nei PlayerPrefs, inoltre la sposta dalla lista delle tappe chiuse a quella delle tappe aperte
     public void OpenTappa(Tappa tappa)
     {
         tappa.OpenTappa();
@@ -400,6 +405,7 @@ public class MainMenu : MonoBehaviour
     }
 
 
+    //Usato solo da editor
     public void Debug_ClearSaveGames() {
 
         tappeChiuse.Clear();

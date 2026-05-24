@@ -83,7 +83,7 @@ public class MapManager : MonoBehaviour
             rectTransform.localScale = Vector3.one * zoomValue;
         }
 
-        zoomValue = Mathf.Clamp(zoomValue, 1f, 2.5f);
+        zoomValue = Mathf.Clamp(zoomValue, 1f, 2f);
     }
 
     #endregion

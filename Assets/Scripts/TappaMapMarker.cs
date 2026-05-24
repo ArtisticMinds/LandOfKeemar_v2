@@ -17,7 +17,7 @@ public class TappaMapMarker : MonoBehaviour
     private void Awake()
     {
         butt=GetComponent<Button>();
-        tappa.FindReferences();
+       // tappa.FindReferences();
         tappa.ResetScriptableObject();
         LoadTappaMissionsProgress();
         butt.onClick.AddListener(OnButtonClick);
@@ -26,8 +26,8 @@ public class TappaMapMarker : MonoBehaviour
 
     void Start()
     {
-        tappa.InfoTappa_Real.SetActive(false);
-        tappa.InfoTappa_Keemar.SetActive(false);
+        //tappa.InfoTappa_Real.SetActive(false);
+        //tappa.InfoTappa_Keemar.SetActive(false);
 
         GetTappaState(); //Da prendere dopo il load dei savegame
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: PortaPicena
   m_EditorClassIdentifier: 
-  isOpen: 1
+  isOpen: 0
   tappaName: PORTA PICENA
   InfoTappa_Real_Name: Varano_Real
   InfoTappa_Keemar_Name: Varano_Keemar

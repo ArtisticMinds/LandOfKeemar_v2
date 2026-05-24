@@ -64,14 +64,14 @@ public class Tappa : ScriptableObject
     }
 
 
-    public void FindReferences()
-    {
-        if (!InfoTappa_Real)
-            InfoTappa_Real = FindByName(InfoTappa_Real_Name);
+    //public void FindReferences()
+    //{
+    //    if (!InfoTappa_Real)
+    //        InfoTappa_Real = FindByName(InfoTappa_Real_Name);
 
-        if (!InfoTappa_Keemar)
-            InfoTappa_Keemar = FindByName(InfoTappa_Keemar_Name);
-    }
+    //    if (!InfoTappa_Keemar)
+    //        InfoTappa_Keemar = FindByName(InfoTappa_Keemar_Name);
+    //}
 
     static GameObject FindByName(string goName)
     {
@@ -91,16 +91,19 @@ public class Tappa : ScriptableObject
 
 
 
-    //Apre la tappa, rendendola giocabile (isOpen=true) e salva lo stato 
+    //Apre la tappa, rendendola giocabile (isOpen=true) e salva lo stato (se andSave è true)
     //IsOpen si salva dopo aver scansionato il QR (o altri modi volendo), quindi è giocabile, altrimenti è bloccata (non si può accedere alla scena) ed è attivo il QR per sbloccarla
-    public void OpenTappa()
-    {  
+    public void OpenTappa(bool andSave=true)
+    {
+        //Metto anche la possibilità di aprire la tappa senza salvare, così da poterla aprire per test senza dover scansionare il QR ogni volta
+        if (andSave)
         PlayerPrefs.SetString(tappaName+"_IsOpen", "true");
+
         MainMenu.instance.tappeChiuse.Remove(this);
         MainMenu.instance.tappeAperte.Add(this);
         isOpen = true;
-       
 
+        Debug.Log("Tappa " + tappaName + " aperta!");
     }
 
 }

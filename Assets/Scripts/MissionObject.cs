@@ -28,6 +28,9 @@ public class MissionObject : MonoBehaviour
     [Header("Evento ritardato (di 1 secondo) al touch singlo")]
     public UnityEvent onTouchEventDalyed;
 
+    [Header("Evento ritardato (di 2 secondi) al touch singlo")]
+    public UnityEvent onTouchEventDalyed2;
+
     [Header("Evento richiamabile da evento animazione")]
     public UnityEvent onAnimationEvent;
 
@@ -62,6 +65,7 @@ public class MissionObject : MonoBehaviour
         {
             onTouchEvent.Invoke();
             StartCoroutine(TouchEventDalyed());
+            StartCoroutine(TouchEventDalyed2());
             TouchPause(pauseTime);
         }
     }
@@ -79,6 +83,15 @@ public class MissionObject : MonoBehaviour
             yield return new WaitForSeconds(1);
         onTouchEventDalyed.Invoke();
     }
+
+    IEnumerator TouchEventDalyed2()
+    {
+        if (!isActiveAndEnabled) yield break;
+
+        yield return new WaitForSeconds(2);
+        onTouchEventDalyed2.Invoke();
+    }
+    
 
     public void DisableDelayed(GameObject obj)
     {
