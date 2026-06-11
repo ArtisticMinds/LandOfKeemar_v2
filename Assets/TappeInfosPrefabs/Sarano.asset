@@ -12,16 +12,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: Sarano
   m_EditorClassIdentifier: 
-  isOpen: 0
+  isOpen: 1
   tappaName: SARANO
-  InfoTappa_Real_Name: 
-  InfoTappa_Keemar_Name: 
   nomeReale: SARANO
-  nomeNeiRomanzi: 
-  storiaReale: 
-  storiaRomanzi: 
-  descrizioneAudioReal: {fileID: 0}
-  descrizioneAudioRomanzi: {fileID: 0}
+  nomeNeiRomanzi: DIMORA DEL SOLE
+  storiaReale: "Il Comune di Sarnano \xE8 nato sette secoli e mezzo fa, ma la storia
+    di queste terre inizia molto molto prima della nascita del Comune e ha per protagonisti
+    numerosi personaggi.\r\n\r\nSarnano \xE8 l\u2019unico Comune italiano ad avere
+    come stemma un Serafino: l\u2019Angelo di Fuoco. Secondo la tradizione, questo
+    simbolo fu un dono di San Francesco d\u2019Assisi che, di passaggio in questa
+    zona, per pacificare le discussioni tra i signori delle cinque contrade della
+    neonata comunanza, si genuflesse e impresse il disegno nel terreno con il nodo
+    del cordone che cingeva il suo saio.\r\n\r\nLa storia del comune di Sarnano dopo
+    il breve periodo di autonomia \xE8 legata sempre pi\xF9 alla signo-ria Da Varano
+    di Camerino. Nel 1831 il Palazzo del Popolo fu trasformato in Teatro comunale.\r\n\r\nL'Uovo
+    di Sarnano (noto anche come Pietra di Terro) \xE8 un misterioso masso di forma
+    ovale scoperto nel 1986 lungo il torrente Rio Terro. Questo monolite pesa circa
+    3 tonnellate ed \xE8 alto 1,20 metri. Presenta una piccola vasca scavata sulla
+    parte superiore.\r\nLa leggenda legata ai Druidi definisce l'Uovo di Sarnano
+    come un vero e proprio osservatorio astronomico \"magico\".\r\nA questa visione
+    astronomica si affianca anche il racconto della scrittrice Joyce Lussu, che immagin\xF2
+    l'uovo legato alla figura della Sibilla dei Monti Sibillini. \r\n\r\nNella Piazza
+    Alta, primo nucleo dell'abitato, affacciano il Palazzo dei Priori, il Palazzo
+    del Popolo (oggi Teatro della Vittoria), il Palazzo del Podest\xE0 e la chiesa
+    di santa Maria di Piazza con all'interno notevoli opere d'arte.\r\n\r\nOggi,
+    Sarnano \xE8 famoso per il suo centro storico in cotto, le sue Terme di San Giacomo
+    e il suo patrimonio artistico che unisce storia e natura ai piedi dei Monti Sibillini. "
+  storiaRomanzi: "Un fiume in piena fatto di gente di razze diverse correva in ogni
+    dove. \n\nMolti cercavano di racimolare pi\xF9 provviste possibili per affrontare
+    meglio i tempi duri che sarebbero arrivati con l\u2019assedio. Altri, invece,
+    creavano serpentine condotte da predicatori che esortavano i propri fedeli a
+    invocare la clemenza e l\u2019aiuto degli dei. \n\nQuando il paladino giunse
+    alla piazza centrale, vide che migliaia di persone avevano invaso tutti gli spazi
+    possibili. Umani, elfi, gnomi, lucertus, orchi, tauri; tutti indifferentemente
+    riversati in ogni angolo, su ogni selciato, sui gradini, fuori e dentro ai templi.
+    \n\nPredicatori, sacerdoti ed emissari invocavano l\u2019attenzione dei propri
+    fedeli. E nel farlo urlavano, si sbracciavano e si contorcevano come fossero
+    posseduti. A fatica e immerso in un boato costante e assordante, il gruppo si
+    fece largo fino al braciere posto sul sagrato pi\xF9 grande della citt\xE0, quello
+    dedicato al dio Xanderal, dove si condensava la maggior parte della gente per
+    gettarvi incenso. \n\nAccanto all\u2019incensiere a forma di sole, le cui fiamme
+    ardevano da tempo immemore, si trovava una statua di marmo raffigurante un guerriero
+    in sella al proprio destriero impennato, con la spada sguainata a difesa delle
+    offerte lasciate dai fedeli. Dietro la scultura, una larga e bassa scalinata
+    portava all\u2019ingresso del tempio. Ai lati, grosse colonne di marmo con dei
+    capitelli uniti fra loro da lunghe lastre d\u2019oro, racchiudevano il percorso,
+    cos\xEC da condurre il devoto direttamente alla sala delle preghiere...."
+  descrizioneAudioReal: {fileID: 8300000, guid: e44e10ef50bb738449de4bc068ebc4cb, type: 3}
+  descrizioneAudioRomanzi: {fileID: 8300000, guid: adcf2d24f757d0b4a8d68a02630015e7, type: 3}
   slideSpriteCollection: {fileID: 0}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}

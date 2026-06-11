@@ -66,6 +66,8 @@ public class SchedaTappa : MonoBehaviour
             AudioManager.instance.FadeOutMusic();
             PlayDescrizioneAudio(TappaMapMarker.openTappa.descrizioneAudioRomanzi);
         }
+
+        ImageSlideshow.Instance.SetCollectionAndPlay(); //Per ora prende la stessa collezione di immagini del Real, in futuro si potrebbe differenziare se necessario
     }
 
 

@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 1
   tappaName: "CASTELLO \nMAGALOTTI"
-  InfoTappa_Real_Name: Magalotti_Real
-  InfoTappa_Keemar_Name: Magalotti_Keemar
   nomeReale: CASTELLO MAGALOTTI
-  nomeNeiRomanzi: 
+  nomeNeiRomanzi: IL RITUALE
   storiaReale: "Il castello Magalotti \xE8 databile prima del IX secolo, \xE8 stato
     il principale dominio della potente famiglia Magalotti (1170-1259) prima di passare
     al Comune di Camerino. \r\n\r\nEra un insieme di edifici con la residenza del
@@ -40,9 +38,42 @@ MonoBehaviour:
     vista mozzafiato sul sottostante bacino del Lago di Fiastra e sul paesaggio dei
     Monti Sibillini.\r\n\r\nL'area \xE8 visitabile gratuitamente tutto l'anno ed
     \xE8 accessibile tramite i sentieri che si diramano nella zona."
-  storiaRomanzi: 
+  storiaRomanzi: "\xABNon voglio morire!\xBB \n\n\xABNon temere, non morirai. Almeno
+    non per sempre...\xBB \n\nLa cinghia si strinse ancora, bloccandogli la testa
+    all\u2019altare. Con lo sguardo fisso al cielo rannuvolato, Molydeus sent\xEC
+    il panico esplodere e il cuore accelerare sempre pi\xF9, fino a rimbombargli
+    assordante nella testa. \n\nCon l\u2019aria strozzata in gola, tent\xF2 di guardarsi
+    intorno e scorse a stento delle figure. Un uomo claudicante dagli occhi vacui
+    e dalla pelle violacea si avvicin\xF2 a lui e gli appoggi\xF2 un vassoio accanto
+    alla faccia. Quando se ne and\xF2, Molydeus not\xF2 che questi aveva un grosso
+    buco sulla nuca con del sangue raggrumato da chiss\xE0 quanto tempo. Terrorizzato,
+    cerc\xF2 in tutti i modi di divincolarsi. Ondate di spasmi che si infransero
+    contro le cinghie tirate al massimo. Inizi\xF2 a piangere. \n\n\xABMorgenshein,
+    lasciami andare!\xBB sussurr\xF2 senza ricevere risposta. \xABMorgenshein, ti
+    ho detto di liberarmi! Morgenshein\xBB url\xF2, cercando nuovamente di forzare
+    i blocchi che lo fissavano alla gelida lastra di pietra. \xABHo cambiato idea,
+    mi hai capito? Dove sei? Fammi andare via!\xBB \nQuasi senza voce, Molydeus si
+    rivolse all\u2019uomo che barcollando si stava allontanando. \xABTu, ehi tu,
+    puoi sentirmi? Chiama il tuo padrone, digli di venire qui... liberatemi, vi prego!\xBB\n\n
+    \xAB\xC8 giusto che tu abbia paura.\xBB La dolcezza di quella voce contrast\xF2
+    enormemente con la sensazione di morte che si era impadronita di lui. Lo cerc\xF2
+    con la coda degli occhi ma riusc\xEC solo a vedere altri di quei cadaveri che
+    si muovevano lenti. Quando le dense nuvole si diradarono per un istante, la fredda
+    luce lunare svel\xF2 i ruderi del vecchio castello che lo circondavano. La cinta
+    muraria quasi totalmente abbattuta, il piccolo tempio sconsacrato alla destra
+    e l\u2019alta torre dietro alla sua testa gli fecero intuire dove si trovasse,
+    prima che la paura offuscasse ogni ragionamento. \n\n\xABTemere ci\xF2 che si
+    ignora \xE8 tipico di voi umani, e questo vi spinge spesso a commettere errori
+    di valutazione. Non bisogna avere paura di ci\xF2 che non si conosce, ma esserne
+    attratti. L\u2019evoluzione \xE8 voglia di superarsi, di affrontare e oltrepassare
+    i confini della realt\xE0 acquisita, non credi? E il segreto sta nell\u2019insaziabile
+    curiosit\xE0 verso ci\xF2 che non si conosce. Solo cos\xEC puoi godere della
+    vita e dei suoi piaceri senza mai perdere il gusto nelle cose e nelle scoperte.
+    Ma non sono discorsi da affrontare adesso: concentriamoci sul dono che stai per
+    ricevere.\xBB Morgenshein si era avvicinato a lui quel tanto da fargli intravedere
+    una ciocca dei suoi capelli celesti..."
   descrizioneAudioReal: {fileID: 8300000, guid: a7a27d87af00eb944b71781ee6e05bc5, type: 3}
-  descrizioneAudioRomanzi: {fileID: 0}
+  descrizioneAudioRomanzi: {fileID: 8300000, guid: df87779c44d78c54c8489cc72a8a1a4f, type: 3}
   slideSpriteCollection: {fileID: 11400000, guid: 43c7f11a5ff58fa40bee0f6c455a3a43, type: 2}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}

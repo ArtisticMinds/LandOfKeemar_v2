@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: Varano
   m_EditorClassIdentifier: 
+  isOpen: 1
   tappaName: ROCCA VARANO
   InfoTappa_Real_Name: Varano_Real
   InfoTappa_Keemar_Name: Varano_Keemar
@@ -38,8 +39,8 @@ MonoBehaviour:
     dei Varano ed era obliqua rispetto alla direzione del ponte per fornire maggiore
     difesa in caso di attacco...\n"
   storiaRomanzi: "Ah, l'avamposto....\nE' sempre un piacere passeggiare per il Keemar,
-    specie quando si arriva in luoghi come questo.\nDa questa Rocca non solo si ha
-    una visuale meravigliosa su queste terre, ma si pu\xF2 controllare tutto....\nPerch\xE9
+    specie quando si arriva in luoghi come questo.\n\nDa questa Rocca non solo si
+    ha una visuale meravigliosa su queste terre, ma si pu\xF2 controllare tutto....\nPerch\xE9
     i Nani sono cos\xEC, amano gli stranieri quanto amano l'idromele.\n\nE tutto
     il mondo sa che i Nani bevono solo birra sin dalla nascita.\nPossedere la Rocca
     d\xE0 il controllo sulla vallata sottostante e su un'importante arteria di commercio.
@@ -49,14 +50,14 @@ MonoBehaviour:
     pazzi da addentrarsi nelle terre dei Nani devono per forza tramare qualcosa di
     strano. Magari sono dicerie, ma perch\xE9 mandare qualcuno in avanscoperta? Pu\xF2
     solo significare che stanno studiando le mosse degli avversari, e nell\u2019aria
-    si sente gi\xE0 odore di guerra.\n\nCon gli anni, per\xF2, la bramosia di nuove
+    si sente gi\xE0 odore di guerra.\n\n\nCon gli anni, per\xF2, la bramosia di nuove
     ricchezze e la voglia di menar le mani hanno spinto i Nani ad allargare i propri
     domini fino a ridosso delle Terre Selvagge, fuori dal confine del Keemar, dove
     hanno eretto il Recinto per tenere fuori il loro pi\xF9 acerrimo nemico: gli
     Orchi. Eppure corre voce che alcuni di loro si stanno addentrando furtivamente
-    nel Keemar.\n\n"
+    nel Keemar....\n"
   descrizioneAudioReal: {fileID: 8300000, guid: 6affec9d094edb04d94cfb2803ab1157, type: 3}
-  descrizioneAudioRomanzi: {fileID: 0}
+  descrizioneAudioRomanzi: {fileID: 8300000, guid: abf0469296af590449c8c449ea0d2040, type: 3}
   slideSpriteCollection: {fileID: 11400000, guid: a083eaba3ad51b04db60f7dd94559329, type: 2}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}
@@ -76,7 +77,7 @@ MonoBehaviour:
   - missionName: Un Orco di Troppo
     missionDescriprion: Trova l'orco nascosto
     missionCompleteMessage: Hai trovato l'orco nascosto!
-    missionComplete: 0
+    missionComplete: 1
   - missionName: Attenzione al Parapetto
     missionDescriprion: Fai cadere il nano... sul soffice.
     missionCompleteMessage: Hai fatto cadere il nano dalla torre!

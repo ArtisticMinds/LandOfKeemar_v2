@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 1
   tappaName: S.GENESIO
-  InfoTappa_Real_Name: 
-  InfoTappa_Keemar_Name: 
   nomeReale: S.GENESIO
-  nomeNeiRomanzi: 
+  nomeNeiRomanzi: CAMPO D'ARMI
   storiaReale: 
   storiaRomanzi: 
   descrizioneAudioReal: {fileID: 0}

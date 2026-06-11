@@ -73,7 +73,7 @@ public class TappaMapMarker : MonoBehaviour
     public void GetTappaState()
     {
         qrImage.SetActive(!tappa.isOpen);
-        titoloUI.text = tappa.tappaName;
+        titoloUI.text = tappa.nomeNeiRomanzi;
 
         tappa.tappaComplete = true;
         foreach (Tappa.Missions miss in tappa.missions)

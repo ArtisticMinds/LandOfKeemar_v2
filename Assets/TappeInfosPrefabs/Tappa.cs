@@ -11,8 +11,7 @@ public class Tappa : ScriptableObject
     public bool isOpen;
     [Multiline]
     public string tappaName;
-    public string InfoTappa_Real_Name;
-    public string InfoTappa_Keemar_Name;
+
     public string nomeReale;
     public string nomeNeiRomanzi;
     [Multiline]
