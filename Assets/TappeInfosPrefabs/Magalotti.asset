@@ -73,8 +73,9 @@ MonoBehaviour:
     ricevere.\xBB Morgenshein si era avvicinato a lui quel tanto da fargli intravedere
     una ciocca dei suoi capelli celesti..."
   descrizioneAudioReal: {fileID: 8300000, guid: a7a27d87af00eb944b71781ee6e05bc5, type: 3}
-  descrizioneAudioRomanzi: {fileID: 8300000, guid: df87779c44d78c54c8489cc72a8a1a4f, type: 3}
+  descrizioneAudioRomanzi: {fileID: 8300000, guid: 12f39c7e971347646bda206ed4642e0b, type: 3}
   slideSpriteCollection: {fileID: 11400000, guid: 43c7f11a5ff58fa40bee0f6c455a3a43, type: 2}
+  slideSpriteCollectionFantasy: {fileID: 11400000, guid: 025038b73d2b40e4e98d4ed33da11d22, type: 2}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}
   googleMapLink: https://goo.gl/maps/uDSWQJoHYQo8CRdU6

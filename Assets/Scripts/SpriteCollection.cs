@@ -5,4 +5,5 @@ using UnityEngine;
 public class SpriteCollection : ScriptableObject
 {
     public List<Sprite> sprites = new List<Sprite>();
+    public List<float> spriteScale = new List<float>();
 }

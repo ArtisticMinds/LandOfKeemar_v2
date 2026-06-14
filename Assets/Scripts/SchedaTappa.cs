@@ -51,7 +51,7 @@ public class SchedaTappa : MonoBehaviour
             PlayDescrizioneAudio(TappaMapMarker.openTappa.descrizioneAudioReal);
         }
 
-        ImageSlideshow.Instance.SetCollectionAndPlay();
+        ImageSlideshow.Instance.SetCollectionAndPlay(TappaMapMarker.openTappa.slideSpriteCollection); //Prende la  collezione di immagini della collection Real 
     }
 
 
@@ -67,7 +67,7 @@ public class SchedaTappa : MonoBehaviour
             PlayDescrizioneAudio(TappaMapMarker.openTappa.descrizioneAudioRomanzi);
         }
 
-        ImageSlideshow.Instance.SetCollectionAndPlay(); //Per ora prende la stessa collezione di immagini del Real, in futuro si potrebbe differenziare se necessario
+        ImageSlideshow.Instance.SetCollectionAndPlay(TappaMapMarker.openTappa.slideSpriteCollectionFantasy); //Prende la  collezione di immagini della collection Fantasy
     }
 
 

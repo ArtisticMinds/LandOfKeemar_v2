@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.EventSystems;
+using System.ComponentModel;
 
 
 public class TappaScene : MonoBehaviour
@@ -21,6 +22,7 @@ public class TappaScene : MonoBehaviour
     public float HiDettails = 1F;
     public Terrain terrain;
     [Space(10)]
+    [Header("ReadOnly")]
     public Tappa.Missions[] missions;
 
 
