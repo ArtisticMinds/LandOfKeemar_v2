@@ -21,7 +21,15 @@ public class SpriteOver : MonoBehaviour
             Debug.Log("No _audioClip");
     }
 
-
+    private void Start()
+    {
+        if (!canvasRect)
+        {
+            var canvas = GetComponentInParent<Canvas>();
+            if (canvas)
+                canvasRect = canvas.GetComponent<RectTransform>();
+        }
+    }
 
     void Update()
     {
