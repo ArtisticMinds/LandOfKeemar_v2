@@ -21,6 +21,7 @@ public class Tappa : ScriptableObject
     public AudioClip descrizioneAudioReal;
     public AudioClip descrizioneAudioRomanzi;
     public SpriteCollection slideSpriteCollection;
+    public SpriteCollection slideSpriteCollectionFantasy;
     [HideInInspector]
     public GameObject InfoTappa_Real;
     [HideInInspector]

@@ -11,7 +11,11 @@ public class ImageSlideshow : MonoBehaviour
     public Image imageA; // immagine visibile corrente
     public Image imageB; // immagine che viene sfumata sopra
 
-    [Header("Sprites (use ScriptableObject)")]
+    [Header("Mask / Container")]
+    [Tooltip("RectTransform che contiene imageA/imageB e ha la Mask. Se nullo verrà usato il parent di imageA.")]
+    public RectTransform maskRect;
+
+    [Header("Sprites (Caricato da funzione)")]
     public SpriteCollection spriteCollection;
 
     [Header("Timing")]
@@ -28,6 +32,11 @@ public class ImageSlideshow : MonoBehaviour
     bool running = false;
     Coroutine slideshowCoroutine;
 
+    // Salvo le scale originali per poterle ripristinare / moltiplicare
+    Vector3 originalScaleImageA = Vector3.one;
+    Vector3 originalScaleImageB = Vector3.one;
+    Vector3 originalScaleMask = Vector3.one;
+
     void Awake()
     {
         Instance=this; // singleton access
@@ -43,9 +52,22 @@ public class ImageSlideshow : MonoBehaviour
             }
         }
 
+        // se non è assegnata la mask, prova a usare il parent di imageA
+        if (maskRect == null && imageA != null)
+        {
+            var parent = imageA.transform.parent as RectTransform;
+            if (parent != null)
+                maskRect = parent;
+        }
+
         // inizializza al trasparente / visibile
         if (imageA) SetAlpha(imageA, 1f);
         if (imageB) SetAlpha(imageB, 0f);
+
+        // salva scale originali (se presenti)
+        if (imageA) originalScaleImageA = imageA.transform.localScale;
+        if (imageB) originalScaleImageB = imageB.transform.localScale;
+        if (maskRect) originalScaleMask = maskRect.localScale;
     }
 
     void Start()
@@ -55,16 +77,18 @@ public class ImageSlideshow : MonoBehaviour
     }
 
 
-    public void SetCollectionAndPlay()
+    public void SetCollectionAndPlay(SpriteCollection _spriteCollection)
     {
         if (TappaMapMarker.openTappa != null)
         {
-            spriteCollection = TappaMapMarker.openTappa.slideSpriteCollection;
+            spriteCollection = _spriteCollection;
 
             if (spriteCollection != null)
             {
                 imageA.gameObject.SetActive(true); // mostra imageA se non abbiamo sprite da mostrare
                 imageB.gameObject.SetActive(true); // mostra imageB se non abbiamo sprite da mostrare
+                // quando cambio collection, parto dal primo elemento
+                index = 0;
                 Play();
                 Debug.Log("Play: " + spriteCollection);
             }
@@ -87,6 +111,35 @@ public class ImageSlideshow : MonoBehaviour
         return spriteCollection != null ? spriteCollection.sprites : null;
     }
 
+    // restituisce scala per indice (null-safe)
+    float GetScaleForIndex(int idx)
+    {
+        if (spriteCollection == null || spriteCollection.spriteScale == null) return 1f;
+        if (idx < 0 || idx >= spriteCollection.spriteScale.Count) return 1f;
+        return spriteCollection.spriteScale[idx];
+    }
+
+    // applica la scala al contenitore/mask (preferito) o alla singola Image come fallback
+    void ApplySpriteScale(Image img, int idx)
+    {
+        float factor = GetScaleForIndex(idx);
+
+        if (maskRect != null)
+        {
+            maskRect.localScale = originalScaleMask * factor;
+            return;
+        }
+
+        // fallback: scala l'immagine stessa (compatibilità)
+        if (img == null) return;
+        if (img == imageA)
+            img.transform.localScale = originalScaleImageA * factor;
+        else if (img == imageB)
+            img.transform.localScale = originalScaleImageB * factor;
+        else
+            img.transform.localScale = Vector3.one * factor;
+    }
+
     // API: avvia lo slideshow
     public void Play()
     {
@@ -100,6 +153,11 @@ public class ImageSlideshow : MonoBehaviour
         imageA.sprite = sprites[index];
         SetAlpha(imageA, 1f);
         SetAlpha(imageB, 0f);
+
+        // applica scala corretta alla prima immagine (scala alla mask)
+        ApplySpriteScale(imageA, index);
+        // reset imageB alla scala originale (sarà aggiornata in TransitionTo se necessario)
+        if (imageB) imageB.transform.localScale = originalScaleImageB;
 
         slideshowCoroutine = StartCoroutine(SlideshowLoop());
     }
@@ -170,6 +228,9 @@ public class ImageSlideshow : MonoBehaviour
         // prepara imageB come sopra (manteniamo dimensioni correnti -> non chiamare SetNativeSize se causa salti)
         imageB.sprite = sprites[nextIndex];
 
+        // applica scala per il prossimo indice (scala la mask, così le immagini non vengono tagliate)
+        ApplySpriteScale(imageB, nextIndex);
+
         // porta imageB sopra per la transizione
         imageB.transform.SetAsLastSibling();
 
@@ -193,6 +254,8 @@ public class ImageSlideshow : MonoBehaviour
 
         // copia il nuovo sprite su imageA (manteniamo imageA come immagine "principale")
         imageA.sprite = imageB.sprite;
+        // assicuriamoci che la mask abbia la scala corretta per l'indice appena impostato
+        ApplySpriteScale(imageA, nextIndex);
 
         // assicuriamo l'ordine: imageA sotto e imageB sopra (imageB rimane pronta per la prossima transizione)
         imageA.transform.SetSiblingIndex(0);
@@ -215,6 +278,10 @@ public class ImageSlideshow : MonoBehaviour
         Stop();
         if (imageA) imageA.sprite = null;
         if (imageB) imageB.sprite = null;
+        // ripristina scale originali della mask o delle immagini
+        if (maskRect) maskRect.localScale = originalScaleMask;
+        if (imageA) imageA.transform.localScale = originalScaleImageA;
+        if (imageB) imageB.transform.localScale = originalScaleImageB;
         imageA.gameObject.SetActive(false); // nascondi imageA 
         imageB.gameObject.SetActive(false); // nascondi imageB 
     }

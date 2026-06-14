@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 1
   tappaName: ROCCA VARANO
-  InfoTappa_Real_Name: Varano_Real
-  InfoTappa_Keemar_Name: Varano_Keemar
   nomeReale: ROCCA VARANO
   nomeNeiRomanzi: L'AVAMPOSTO
   storiaReale: "Rocca Varano fu eretta nel XIII secolo dall'omonima famiglia nobiliare.\nLo
@@ -59,6 +57,7 @@ MonoBehaviour:
   descrizioneAudioReal: {fileID: 8300000, guid: 6affec9d094edb04d94cfb2803ab1157, type: 3}
   descrizioneAudioRomanzi: {fileID: 8300000, guid: abf0469296af590449c8c449ea0d2040, type: 3}
   slideSpriteCollection: {fileID: 11400000, guid: a083eaba3ad51b04db60f7dd94559329, type: 2}
+  slideSpriteCollectionFantasy: {fileID: 11400000, guid: 8ed5ad7759d31544c98c1a45e9a346f0, type: 2}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}
   googleMapLink: https://goo.gl/maps/TModoCiv81m9V78w6
@@ -77,11 +76,11 @@ MonoBehaviour:
   - missionName: Un Orco di Troppo
     missionDescriprion: Trova l'orco nascosto
     missionCompleteMessage: Hai trovato l'orco nascosto!
-    missionComplete: 1
+    missionComplete: 0
   - missionName: Attenzione al Parapetto
     missionDescriprion: Fai cadere il nano... sul soffice.
     missionCompleteMessage: Hai fatto cadere il nano dalla torre!
-    missionComplete: 1
+    missionComplete: 0
   - missionName: Un'arma non da Nani
     missionDescriprion: "C'\xE8 un arma fuori posto..."
     missionCompleteMessage: Hai trovato un arco elfico!

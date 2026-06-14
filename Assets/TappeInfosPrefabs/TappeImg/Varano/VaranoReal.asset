@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04240d08566638c4e8163c6f8eac25f0, type: 3}
+  m_Name: VaranoReal
+  m_EditorClassIdentifier: Assembly-CSharp::SpriteCollection
+  sprites:
+  - {fileID: 21300000, guid: b08ed3de97137114181f2fbf759ed38f, type: 3}
+  - {fileID: 21300000, guid: a3ebf73a91c9bd7419ae74ed1894262f, type: 3}
+  - {fileID: 21300000, guid: 158403e405e0a7f40938c8fb7f5d18eb, type: 3}
+  - {fileID: 21300000, guid: 63e146728c8439a4892bc0b47f3f66d7, type: 3}
+  - {fileID: 21300000, guid: a38fe8e2fbd2e464a8d0f388809d5013, type: 3}
