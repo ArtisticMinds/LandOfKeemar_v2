@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine.Events;
 using UnityEngine;
 
@@ -22,7 +23,18 @@ public class DraggingObject : MissionObject
     [HideInInspector]
     public float distFormDrag;
     public float maxDragDistance = 1;
+
+    [Header("Area di drag (compatibile con singolo Collider o lista)")]
+    [Tooltip("Vecchio campo singolo (compatibility). Se lasciato, usato come unica area se dragAreas è vuota.")]
     public Collider dreagArea;
+
+    [Tooltip("Liste di collider che definiscono l'area permessa (unione). Se impostata, sostituisce dreagArea.")]
+    public List<Collider> dragAreas = new List<Collider>();
+
+    [Header("Aree proibite (buchi)")]
+    [Tooltip("Collider all'interno dei quali NON è permesso posizionare l'oggetto.")]
+    public List<Collider> forbiddenAreas = new List<Collider>();
+
     Vector3 minBounds; 
     Vector3 maxBounds;
     [Header("Evento ad inizio Drag")]
@@ -48,6 +60,95 @@ public class DraggingObject : MissionObject
         originalY = transform.position.y;
         defaultMaterial = rend.material;
         startPosition = transform.position;
+    }
+
+    // ritorna true se point è considerato all'interno del collider (tolleranza)
+    bool IsPointInsideCollider(Collider col, Vector3 point)
+    {
+        if (col == null) return false;
+        Vector3 closest = col.ClosestPoint(point);
+        // se ClosestPoint ritorna esattamente point significa che il punto è dentro il collider
+        return (closest - point).sqrMagnitude < 1e-6f;
+    }
+
+    // trova il punto più vicino valido all'interno dell'unione delle dragAreas (o dreagArea come fallback)
+    Vector3 GetNearestPointInAllowedAreas(Vector3 targetPos)
+    {
+        // Se è presente lista dragAreas e non vuota -> usa quella
+        if (dragAreas != null && dragAreas.Count > 0)
+        {
+            Vector3 best = targetPos;
+            float bestDistSq = float.MaxValue;
+            foreach (var c in dragAreas)
+            {
+                if (c == null) continue;
+                Vector3 cand = c.ClosestPoint(targetPos);
+                float d2 = (cand - targetPos).sqrMagnitude;
+                if (d2 < bestDistSq)
+                {
+                    bestDistSq = d2;
+                    best = cand;
+                }
+            }
+            return best;
+        }
+
+        // fallback al vecchio singolo collider
+        if (dreagArea != null)
+        {
+            return dreagArea.ClosestPoint(targetPos);
+        }
+
+        // nessuna area definita => ritorna posizione target non modificata
+        return targetPos;
+    }
+
+    // Applica i vincoli: inside allowed union e non dentro forbiddenAreas.
+    Vector3 GetConstrainedPosition(Vector3 targetPos)
+    {
+        Vector3 constrained = GetNearestPointInAllowedAreas(targetPos);
+
+        // Se nessuna forbidden definita -> return
+        if (forbiddenAreas == null || forbiddenAreas.Count == 0)
+            return constrained;
+
+        // Se constrained è dentro un'area proibita, cerchiamo di "spostarlo" verso la superficie esterna più vicina,
+        // quindi lo ri-proiettiamo dentro le allowed areas. Limitiamo i tentativi per evitare loop.
+        const int maxAttempts = 6;
+        int attempt = 0;
+        while (attempt < maxAttempts)
+        {
+            bool insideAny = false;
+            foreach (var forb in forbiddenAreas)
+            {
+                if (forb == null) continue;
+                if (IsPointInsideCollider(forb, constrained))
+                {
+                    insideAny = true;
+
+                    // costruiamo un punto di sample lontano nella direzione dal centro del forbidden verso constrained
+                    Vector3 center = forb.bounds.center;
+                    Vector3 dir = constrained - center;
+                    if (dir.sqrMagnitude < 1e-6f) dir = Vector3.up; // fallback direzione
+                    Vector3 sample = constrained + dir.normalized * 10f;
+
+                    // ClosestPoint sul forbidden con sample esterno ci darà un punto sulla superficie verso l'esterno
+                    Vector3 surface = forb.ClosestPoint(sample);
+
+                    // ora ricalcoliamo il punto più vicino valido nelle allowed rispetto alla superficie dell'area proibita
+                    constrained = GetNearestPointInAllowedAreas(surface);
+
+                    break; // riesamina tutte le forbidden dalla nuova posizione
+                }
+            }
+
+            if (!insideAny)
+                break;
+
+            attempt++;
+        }
+
+        return constrained;
     }
 
 
@@ -110,10 +211,9 @@ public class DraggingObject : MissionObject
             // target position before constraint
             Vector3 targetPos = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime*5);
 
-            if (dreagArea)
+            if ((dragAreas != null && dragAreas.Count > 0) || dreagArea != null)
             {
-                // constrain using Collider.ClosestPoint (works for Box/Sphere/Mesh)
-                Vector3 constrained = dreagArea.ClosestPoint(targetPos);
+                Vector3 constrained = GetConstrainedPosition(targetPos);
 
                 // preserve Y if needed
                 if (freezeYposition)
@@ -121,8 +221,11 @@ public class DraggingObject : MissionObject
 
                 toDrag.position = constrained;
 
-                // update distance from center (optional)
-                distFormDrag = Vector3.Distance(toDrag.position, dreagArea.transform.position);
+                // update distance from center (optional) - use first available allowed or dreagArea
+                if (dragAreas != null && dragAreas.Count > 0 && dragAreas[0] != null)
+                    distFormDrag = Vector3.Distance(toDrag.position, dragAreas[0].transform.position);
+                else if (dreagArea != null)
+                    distFormDrag = Vector3.Distance(toDrag.position, dreagArea.transform.position);
             }
             else
             {
@@ -201,9 +304,9 @@ public class DraggingObject : MissionObject
 
             Vector3 targetPos = Vector3.Lerp(toDrag.position, r.GetPoint(dist), Time.deltaTime * 5);
 
-            if (dreagArea)
+            if ((dragAreas != null && dragAreas.Count > 0) || dreagArea != null)
             {
-                Vector3 constrained = dreagArea.ClosestPoint(targetPos);
+                Vector3 constrained = GetConstrainedPosition(targetPos);
                 if (freezeYposition)
                     constrained.y = originalY;
                 toDrag.position = constrained;
@@ -273,7 +376,7 @@ public class DraggingObject : MissionObject
 
         if (freezeYposition)
         {
-            if (dragging)
+            if (dragging && toDrag != null)
                 toDrag.position = new Vector3(toDrag.position.x, originalY, toDrag.position.z);
         }
     }

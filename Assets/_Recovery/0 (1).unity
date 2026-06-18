@@ -4603,18 +4603,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 616283497}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: PlayAudioClip
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1473e0418198e324da195b77ab03d411, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
 --- !u!114 &200383192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6549,7 +6537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 40.49997, y: 9.699738}
+  m_AnchoredPosition: {x: 40.49997, y: 9.699768}
   m_SizeDelta: {x: 80.99994, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &315795419
@@ -13311,7 +13299,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 93dadef02dda7c54583c2354cf0074b3, type: 3}
   - {fileID: 8300000, guid: 846a833d32275154a9f6efb31f45a8d5, type: 3}
   - {fileID: 8300000, guid: a76acf0760b324640ae7cfdb638a4e09, type: 3}
-  fadeSpeed: 0.5
 --- !u!1 &618946281
 GameObject:
   m_ObjectHideFlags: 0
@@ -14527,7 +14514,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 40.49997, y: 6.0000305}
+  m_AnchoredPosition: {x: 40.49997, y: 6.000061}
   m_SizeDelta: {x: 80.99994, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &668952255
@@ -16333,7 +16320,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 40.49997, y: 9.999542}
+  m_AnchoredPosition: {x: 40.49997, y: 9.999573}
   m_SizeDelta: {x: 80.99994, y: 80}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &726401682

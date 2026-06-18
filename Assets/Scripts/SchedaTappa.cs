@@ -114,7 +114,8 @@ public class SchedaTappa : MonoBehaviour
         Debug.Log("PLAY TAPPA: "+TappaMapMarker.openTappa.tappaName);
     }
 
-    private void OnDisable()
+
+    public void CloseTappaBook()
     {
         AudioManager.instance.StopAudioClipWithFade();
         AudioManager.instance.FadeInMusic();
@@ -122,5 +123,13 @@ public class SchedaTappa : MonoBehaviour
         // ripristina speed originale
         if (anim != null)
             anim.speed = originalAnimSpeed;
+
+        anim.Play("CloseTappaBook");
     }
+
+    public void AutoDisable()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

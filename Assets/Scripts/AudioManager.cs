@@ -28,6 +28,14 @@ public class AudioManager : MonoBehaviour
     public List <AudioClip> Tracks = new List<AudioClip>();
     public List<AudioClip> sounds = new List<AudioClip>();
 
+    // riferimenti alle coroutine di fade attive (se presenti)
+    private Coroutine musicFadeCoroutine;
+    private Coroutine soundsFadeCoroutine;
+
+    [Header("Fade")]
+    [Tooltip("Velocità del fade in unità di volume al secondo (maggiore = fade più veloce)")]
+    public float fadeSpeed = 1f;
+
     void Awake()
     {
         
@@ -122,40 +130,56 @@ public class AudioManager : MonoBehaviour
     #region FadeIN/OUT Musica durante la lettura del testo
     public void FadeOutMusic () //All'apertura del pannello di lettura del testo, faccio partire la Coroutine per diminuire il volume della musica
     {
-        StartCoroutine(FadeOutMusicCoroutine());
+        // ferma eventuale fade in/out in corso prima di iniziare un nuovo fade
+        if (musicFadeCoroutine != null)
+        {
+            StopCoroutine(musicFadeCoroutine);
+            musicFadeCoroutine = null;
+        }
+        musicFadeCoroutine = StartCoroutine(FadeOutMusicCoroutine());
     }
 
     IEnumerator FadeOutMusicCoroutine()
     {
         float startVolume = musicSource.volume;
-        float endVolume = startVolume * 0.3F;
+        float endVolume = startVolume * 0.2F;
         while (musicSource.volume > endVolume)
         {
-            musicSource.volume -= startVolume * Time.deltaTime * 0.4F;
+            // uso MoveTowards con fadeSpeed pubblico
+            musicSource.volume = Mathf.MoveTowards(musicSource.volume, endVolume, fadeSpeed * Time.deltaTime);
             yield return null;
         }
 
+        // assicurati di segnare la coroutine come terminata
+        musicFadeCoroutine = null;
    
     }
 
     public void FadeInMusic() //alla chiusura del pannello di lettura del testo, faccio partire la Coroutine per aumentare il volume della musica
     {
-        StartCoroutine(FadeInMusicCoroutine());
+        // ferma eventuale fade in/out in corso prima di iniziare un nuovo fade
+        if (musicFadeCoroutine != null)
+        {
+            StopCoroutine(musicFadeCoroutine);
+            musicFadeCoroutine = null;
+        }
+        musicFadeCoroutine = StartCoroutine(FadeInMusicCoroutine());
     }
     IEnumerator FadeInMusicCoroutine()
     {
-        float startVolume = musicSource.volume;
-        while (musicSource.volume < musicValue)
+        float target = musicValue;
+        while (musicSource.volume < target)
         {
-            musicSource.volume += startVolume * Time.deltaTime * 0.4F;
+            // uso MoveTowards con fadeSpeed pubblico
+            musicSource.volume = Mathf.MoveTowards(musicSource.volume, target, fadeSpeed * Time.deltaTime);
             yield return null;
         }
-        
+
+        // segnalo che la coroutine è terminata
+        musicFadeCoroutine = null;
     }
 
     #endregion
-
-
 
 
 
@@ -176,6 +200,12 @@ public class AudioManager : MonoBehaviour
 
     public void StopMusic()
     {
+        // ferma eventuale fade della musica in corso
+        if (musicFadeCoroutine != null)
+        {
+            StopCoroutine(musicFadeCoroutine);
+            musicFadeCoroutine = null;
+        }
         musicSource.Stop();
     }
 
@@ -185,7 +215,13 @@ public class AudioManager : MonoBehaviour
     //Metodo per stoppare audio con fade (utilie per il parlato delle descrizioni)
     public void StopAudioClipWithFade()
     {
-        StartCoroutine(FadeOutAudioClipCoroutine());
+        // ferma eventuale fade dei suoni in corso
+        if (soundsFadeCoroutine != null)
+        {
+            StopCoroutine(soundsFadeCoroutine);
+            soundsFadeCoroutine = null;
+        }
+        soundsFadeCoroutine = StartCoroutine(FadeOutAudioClipCoroutine());
         
     }
     IEnumerator FadeOutAudioClipCoroutine()
@@ -193,11 +229,14 @@ public class AudioManager : MonoBehaviour
         float startVolume = soundsSource.volume;
         while (soundsSource.volume > 0.2F)
         {
-            soundsSource.volume -= startVolume * Time.deltaTime * 0.4F;
+            soundsSource.volume = Mathf.MoveTowards(soundsSource.volume, 0.2f, fadeSpeed * Time.deltaTime);
             yield return null;
         }
 
         soundsSource.Stop();
         soundsSource.volume = startVolume;
+
+        // segnalo termine coroutine
+        soundsFadeCoroutine = null;
     }
 }

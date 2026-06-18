@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
+  m_Name: Ripe S.Ginesio
+  m_EditorClassIdentifier: 
+  isOpen: 1
+  tappaName: RIPE SAN GINESIO
+  nomeReale: RIPE SAN  GINESIO
+  nomeNeiRomanzi: CAMPO D'ARMI
+  storiaReale: 
+  storiaRomanzi: "Era uno slargo circolare enorme che una volta doveva essere la
+    piazza centrale della citt\xE0, ma che adesso era stato riempito di sabbia per
+    attutire le cadute di chi si allenava.\r\nIl perimetro era formato da palazzi
+    accostati uno all\u2019altro, intervallato da una dozzina di piccole vie che
+    portavano ovunque. Gli ingressi alle case dovevano essere sulle parti opposte,
+    dato che sul campo d\u2019addestramento si affacciavano le stalle, ognuna contrassegnata
+    da stendardi o vessilli delle varie casate. Alcuni garzoni strigliavano le bestie
+    non utilizzate per gli allenamenti, mentre altri aiutavano i loro signori nella
+    gestione delle armi e delle armature. Una decina di istruttori si distinguevano
+    chiaramente dalla massa di cavalieri. \r\n\r\nTutti umani, tranne un nano, erano
+    grossi e massicci; duellavano seminudi contro avversari ricoperti di placche
+    lucenti, che volavano da una parte all\u2019altra come fossero fantocci di paglia.
+    Suggerivano, riprendevano, consigliavano, urlando come forsennati. Il rumore
+    delle armi in legno riecheggiava in tutta la piazza, confondendosi con quello
+    delle ossa spezzate.Altri si destreggiavano nel combattimento senza armi sopra
+    a pagliericci che attutivano le cadute, e che diffondevano odore di sangue e
+    sudore. Al centro, un lungo steccato separava cavalieri che si misuravano nella
+    giostra. \r\n\r\nLe lance in legno, con le punte smussate e ricoperte da protezioni,
+    si spezzavano fragorosamente. Gli sfidanti si susseguivano con ritmi impressionanti
+    e, quando cadevano a terra, gli scudieri accorrevano per dare conforto ai loro
+    padroni. Quando Reogard raggiunse la piazza, nessuno parve far caso a lui. Si
+    guard\xF2 intorno per scegliere a chi chiedere di Wismer, e scelse la persona
+    meno indicata, perch\xE9 quasi tutti si fermarono quando si avvicin\xF2 al maestro
+    d\u2019armi che gli era sembrato pi\xF9 loquace degli altri. Questi si asciug\xF2
+    il copioso sudore con un braccio pieno di lividi e cicatrici, grosso quanto le
+    due braccia del paladino messe insieme. Guardandolo dall\u2019alto con quegli
+    occhi azzurri che spuntavano tra rughe e sopracciglia foltissime, si gratt\xF2
+    la bionda e ben curata barba. \r\n\r\nSi asciug\xF2 le mani sui pantaloni di
+    pelle, diede una sistemata alle due trecce e fiss\xF2 Reogard, senza nulla dire.
+    \xABHo detto che sto cercando Wismer.\xBB \xABChi lo sta cercando?\xBB La voce
+    era adeguata alle sembianze: profonda e forte, quasi fosse un gorgoglio. E anche
+    l\u2019odore di sudore era adeguato alla fatica che dimostrava aver sostenuto.
+    Il paladino fece un passo in avanti. \xABNon lo ripeter\xF2 un'altra volta: cerco
+    Wismer!\xBB \xABWismer \xE8 occupato.\xBB La voce dell\u2019energumeno non cambi\xF2
+    tonalit\xE0; distaccata e scortese. Reogard sfil\xF2 la spada dal fodero. \u201CUccidili!
+    Uccidili tutti!\u201D Reogard prov\xF2 a colpire ma l'energumeno gli blocc\xF2
+    il braccio affondando una testata che lo invest\xEC in pieno volto. Cadde all'indietro
+    con la faccia sfondata. Il sangue copioso inzupp\xF2 gli abiti e il terreno.
+    Fu sul punto di svenire."
+  descrizioneAudioReal: {fileID: 0}
+  descrizioneAudioRomanzi: {fileID: 8300000, guid: 027a0e6b7c45a624a87a8f8a99a44b39, type: 3}
+  slideSpriteCollection: {fileID: 0}
+  slideSpriteCollectionFantasy: {fileID: 0}
+  InfoTappa_Real: {fileID: 0}
+  InfoTappa_Keemar: {fileID: 0}
+  googleMapLink: 
+  videoLink: 
+  tappaComplete: 0
+  tappaScene: S.Genesio
+  missions:
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
+    missionComplete: 0
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
+    missionComplete: 0
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
+    missionComplete: 0
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
+    missionComplete: 0
+  - missionName: MIssioni da inserire
+    missionDescriprion: MIssioni da inserire
+    missionCompleteMessage: MIssioni da inserire
+    missionComplete: 0
