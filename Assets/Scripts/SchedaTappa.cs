@@ -109,6 +109,8 @@ public class SchedaTappa : MonoBehaviour
 
     public void CLickOnPlayeGame()
     {
+        AudioManager.instance.StopAudioClipWithFade(false);
+        AudioManager.instance.FadeInMusic(false);
         MainMenu.instance.CloseMainMenu();
         SceneLoader.instance.LoadTappaScene(TappaMapMarker.openTappa);
         Debug.Log("PLAY TAPPA: "+TappaMapMarker.openTappa.tappaName);

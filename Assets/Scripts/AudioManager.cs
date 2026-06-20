@@ -128,15 +128,21 @@ public class AudioManager : MonoBehaviour
 
 
     #region FadeIN/OUT Musica durante la lettura del testo
-    public void FadeOutMusic () //All'apertura del pannello di lettura del testo, faccio partire la Coroutine per diminuire il volume della musica
+    public void FadeOutMusic (bool fade = true) //All'apertura del pannello di lettura del testo, faccio partire la Coroutine per diminuire il volume della musica
     {
-        // ferma eventuale fade in/out in corso prima di iniziare un nuovo fade
-        if (musicFadeCoroutine != null)
+        if (fade)
         {
-            StopCoroutine(musicFadeCoroutine);
-            musicFadeCoroutine = null;
+            // ferma eventuale fade in/out in corso prima di iniziare un nuovo fade
+            if (musicFadeCoroutine != null)
+            {
+                StopCoroutine(musicFadeCoroutine);
+                musicFadeCoroutine = null;
+            }
+            musicFadeCoroutine = StartCoroutine(FadeOutMusicCoroutine());
         }
-        musicFadeCoroutine = StartCoroutine(FadeOutMusicCoroutine());
+        else {
+            musicSource.volume = musicSource.volume * 0.2F;
+        }
     }
 
     IEnumerator FadeOutMusicCoroutine()
@@ -155,15 +161,23 @@ public class AudioManager : MonoBehaviour
    
     }
 
-    public void FadeInMusic() //alla chiusura del pannello di lettura del testo, faccio partire la Coroutine per aumentare il volume della musica
+    public void FadeInMusic(bool fade=true) //alla chiusura del pannello di lettura del testo, faccio partire la Coroutine per aumentare il volume della musica
     {
-        // ferma eventuale fade in/out in corso prima di iniziare un nuovo fade
-        if (musicFadeCoroutine != null)
+        if (fade)
         {
-            StopCoroutine(musicFadeCoroutine);
+            // ferma eventuale fade in/out in corso prima di iniziare un nuovo fade
+            if (musicFadeCoroutine != null)
+            {
+                StopCoroutine(musicFadeCoroutine);
+                musicFadeCoroutine = null;
+            }
+            musicFadeCoroutine = StartCoroutine(FadeInMusicCoroutine());
+        }
+        else
+        {
+            musicSource.volume = musicValue;
             musicFadeCoroutine = null;
         }
-        musicFadeCoroutine = StartCoroutine(FadeInMusicCoroutine());
     }
     IEnumerator FadeInMusicCoroutine()
     {
@@ -213,15 +227,23 @@ public class AudioManager : MonoBehaviour
 
 
     //Metodo per stoppare audio con fade (utilie per il parlato delle descrizioni)
-    public void StopAudioClipWithFade()
+    public void StopAudioClipWithFade(bool fade =true)
     {
-        // ferma eventuale fade dei suoni in corso
-        if (soundsFadeCoroutine != null)
+        if (musicFadeCoroutine != null)
         {
-            StopCoroutine(soundsFadeCoroutine);
+            // ferma eventuale fade dei suoni in corso
+            if (soundsFadeCoroutine != null)
+            {
+                StopCoroutine(soundsFadeCoroutine);
+                soundsFadeCoroutine = null;
+            }
+            soundsFadeCoroutine = StartCoroutine(FadeOutAudioClipCoroutine());
+        }
+        else
+        {
+            soundsSource.Stop();
             soundsFadeCoroutine = null;
         }
-        soundsFadeCoroutine = StartCoroutine(FadeOutAudioClipCoroutine());
         
     }
     IEnumerator FadeOutAudioClipCoroutine()
