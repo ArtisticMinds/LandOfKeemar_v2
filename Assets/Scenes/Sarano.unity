@@ -6621,6 +6621,67 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 80083990}
   m_Mesh: {fileID: 3690503164504511952, guid: 82045bde4d62228448b4a875bcd55e56, type: 3}
+--- !u!1001 &82219458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.247
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.839
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -8.244
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: af017e5cfe0db144f9cc5aa2b2f605e7, type: 2}
+    - target: {fileID: 919132149155446097, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
+      propertyPath: m_Name
+      value: Standard_Sword
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: be10d21d4a9073f44b2e5c121fc2e859, type: 3}
 --- !u!1 &86313834
 GameObject:
   m_ObjectHideFlags: 0
@@ -15331,7 +15392,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7990916538292197503, guid: e8c67e3d378179b4e851879001e337e7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.93
+      value: 3.872
       objectReference: {fileID: 0}
     - target: {fileID: -7990916538292197503, guid: e8c67e3d378179b4e851879001e337e7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -15339,7 +15400,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7990916538292197503, guid: e8c67e3d378179b4e851879001e337e7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.74
+      value: -2.864
       objectReference: {fileID: 0}
     - target: {fileID: -7886321703830767191, guid: e8c67e3d378179b4e851879001e337e7, type: 3}
       propertyPath: m_LocalScale.x
@@ -70197,7 +70258,7 @@ Transform:
   m_GameObject: {fileID: 881688610}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.51, y: 13.54, z: -2.94}
+  m_LocalPosition: {x: 9.73, y: 13.54, z: -3.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -147345,6 +147406,7 @@ SceneRoots:
   - {fileID: 1979111537}
   - {fileID: 131008973}
   - {fileID: 1642140562}
+  - {fileID: 82219458}
   - {fileID: 919300168}
   - {fileID: 543450652070563461}
   - {fileID: 1365534878}
