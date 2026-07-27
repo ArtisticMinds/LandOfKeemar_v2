@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Trim_MultyMaterial
+    second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: trim
     second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
   materials:

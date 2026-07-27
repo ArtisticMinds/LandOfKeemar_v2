@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8dd77a3bd55a15b42a8546e3f9407026
+guid: 9f9d7e7ff9e3ac24086dd91806cfa3c4
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,13 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BANDSTEND
-    second: {fileID: 2100000, guid: 6f52c321a739ad64c992fcf47ecec38c, type: 2}
+      name: Arch2
+    second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: trim
-    second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
+      name: lambert2
+    second: {fileID: 2100000, guid: 953377d18dba17142ad7af2ae3f8bfaf, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,7 +56,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1

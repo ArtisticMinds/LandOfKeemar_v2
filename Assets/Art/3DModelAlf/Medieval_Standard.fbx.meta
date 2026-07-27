@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8dd77a3bd55a15b42a8546e3f9407026
+guid: 44a7d4d089fcb834f8929af2cf1b170e
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -9,11 +9,6 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: BANDSTEND
     second: {fileID: 2100000, guid: 6f52c321a739ad64c992fcf47ecec38c, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: trim
-    second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -56,7 +51,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 1
+    generateSecondaryUV: 0
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
