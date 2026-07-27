@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 44a7d4d089fcb834f8929af2cf1b170e
+guid: 73ef733df53b36e498158cbac4ada027
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BANDSTEND
-    second: {fileID: 2100000, guid: bd70393847a304f46875c1e5336fed75, type: 2}
+      name: Trim_MultyMaterial
+    second: {fileID: 2100000, guid: fa76a01a21343124582e6042fb55cd47, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

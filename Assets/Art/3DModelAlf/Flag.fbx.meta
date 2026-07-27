@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: BANDSTEND
-    second: {fileID: 2100000, guid: 6f52c321a739ad64c992fcf47ecec38c, type: 2}
+    second: {fileID: 2100000, guid: bd70393847a304f46875c1e5336fed75, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
