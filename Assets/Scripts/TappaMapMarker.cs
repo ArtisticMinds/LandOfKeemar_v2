@@ -1,7 +1,8 @@
+using System.Reflection;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class TappaMapMarker : MonoBehaviour
 {
@@ -13,15 +14,19 @@ public class TappaMapMarker : MonoBehaviour
     private Button butt;
     public AudioClip onClickClip;
     public TMP_Text titoloUI;
+    public Color closedColor= new Color(1F,1F,1F,0.9F);
+    Image pointer;
 
     private void Awake()
     {
-        butt=GetComponent<Button>();
+        pointer=GetComponent<Image>();
+        butt =GetComponent<Button>();
        // tappa.FindReferences();
         tappa.ResetScriptableObject();
         LoadTappaMissionsProgress();
         butt.onClick.AddListener(OnButtonClick);
         qrImage.SetActive(false);
+        pointer.color = Color.white;
     }
 
     void Start()
@@ -72,7 +77,19 @@ public class TappaMapMarker : MonoBehaviour
 
     public void GetTappaState()
     {
-        qrImage.SetActive(!tappa.isOpen);
+
+
+        if (tappa.isOpen)
+        {
+            qrImage.SetActive(false);
+        }
+        else
+        {
+            qrImage.SetActive(true);
+            pointer.color = closedColor;
+        }
+
+
         titoloUI.text = tappa.nomeNeiRomanzi;
 
         tappa.tappaComplete = true;

@@ -16,8 +16,7 @@ MonoBehaviour:
   tappaName: 'ROCCA
 
     BORGESCA'
-  InfoTappa_Real_Name: Borgia_Real
-  InfoTappa_Keemar_Name: Borgia_Keemar
+  tappaID: 0
   nomeReale: ROCCA BORGESCA
   nomeNeiRomanzi: INCUDINE
   storiaReale: 
@@ -25,6 +24,7 @@ MonoBehaviour:
   descrizioneAudioReal: {fileID: 0}
   descrizioneAudioRomanzi: {fileID: 0}
   slideSpriteCollection: {fileID: 11400000, guid: fe068d9850307ad4aacab10aab2c148b, type: 2}
+  slideSpriteCollectionFantasy: {fileID: 0}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}
   googleMapLink: https://goo.gl/maps/pUr1A4ykPaeCQfbUA

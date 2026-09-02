@@ -143,11 +143,19 @@ public class MainMenu : MonoBehaviour
             }
 
 
-            //Setto la tappa aperta di default, senza che sia presente nei PlayerPrefs, per permettere di testare la scena senza dover scansionare il QR
-            if (tp.tappaName.Equals("ROCCA VARANO"))
+            //Dopo tutti i controlli forzo le aperture delle tappe 1 e 2, così da poter testare la scena senza dover scansionare il QR
+
+            //Setto la tappa 1 aperta di default, senza che sia presente nei PlayerPrefs, per permettere di testare la scena senza dover scansionare il QR
+            if (tp.tappaID.Equals(1))
             {
                 OpenTappa(tp);
             }
+            //Setto la tappa 2 aperta di default, senza che sia presente nei PlayerPrefs, per permettere di testare la scena senza dover scansionare il QR
+            if (tp.tappaID.Equals(2))
+            {
+                OpenTappa(tp);
+            }
+            
 
             //Per debug, forza l'apertura di tutte le tappe, rendendole giocabili ma non salvando lo stato (utile per testare tutte le scene senza dover scansionare tutti i QR)
             if (inDebugTesting)

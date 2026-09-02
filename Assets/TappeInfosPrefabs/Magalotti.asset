@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 1
   tappaName: "CASTELLO \nMAGALOTTI"
+  tappaID: 2
   nomeReale: CASTELLO MAGALOTTI
   nomeNeiRomanzi: IL RITUALE
   storiaReale: "Il castello Magalotti \xE8 databile prima del IX secolo, \xE8 stato

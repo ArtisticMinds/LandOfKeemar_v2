@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: Sarnano
   m_EditorClassIdentifier: 
-  isOpen: 1
+  isOpen: 0
   tappaName: SARNANO
+  tappaID: 3
   nomeReale: SARNANO
   nomeNeiRomanzi: DIMORA DEL SOLE
   storiaReale: "Il Comune di Sarnano \xE8 nato sette secoli e mezzo fa, ma la storia

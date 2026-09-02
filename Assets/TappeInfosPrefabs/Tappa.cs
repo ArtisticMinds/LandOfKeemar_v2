@@ -11,7 +11,7 @@ public class Tappa : ScriptableObject
     public bool isOpen;
     [Multiline]
     public string tappaName;
-
+    public int tappaID;
     public string nomeReale;
     public string nomeNeiRomanzi;
     [Multiline]
@@ -98,6 +98,13 @@ public class Tappa : ScriptableObject
         //Metto anche la possibilità di aprire la tappa senza salvare, così da poterla aprire per test senza dover scansionare il QR ogni volta
         if (andSave)
         PlayerPrefs.SetString(tappaName+"_IsOpen", "true");
+
+        // Evitiamo duplicati: se è già aperta non facciamo nulla
+        if (isOpen)
+        {
+            Debug.Log($"Tappa {tappaName} già aperta (skip).");
+            return;
+        }
 
         MainMenu.instance.tappeChiuse.Remove(this);
         MainMenu.instance.tappeAperte.Add(this);

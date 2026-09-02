@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 1
   tappaName: ROCCA VARANO
+  tappaID: 1
   nomeReale: ROCCA VARANO
   nomeNeiRomanzi: L'AVAMPOSTO
   storiaReale: "Rocca Varano fu eretta nel XIII secolo dall'omonima famiglia nobiliare.\nLo

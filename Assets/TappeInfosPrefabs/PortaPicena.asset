@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isOpen: 0
   tappaName: PORTA PICENA
-  InfoTappa_Real_Name: Varano_Real
-  InfoTappa_Keemar_Name: Varano_Keemar
+  tappaID: 0
   nomeReale: 
   nomeNeiRomanzi: 
   storiaReale: 
@@ -23,6 +22,7 @@ MonoBehaviour:
   descrizioneAudioReal: {fileID: 0}
   descrizioneAudioRomanzi: {fileID: 0}
   slideSpriteCollection: {fileID: 0}
+  slideSpriteCollectionFantasy: {fileID: 0}
   InfoTappa_Real: {fileID: 0}
   InfoTappa_Keemar: {fileID: 0}
   googleMapLink: https://goo.gl/maps/TModoCiv81m9V78w6

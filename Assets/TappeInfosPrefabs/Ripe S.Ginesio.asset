@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b33549ba6c974704d8dc0df475fbc9a0, type: 3}
   m_Name: Ripe S.Ginesio
   m_EditorClassIdentifier: 
-  isOpen: 1
+  isOpen: 0
   tappaName: RIPE SAN GINESIO
+  tappaID: 4
   nomeReale: RIPE SAN GINESIO
   nomeNeiRomanzi: CAMPO D'ARMI
   storiaReale: "Arroccato su una collina nella Valle del Fiastra, Ripe San Ginesio
