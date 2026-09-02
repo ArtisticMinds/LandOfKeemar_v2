@@ -32,7 +32,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -151,7 +151,137 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: Fighter_V2(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fighter_V2:Fighter_V2
+      parentName: Fighter_V2(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fighter_V2:Hair_Fighter
+      parentName: Fighter_V2(Clone)
+      position: {x: 0.024973482, y: 1.671692, z: 0.16165587}
+      rotation: {x: 0.07016471, y: -0.026679462, z: -0.06334023, w: 0.9951649}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fighter_V2:QuickRigCharacter_Reference
+      parentName: Fighter_V2(Clone)
+      position: {x: -0.0000002670288, y: 0.0004948464, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fighter_V2:QuickRigCharacter_Hips
+      parentName: Fighter_V2:QuickRigCharacter_Reference
+      position: {x: 0.00000023536384, y: 0.93893653, z: 0.057794213}
+      rotation: {x: 0.49788013, y: -0.50211096, z: -0.49788013, w: 0.50211096}
+      scale: {x: 1.0000002, y: 1.0000004, z: 1.0000004}
+    - name: Fighter_V2:QuickRigCharacter_LeftUpLeg
+      parentName: Fighter_V2:QuickRigCharacter_Hips
+      position: {x: 0.11798269, y: -0.0010507004, z: 0.10431185}
+      rotation: {x: -0.0043366402, y: -0.0056681633, z: 0.99995303, w: 0.0065604895}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: Fighter_V2:QuickRigCharacter_LeftLeg
+      parentName: Fighter_V2:QuickRigCharacter_LeftUpLeg
+      position: {x: -0.37782577, y: -0.000017599583, z: -0.0000053008744}
+      rotation: {x: -0.015283779, y: 0.0008309983, z: -0.056434352, w: 0.99828905}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Fighter_V2:QuickRigCharacter_LeftFoot
+      parentName: Fighter_V2:QuickRigCharacter_LeftLeg
+      position: {x: -0.3150702, y: 0.0000013324831, z: 0.00000013684897}
+      rotation: {x: 0.004288083, y: -0.012348462, z: -0.57900286, w: -0.8152208}
+      scale: {x: 1, y: 1.0000002, z: 1.0000001}
+    - name: Fighter_V2:QuickRigCharacter_LeftToeBase
+      parentName: Fighter_V2:QuickRigCharacter_LeftFoot
+      position: {x: -0.24444243, y: 0.000000017819051, z: 0.0000001814101}
+      rotation: {x: -0, y: -0, z: -0.000000007497873, w: 1}
+      scale: {x: 1, y: 1.0000001, z: 1}
+    - name: Fighter_V2:QuickRigCharacter_RightUpLeg
+      parentName: Fighter_V2:QuickRigCharacter_Hips
+      position: {x: 0.11798263, y: -0.0010507056, z: -0.10431194}
+      rotation: {x: -0.005664885, y: 0.004336521, z: -0.0065406263, w: 0.9999532}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
+    - name: Fighter_V2:QuickRigCharacter_RightLeg
+      parentName: Fighter_V2:QuickRigCharacter_RightUpLeg
+      position: {x: 0.3778263, y: 0.000019184414, z: 0.000006020246}
+      rotation: {x: 0.015265197, y: -0.00082992716, z: 0.056457203, w: -0.99828804}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Fighter_V2:QuickRigCharacter_RightFoot
+      parentName: Fighter_V2:QuickRigCharacter_RightLeg
+      position: {x: 0.31507024, y: -0.0000011923753, z: -0.00000017645114}
+      rotation: {x: 0.0043061157, y: -0.012361344, z: -0.5790044, w: -0.8152194}
+      scale: {x: 1.0000004, y: 0.99999946, z: 1.0000002}
+    - name: Fighter_V2:QuickRigCharacter_RightToeBase
+      parentName: Fighter_V2:QuickRigCharacter_RightFoot
+      position: {x: 0.24444275, y: -0.000000065079625, z: -0.000000021370308}
+      rotation: {x: 0.00002544256, y: -0.000000081025036, z: 0.0000002146043, w: 1}
+      scale: {x: 1, y: 0.9999995, z: 1.0000002}
+    - name: Fighter_V2:QuickRigCharacter_Spine
+      parentName: Fighter_V2:QuickRigCharacter_Hips
+      position: {x: -0.13799776, y: -0.000000048106134, z: 0.000000020306171}
+      rotation: {x: -0, y: -0, z: 0.02085933, w: 0.99978244}
+      scale: {x: 1.0000002, y: 1.0000002, z: 1.0000002}
+    - name: Fighter_V2:QuickRigCharacter_Spine1
+      parentName: Fighter_V2:QuickRigCharacter_Spine
+      position: {x: -0.11697679, y: 0.000000014714926, z: 0.000000023633634}
+      rotation: {x: -0.000000029174181, y: 0.000000030417496, z: -0.008478694, w: 0.9999641}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000005}
+    - name: Fighter_V2:QuickRigCharacter_Spine2
+      parentName: Fighter_V2:QuickRigCharacter_Spine1
+      position: {x: -0.17663784, y: -0.000000004359413, z: 0.000000033696644}
+      rotation: {x: 0.00000002824721, y: -0.000000031280216, z: 0.038515784, w: 0.99925804}
+      scale: {x: 1, y: 1, z: 0.99999994}
+    - name: Fighter_V2:QuickRigCharacter_LeftShoulder
+      parentName: Fighter_V2:QuickRigCharacter_Spine2
+      position: {x: -0.17871599, y: -0.0013388285, z: 0.11938467}
+      rotation: {x: -0.37948784, y: 0.59664804, z: 0.55126035, w: 0.4428456}
+      scale: {x: 1.0000002, y: 1, z: 1.0000001}
+    - name: Fighter_V2:QuickRigCharacter_LeftArm
+      parentName: Fighter_V2:QuickRigCharacter_LeftShoulder
+      position: {x: -0.14491697, y: -0.00000013274322, z: 0.00000005669354}
+      rotation: {x: 0.7452934, y: -0.16259934, z: -0.098963365, w: 0.63898784}
+      scale: {x: 0.99999994, y: 0.9999998, z: 0.99999994}
+    - name: Fighter_V2:QuickRigCharacter_LeftForeArm
+      parentName: Fighter_V2:QuickRigCharacter_LeftArm
+      position: {x: -0.23110324, y: -0.000004944907, z: 0.00000771642}
+      rotation: {x: 0.0012772079, y: 0.011801208, z: -0.07192566, w: 0.9973394}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: Fighter_V2:QuickRigCharacter_LeftHand
+      parentName: Fighter_V2:QuickRigCharacter_LeftForeArm
+      position: {x: -0.3535279, y: 0.0000010855179, z: -0.0000001205312}
+      rotation: {x: -0.000000016327244, y: 0.00000011227526, z: 0.000028201115, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Fighter_V2:QuickRigCharacter_RightShoulder
+      parentName: Fighter_V2:QuickRigCharacter_Spine2
+      position: {x: -0.17871614, y: -0.0013387774, z: -0.11938457}
+      rotation: {x: 0.59664804, y: 0.3794878, z: -0.4428456, w: 0.55126035}
+      scale: {x: 1, y: 1.0000004, z: 1.0000006}
+    - name: Fighter_V2:QuickRigCharacter_RightArm
+      parentName: Fighter_V2:QuickRigCharacter_RightShoulder
+      position: {x: 0.14491701, y: 0.000000018851415, z: -0.00000011949412}
+      rotation: {x: -0.7452931, y: 0.16260518, z: 0.09895089, w: -0.6389887}
+      scale: {x: 1, y: 1.0000001, z: 1.0000001}
+    - name: Fighter_V2:QuickRigCharacter_RightForeArm
+      parentName: Fighter_V2:QuickRigCharacter_RightArm
+      position: {x: 0.2311031, y: -0.0000031175832, z: -0.000001001959}
+      rotation: {x: 0.0012774463, y: 0.011796105, z: -0.071938135, w: 0.99733853}
+      scale: {x: 1.000001, y: 0.9999997, z: 1.0000004}
+    - name: Fighter_V2:QuickRigCharacter_RightHand
+      parentName: Fighter_V2:QuickRigCharacter_RightForeArm
+      position: {x: 0.3535276, y: -0.0000017916689, z: -0.0000000397025}
+      rotation: {x: -0.00000030070066, y: -0.000000013504173, z: 0.000027262047, w: 1}
+      scale: {x: 1, y: 0.99999994, z: 1.0000002}
+    - name: Fighter_V2:QuickRigCharacter_Neck
+      parentName: Fighter_V2:QuickRigCharacter_Spine2
+      position: {x: -0.20256244, y: 0.000000033627053, z: 0.00000002767523}
+      rotation: {x: 0.000000028247207, y: -0.000000031280216, z: -0.046076726, w: 0.9989379}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000006}
+    - name: Fighter_V2:QuickRigCharacter_Head
+      parentName: Fighter_V2:QuickRigCharacter_Neck
+      position: {x: -0.18283607, y: -0.00000004418151, z: 0.000000091922544}
+      rotation: {x: -0, y: -0, z: 8.835787e-16, w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000004}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -162,7 +292,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1

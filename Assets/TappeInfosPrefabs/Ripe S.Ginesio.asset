@@ -108,15 +108,15 @@ MonoBehaviour:
     missionDescriprion: MIssioni da inserire
     missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
+  - missionName: Il duello dei forzuti
+    missionDescriprion: Sferra un colpo!
+    missionCompleteMessage: Hai atterrato il tuo rivale!
+    missionComplete: 1
   - missionName: MIssioni da inserire
     missionDescriprion: MIssioni da inserire
     missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
-  - missionName: MIssioni da inserire
-    missionDescriprion: MIssioni da inserire
-    missionCompleteMessage: MIssioni da inserire
-    missionComplete: 0
-  - missionName: MIssioni da inserire
-    missionDescriprion: MIssioni da inserire
-    missionCompleteMessage: MIssioni da inserire
+  - missionName: "Il Sole Giunge a met\xE0 corsa"
+    missionDescriprion: Segnalalo a tutti
+    missionCompleteMessage: Hai uonato le campane!
     missionComplete: 0
