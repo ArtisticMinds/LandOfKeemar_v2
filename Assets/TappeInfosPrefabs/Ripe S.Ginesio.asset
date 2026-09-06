@@ -104,19 +104,19 @@ MonoBehaviour:
     missionDescriprion: MIssioni da inserire
     missionCompleteMessage: MIssioni da inserire
     missionComplete: 0
-  - missionName: MIssioni da inserire
-    missionDescriprion: MIssioni da inserire
-    missionCompleteMessage: MIssioni da inserire
-    missionComplete: 0
+  - missionName: Una lancia per il Campione
+    missionDescriprion: Raccogli la lancia
+    missionCompleteMessage: Hai raccolto la lancia!
+    missionComplete: 1
   - missionName: Il duello dei forzuti
     missionDescriprion: Sferra un colpo!
     missionCompleteMessage: Hai atterrato il tuo rivale!
     missionComplete: 1
-  - missionName: MIssioni da inserire
-    missionDescriprion: MIssioni da inserire
-    missionCompleteMessage: MIssioni da inserire
-    missionComplete: 0
+  - missionName: Chi comanda qui?
+    missionDescriprion: Individua il generale della fortezza
+    missionCompleteMessage: Hai trovato il generale!
+    missionComplete: 1
   - missionName: "Il Sole Giunge a met\xE0 corsa"
     missionDescriprion: Segnalalo a tutti
-    missionCompleteMessage: Hai uonato le campane!
-    missionComplete: 0
+    missionCompleteMessage: Hai suonato le campane!
+    missionComplete: 1
