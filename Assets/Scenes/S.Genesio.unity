@@ -48762,6 +48762,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149f9313564d3874c9039e51b8c9bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomizeAnimation
+  max_TriggerNumbers: 0
+  animatorParameterName: Randomize
+  minInterval: 2
+  maxInterval: 6
+  resetToZero: 0
+  resetDelay: 0.5
 --- !u!95 &1008685285
 Animator:
   serializedVersion: 7
@@ -60328,6 +60334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149f9313564d3874c9039e51b8c9bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomizeAnimation
+  max_TriggerNumbers: 0
+  animatorParameterName: Randomize
+  minInterval: 2
+  maxInterval: 6
+  resetToZero: 0
+  resetDelay: 0.5
 --- !u!95 &1097221527
 Animator:
   serializedVersion: 7
@@ -69178,6 +69190,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: dd5d506fdda13c540a86045ed48ee9ed, type: 3}
   m_PrefabInstance: {fileID: 1372836118}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1373589915
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 387890103098756626, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_Name
+      value: PolloLow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.2088466
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.7211294
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.9048748
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.10061356
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.99492556
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -191.549
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020592337172501672, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ffb44179b9c7384e8169aa37a9add78, type: 3}
 --- !u!1001 &1380482757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70229,6 +70298,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149f9313564d3874c9039e51b8c9bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomizeAnimation
+  max_TriggerNumbers: 0
+  animatorParameterName: Randomize
+  minInterval: 2
+  maxInterval: 6
+  resetToZero: 0
+  resetDelay: 0.5
 --- !u!1 &1469905013
 GameObject:
   m_ObjectHideFlags: 0
@@ -76598,6 +76673,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149f9313564d3874c9039e51b8c9bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomizeAnimation
+  max_TriggerNumbers: 0
+  animatorParameterName: Randomize
+  minInterval: 2
+  maxInterval: 6
+  resetToZero: 0
+  resetDelay: 0.5
 --- !u!95 &1623230575
 Animator:
   serializedVersion: 7
@@ -134785,6 +134866,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149f9313564d3874c9039e51b8c9bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomizeAnimation
+  max_TriggerNumbers: 0
+  animatorParameterName: Randomize
+  minInterval: 2
+  maxInterval: 6
+  resetToZero: 0
+  resetDelay: 0.5
 --- !u!1 &4425936531306471109
 GameObject:
   m_ObjectHideFlags: 0
@@ -141071,7 +141158,7 @@ Transform:
   m_GameObject: {fileID: 10444760024556999}
   serializedVersion: 2
   m_LocalRotation: {x: 0.70444375, y: -0.061311156, z: 0.061311137, w: 0.70444375}
-  m_LocalPosition: {x: 16.05, y: 0.18999964, z: 56.62}
+  m_LocalPosition: {x: 16.05, y: -0.23, z: 56.62}
   m_LocalScale: {x: 0.51729524, y: 0.5803308, z: 0.5803308}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158508,3 +158595,4 @@ SceneRoots:
   - {fileID: 529134867}
   - {fileID: 566752106}
   - {fileID: 4406081771054327219}
+  - {fileID: 1373589915}
